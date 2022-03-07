@@ -485,7 +485,13 @@ print(f.hyphen.remove)
 txt.bgh[, text := lapply(.(text), f.hyphen.remove)]
 
 
+
 #'## Perform Cleaning: Correct Errors
+
+
+#'### Read Replacement Table
+
+fread("data/BGH-Strafrecht_ReplacementTable.csv")
 
 #'### Funktion anzeigen
 print(mgsub_clean)
