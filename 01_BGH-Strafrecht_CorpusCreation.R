@@ -34,111 +34,43 @@ cat(readLines("README.md"),
 
 
 
-### REMOVE LATER TEST
-setwd("~/bgh project/workdir")
-
-
-
-#'\newpage
-#+
-#'# Parameter
-
-#+
-#'## Name des Datensatzes
-datasetname <- "BGH-Straf-Historisch"
-
-#'## DOI des Datensatz-Konzeptes
-doi.concept <- "???" # checked
-
-#'## DOI der konkreten Version
-doi.version <- "???" # checked
-
-#'## Lizenz
-license <- "Creative Commons Zero 1.0 Universal"
-
-
-#'## Verzeichnis für Analyse-Ergebnisse
-#' Muss mit einem Schrägstrich enden!
-
-outputdir <- paste0(getwd(),
-                    "/ANALYSE/") 
-
-
-
-
-
-#'## Optionen: Quanteda
-tokens_locale <- "de_DE"
-
-
-
-#'## Optionen: Knitr
-
-#+
-#'### Ausgabe-Format
-dev <- c("pdf",
-         "png")
-
-
-#'### DPI für Raster-Grafiken
-dpi <- 300
-
-
-#'### Ausrichtung von Grafiken im Compilation Report
-fig.align <- "center"
-
-
-
-
-
-#'## Frequenztabellen: Ignorierte Variablen
-
-#' Diese Variablen werden bei der Erstellung der Frequenztabellen nicht berücksichtigt.
-
-varremove <- c("text",
-               "eingangsnummer",
-               "datum",
-               "doc_id",
-               "ecli",
-               "aktenzeichen",
-               "name",
-               "bemerkung")
-
-
-
-
-
 #'# Vorbereitung
 
 #'## Datumsstempel
-#' Dieser Datumsstempel wird in alle Dateinamen eingefügt. Er wird am Anfang des Skripts gesetzt, für den Fall, dass die Laufzeit die Datumsbarriere durchbricht.
+#' Dieser Datumsstempel wird in alle Dateinamen eingefügt. Er wird am Anfang des Skripts gesetzt, für den den Fall, dass die Laufzeit die Datumsbarriere durchbricht.
+
 datestamp <- Sys.Date()
 print(datestamp)
+
 
 #'## Datum und Uhrzeit (Beginn)
 begin.script <- Sys.time()
 print(begin.script)
 
-#'## Ordner für Analyse-Ergebnisse erstellen
-dir.create(outputdir)
+
+
 
 
 #+
 #'## Packages Laden
 
 library(fs)           # Verbessertes File Handling
-library(mgsub)        # Vektorisiertes Gsub
+library(RcppTOML)     # Verarbeitung von TOML-Format
+library(mgsub)        # Mehrfache simultane String-Substitutions
 library(httr)         # HTTP-Werkzeuge
 library(rvest)        # HTML/XML-Extraktion
 library(knitr)        # Professionelles Reporting
 library(kableExtra)   # Verbesserte Kable Tabellen
 library(pdftools)     # Verarbeitung von PDF-Dateien
-library(doParallel)   # Parallelisierung
 library(ggplot2)      # Fortgeschrittene Datenvisualisierung
 library(scales)       # Skalierung von Diagrammen
 library(data.table)   # Fortgeschrittene Datenverarbeitung
 library(readtext)     # TXT-Dateien einlesen
 library(quanteda)     # Fortgeschrittene Computerlinguistik
+library(spacyr)       # Linguistische Annotationen
+library(future)       # Parallelisierung mit Futures
+library(future.apply) # Apply-Funtionen für Futures
+
 
 
 
