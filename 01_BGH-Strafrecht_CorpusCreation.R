@@ -84,7 +84,7 @@ source("R-fobbe-proto-package/f.future_lingsummarize.R")
 source("R-fobbe-proto-package/f.future_multihashes.R")
 source("R-fobbe-proto-package/f.future_pdf_to_txt.R")
 
-
+source("functions/mgsub_clean.R")
 
 
 
@@ -491,13 +491,13 @@ txt.bgh[, text := lapply(.(text), f.hyphen.remove)]
 
 #'### Read Replacement Table
 
-fread("data/BGH-Strafrecht_ReplacementTable.csv")
+replacement.table <- fread("data/BGH-Strafrecht_ReplacementTable.csv")
 
 #'### Funktion anzeigen
 print(mgsub_clean)
 
 #'### Funktion ausführen
-txt.bgh[, text := lapply(.(text), mgsub_clean)]
+txt.bgh[, text := lapply(.(text), function(x){mgsub_clean(x, replacement.table)})]
 
 
 
