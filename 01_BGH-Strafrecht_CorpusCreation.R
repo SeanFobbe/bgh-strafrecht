@@ -450,6 +450,9 @@ f.dopar.pdfocr(filenames.current,
 
 #'# Cleaning Step
 
+
+#'## Read files
+
 files.txt <- list.files("txt_tesseract",
                         full.names = TRUE)[1:50] # testing restriction
 
@@ -471,3 +474,13 @@ txt.bgh <- readtext(files.txt,
 
 #'## In Data Table umwandeln
 setDT(txt.bgh)
+
+
+#'## Perform Cleaning
+
+#'### Funktion anzeigen
+print(f.hyphen.remove)
+
+#'### Funktion ausführen
+txt.bgh[, text := lapply(.(text), f.hyphen.remove)]
+
