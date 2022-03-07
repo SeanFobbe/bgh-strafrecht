@@ -430,11 +430,6 @@ file.rename(file.path("pdf_original", filenames.old),
 
 
 
-
-
-
-
-
 if (config$tesseract$skip == FALSE){
 
 
