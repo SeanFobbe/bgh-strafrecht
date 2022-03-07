@@ -99,6 +99,7 @@ dir.analysis <- paste0(getwd(),
 dirs <- c("output",
           "temp",
           ## "txt_tesseract", # skip during devel
+          "pdf_original", 
           "pdf_tesseract",
           "txt_cleaned")
 
@@ -297,57 +298,53 @@ setDTthreads(threads = fullCores)
 
 
 
-library(fs)
+#'# Download: Weitere Datensätze
 
-x <- list.files()
-
-
-lapply(x, unzip)
-
+#+
+#'## Registerzeichen und Verfahrensarten
+#'Die Registerzeichen werden im Laufe des Skripts mit ihren detaillierten Bedeutungen aus dem folgenden Datensatz abgeglichen: "Seán Fobbe (2021). Aktenzeichen der Bundesrepublik Deutschland (AZ-BRD). Version 1.0.1. Zenodo. DOI: 10.5281/zenodo.4569564." Das Ergebnis des Abgleichs wird in der Variable "verfahrensart" in den Datensatz eingefügt.
 
 
-list.files()[1:300]
-
-library(zip)
-
-mac <- list.files(pattern="MACOS", include.dirs=TRUE, recursive =TRUE, full.names=TRUE)
-
-length(mac)
-
-unlink(mac)
-
-
-zip <- list.files(pattern="\\.zip")
-unlink(zip)
+if (file.exists("data/AZ-BRD_1-0-1_DE_Registerzeichen_Datensatz.csv") == FALSE){
+    download.file("https://zenodo.org/record/4569564/files/AZ-BRD_1-0-1_DE_Registerzeichen_Datensatz.csv?download=1",
+ "data/AZ-BRD_1-0-1_DE_Registerzeichen_Datensatz.csv")
+    }
 
 
 
-all <- list.files(pattern="\\.pdf", ignore.case=TRUE)
-length(all)
-
-file.copy(all, "../../BGH-PDF-RAW")
+#'## Personendaten zu Präsident:innen
+#' Die Personendaten stammen aus folgendem Datensatz: \enquote{Seán Fobbe and Tilko Swalve (2021). Presidents and Vice-Presidents of the Federal Courts of Germany (PVP-FCG). Version 2021-04-08. Zenodo. DOI: 10.5281/zenodo.4568682}.
 
 
-zip("BGH_50-99.zip", all)
-file.copy("BGH_50-99.zip", "../")
+if (file.exists("data/PVP-FCG_2021-04-08_GermanFederalCourts_Presidents.csv") == FALSE){
+    download.file("https://zenodo.org/record/4568682/files/PVP-FCG_2021-04-08_GermanFederalCourts_Presidents.csv?download=1",
+                  "data/PVP-FCG_2021-04-08_GermanFederalCourts_Presidents.csv")
+}
 
 
 
 
-unzip("BGH_50-99.zip")
+#'## Personendaten zu Vize-Präsident:innen
+#' Die Personendaten stammen aus folgendem Datensatz: \enquote{Seán Fobbe and Tilko Swalve (2021). Presidents and Vice-Presidents of the Federal Courts of Germany (PVP-FCG). Version 2021-04-08. Zenodo. DOI: 10.5281/zenodo.4568682}.
+
+
+if (file.exists("data/PVP-FCG_2021-04-08_GermanFederalCourts_VicePresidents.csv") == FALSE){
+    download.file("https://zenodo.org/record/4568682/files/PVP-FCG_2021-04-08_GermanFederalCourts_VicePresidents.csv?download=1",
+                  "data/PVP-FCG_2021-04-08_GermanFederalCourts_VicePresidents.csv")
+}
 
 
 
 
 
-### test
-
-BGH_I_LE_2007-10-04_I_ZR_22_05_NA_Umsatzsteuerhinweis_0.pdf
 
 
 
-test <- list.files(pattern = "\\(S\\)", ignore.case = TRUE)
-file.copy(test, "../")
+
+
+
+
+
 
 
 ### rename
