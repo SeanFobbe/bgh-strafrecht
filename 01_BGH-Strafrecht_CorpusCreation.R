@@ -401,7 +401,7 @@ grep("[0-9]_((StR)|(ARS))_[0-9]{1,4}_[0-9]{2}_[A-Za-z]+_NA_[a-zA-Z]+\\.pdf",
 
 
 #'### EXECUTE RENAME---CAREFUL
-#' Takes a loooong time.
+
 
 file.rename(file.path("pdf_original", filenames.old),
             file.path("pdf_original", filenames.new))
