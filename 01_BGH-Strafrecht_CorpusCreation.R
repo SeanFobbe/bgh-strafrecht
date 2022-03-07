@@ -486,7 +486,7 @@ txt.bgh[, text := lapply(.(text), f.hyphen.remove)]
 
 
 
-#'## Perform Cleaning: Correct Errors
+#'## Perform Cleaning: Correct OCR Errors
 
 
 #'### Read Replacement Table
