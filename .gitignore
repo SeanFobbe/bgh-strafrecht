@@ -6,6 +6,7 @@ analyse/
 txt_tesseract/
 txt_cleaned/
 pdf_tesseract/
+pdf_original/
 
 XML/
 PDF/
