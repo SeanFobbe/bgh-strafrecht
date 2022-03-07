@@ -2,7 +2,7 @@
 
 
 
-## Set up
+## Setup
 
 ### Install R packages
 
