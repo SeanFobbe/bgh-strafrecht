@@ -502,10 +502,15 @@ txt.bgh[, text := lapply(.(text), function(x){mgsub_clean(x, replacement.table)}
 
 
 
+#'### Write TXT to Disk
 
-
-
-
+mapply(write.table,
+       x = txt.bgh$text,
+       file = file.path("txt_cleaned",
+                        txt.bgh$doc_id),
+       quote = FALSE,
+       row.names = FALSE,
+       col.names = FALSE)
 
 
 
