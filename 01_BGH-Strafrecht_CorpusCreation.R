@@ -70,7 +70,7 @@ library(quanteda)     # Fortgeschrittene Computerlinguistik
 library(spacyr)       # Linguistische Annotationen
 library(future)       # Parallelisierung mit Futures
 library(future.apply) # Apply-Funtionen für Futures
-
+library(zip) # Cross-platform ZIP archive creation/extraction
 
 
 
