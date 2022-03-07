@@ -339,6 +339,15 @@ if (file.exists("data/PVP-FCG_2021-04-08_GermanFederalCourts_VicePresidents.csv"
 
 
 
+#'# Prepare Original PDF Files
+
+
+files.zip <- list.files("zip_original")
+
+unzip(files.zip,
+      exdir = "pdf_original")
+
+
 
 
 
