@@ -449,3 +449,25 @@ f.dopar.pdfocr(filenames.current,
 
 
 #'# Cleaning Step
+
+files.txt <- list.files("txt_tesseract",
+                        full.names = TRUE)[1:50] # testing restriction
+
+
+txt.bgh <- readtext(files.txt,
+                    docvarsfrom = "filenames", 
+                    docvarnames = c("spruchkoerper_az",
+                                    "registerzeichen",
+                                    "eingangsnummer",
+                                    "eingangsjahr_az",
+                                    "zusatz_az",
+                                    "name",
+                                    "kollision"),
+                    dvsep = "_", 
+                    encoding = "UTF-8")
+
+
+
+
+#'## In Data Table umwandeln
+setDT(txt.bgh)
