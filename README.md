@@ -2,13 +2,31 @@
 
 
 
-## Install R Packages
+## Set up
+
+### Install R packages
 
 To install all R packages in the required version, please use the following command in an R console in the project directory:
 
 ```
 renv::restore()
 ```
+
+### Clone Submodule
+
+To set up the submodule you need to run:
+
+```
+git submodule update --init --recursive
+```
+
+
+To update the submodule you need to run: 
+
+```
+git submodule foreach git pull origin main
+```
+
 
 ## Structure
 
