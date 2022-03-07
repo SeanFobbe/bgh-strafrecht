@@ -476,7 +476,7 @@ txt.bgh <- readtext(files.txt,
 setDT(txt.bgh)
 
 
-#'## Perform Cleaning
+#'## Perform Cleaning: Remove Hyphens
 
 #'### Funktion anzeigen
 print(f.hyphen.remove)
@@ -485,9 +485,13 @@ print(f.hyphen.remove)
 txt.bgh[, text := lapply(.(text), f.hyphen.remove)]
 
 
+#'## Perform Cleaning: Correct Errors
 
+#'### Funktion anzeigen
+print(mgsub_clean)
 
-
+#'### Funktion ausführen
+txt.bgh[, text := lapply(.(text), mgsub_clean)]
 
 
 
