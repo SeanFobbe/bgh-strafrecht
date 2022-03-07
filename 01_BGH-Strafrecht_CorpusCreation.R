@@ -354,19 +354,11 @@ mapply(unzip,
 
 
 
+#'## Rename
 
-
-
-
-
-
-
-
-### rename
-
-
-
-filenames.old <- list.files(pattern = "\\.pdf", ignore.case = TRUE)
+filenames.old <- list.files("pdf_original",
+                            pattern = "\\.pdf",
+                            ignore.case = TRUE)
 
 
 filenames.new <- gsub("\\.PDF", "\\.pdf", filenames.old)
@@ -407,8 +399,8 @@ grep("[0-9]_((StR)|(ARS))_[0-9]{1,4}_[0-9]{2}_[A-Za-z]+_NA_[a-zA-Z]+\\.pdf",
 #'## EXECUTE RENAME---CAREFUL
 
 
-file.rename(filenames.old,
-            filenames.new)
+file.rename(file.path("pdf_original", filenames.old),
+            file.path("pdf_original", filenames.new))
 
 
 ## alternative - hopefully faster
