@@ -430,14 +430,17 @@ file.rename(file.path("pdf_original", filenames.old),
 
 
 
-files.pdf <- list.files(pattern = "\\.pdf",
-                        ignore.case = TRUE)
+
 
 
 
 
 if (config$tesseract$skip == FALSE){
 
+
+files.pdf <- list.files(pattern = "\\.pdf",
+                        ignore.case = TRUE)
+    
 f.dopar.pdfocr(filenames.current,
                dpi = 300,
                lang = "deu",
