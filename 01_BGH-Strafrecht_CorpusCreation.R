@@ -356,6 +356,9 @@ mapply(unzip,
 
 #'## Rename
 
+#+
+#'### Modify Filenames
+
 filenames.old <- list.files("pdf_original",
                             pattern = "\\.pdf",
                             ignore.case = TRUE)
@@ -383,11 +386,12 @@ filenames.new <- gsub("[_]{1,4}", "_", filenames.new)
 
 filenames.new  <- gsub("\\(S\\)_NA", "S", filenames.new)
 
+#'### Show Sample of Results
 
 filenames.new[sample(length(filenames.new), 100)]
 
 
-#'## REGEX TEST 1
+#'### REGEX TEST 1
 
 grep("[0-9]_((StR)|(ARS))_[0-9]{1,4}_[0-9]{2}_[A-Za-z]+_NA_[a-zA-Z]+\\.pdf",
      filenames.new,
@@ -396,11 +400,12 @@ grep("[0-9]_((StR)|(ARS))_[0-9]{1,4}_[0-9]{2}_[A-Za-z]+_NA_[a-zA-Z]+\\.pdf",
 
 
 
-#'## EXECUTE RENAME---CAREFUL
-
+#'### EXECUTE RENAME---CAREFUL
+#' Takes a loooong time.
 
 file.rename(file.path("pdf_original", filenames.old),
             file.path("pdf_original", filenames.new))
+
 
 
 ## alternative - hopefully faster
@@ -410,7 +415,7 @@ file.rename(file.path("pdf_original", filenames.old),
 
 
 
-#'## REGEX TEST 2
+#'### REGEX TEST 2
 
 filenames.current <- list.files(pattern = "\\.pdf",
                                 ignore.case = TRUE)
@@ -421,14 +426,21 @@ grep("[0-9]_((StR)|(ARS))_[0-9]{1,4}_[0-9]{2}_[A-Za-z]+_NA_[a-zA-Z]+\\.pdf",
      value = TRUE)
 
 
-#'## OCR
 
+
+
+
+#'## Tesseract OCT step
+
+
+if (config$tesseract$skip == FALSE){
 
 f.dopar.pdfocr(filenames.current,
                dpi = 300,
                lang = "deu",
                jobs = 5)
 
+    }
 
 
 zip("BGH_TXT_Tesseract.zip",
