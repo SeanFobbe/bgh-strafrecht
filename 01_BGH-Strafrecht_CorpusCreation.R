@@ -421,29 +421,19 @@ file.rename(file.path("pdf_original", filenames.old),
 
 
 
-## alternative - hopefully faster
-#file_move(filenames.old,
-#          filenames.new)
-
-
-
-
-#'### REGEX TEST 2
-
-filenames.current <- list.files(pattern = "\\.pdf",
-                                ignore.case = TRUE)
-
-grep("[0-9]_((StR)|(ARS))_[0-9]{1,4}_[0-9]{2}_[A-Za-z]+_NA_[a-zA-Z]+\\.pdf",
-     filenames.current,
-     invert = TRUE,
-     value = TRUE)
-
-
 
 
 
 
 #'# Tesseract OCR step
+
+
+
+
+files.pdf <- list.files(pattern = "\\.pdf",
+                        ignore.case = TRUE)
+
+
 
 
 if (config$tesseract$skip == FALSE){
