@@ -1,6 +1,15 @@
 # Historische Entscheidungen des Bundesgerichtshofs für Strafsachen (BGH-Strafrecht)
 
 
+
+## Install R Packages
+
+To install all R packages in the required version, please use the following command in an R console in the project directory:
+
+```
+renv::restore()
+```
+
 ## Structure
 
 The code converts and analyzed the files from original to final data set in the following order:
