@@ -85,42 +85,234 @@ source("R-fobbe-proto-package/f.future_multihashes.R")
 source("R-fobbe-proto-package/f.future_pdf_to_txt.R")
 
 
-#'## Quanteda-Optionen setzen
-quanteda_options(tokens_locale = tokens_locale)
-
-
-#'## Knitr Optionen setzen
-knitr::opts_chunk$set(fig.path = outputdir,
-                      dev = dev,
-                      dpi = dpi,
-                      fig.align = fig.align)
 
 
 
-#'## Vollzitate statistischer Software
+#'## Verzeichnis für Analyse-Ergebnisse und Diagramme definieren
+
+dir.analysis <- paste0(getwd(),
+                    "/analyse") 
+
+
+#'## Weitere Verzeichnisse definieren
+
+dirs <- c("output",
+          "temp",
+          ## "txt_tesseract", # skip during devel
+          "pdf_tesseract",
+          "txt_cleaned")
+
+
+
+#'## Dateien aus vorherigen Runs bereinigen
+
+unlink(dir.analysis,
+       recursive = TRUE)
+
+unlink(dirs,
+       recursive = TRUE)
+
+files.delete <- list.files(pattern = "\\.zip|\\.pdf|\\.txt|\\.html",
+                           ignore.case = TRUE)
+
+unlink(files.delete)
+
+
+
+
+#'## Verzeichnisse anlegen
+
+dir.create(dir.analysis)
+
+lapply(dirs, dir.create)
+
+
+
+
+#'## Vollzitate statistischer Software schreiben
 knitr::write_bib(c(.packages()),
-                 "packages.bib")
+                 "temp/packages.bib")
+
+
+
+
+
+#'## Allgemeine Konfiguration
+
+#+
+#'### Konfiguration einlesen
+config <- parseTOML("BGH-Strafrecht_Config.toml")
+
+#'### Konfiguration anzeigen
+print(config)
+
+
+
+#+
+#'### Knitr Optionen setzen
+knitr::opts_chunk$set(fig.path = paste0(dir.analysis, "/"),
+                      dev = config$fig$format,
+                      dpi = config$fig$dpi,
+                      fig.align = config$fig$align)
+
+
+#'### Download Timeout setzen
+options(timeout = config$download$timeout)
+
+
+
+#'### Quellenangabe für Diagramme definieren
+
+caption <- paste("Fobbe/Swalve | DOI:",
+                 config$doi$data$version)
+print(caption)
+
+
+#'### Präfix für Dateien definieren
+
+prefix.files <- paste0(config$project$shortname,
+                 "_",
+                 datestamp)
+print(prefix.files)
+
+
+#'### Präfix für Diagramme definieren
+
+prefix.figuretitle <- paste(config$project$shortname,
+                            "| Version",
+                            datestamp)
+
+
+#'### Quanteda-Optionen setzen
+quanteda_options(tokens_locale = config$quanteda$tokens_locale)
+
+
+
+
+#'## LaTeX Konfiguration
+
+#+
+#'### Funktion definieren
+
+
+latexcommand <- function(command.name,
+                         command.body){
+
+    newcommand <- paste0("\\newcommand{\\",
+                         command.name,
+                         "}{",
+                         command.body,
+                         "}")
+
+    return(newcommand)
+    
+    }
+
+
+
+#+
+#'### LaTeX Parameter definieren
+
+latexdefs <- c("%===========================\n% Definitionen\n%===========================",
+               "\n% NOTE: Diese Datei wurde während des Kompilierungs-Prozesses automatisch erstellt.\n",
+               "\n%-----Autor-----",
+               paste0("\\newcommand{\\projectauthor}{",
+                      config$project$author,
+                      "}"),
+               "\n%-----Version-----",
+               paste0("\\newcommand{\\version}{",
+                      datestamp,
+                      "}"),
+               "\n%-----Titles-----",
+               paste0("\\newcommand{\\datatitle}{",
+                      config$project$fullname,
+                      "}"),
+               paste0("\\newcommand{\\datashort}{",
+                      config$project$shortname,
+                      "}"),
+               paste0("\\newcommand{\\softwaretitle}{Source Code des \\enquote{",
+                      config$project$fullname,
+                      "}}"),
+               paste0("\\newcommand{\\softwareshort}{",
+                      config$project$shortname,
+                      "-Source}"),
+               "\n%-----Data DOIs-----",
+               paste0("\\newcommand{\\dataconceptdoi}{",
+                      config$doi$data$concept,
+                      "}"),
+               paste0("\\newcommand{\\dataversiondoi}{",
+                      config$doi$data$version,
+                      "}"),
+               paste0("\\newcommand{\\dataconcepturldoi}{https://doi.org/",
+                      config$doi$data$concept,
+                      "}"),
+               paste0("\\newcommand{\\dataversionurldoi}{https://doi.org/",
+                      config$doi$data$version,
+                      "}"),
+               "\n%-----Software DOIs-----",
+               paste0("\\newcommand{\\softwareconceptdoi}{",
+                      config$doi$software$concept,
+                      "}"),
+               paste0("\\newcommand{\\softwareversiondoi}{",
+                      config$doi$software$version,
+                      "}"),
+               paste0("\\newcommand{\\softwareconcepturldoi}{https://doi.org/",
+                      config$doi$software$concept,
+                      "}"),
+               paste0("\\newcommand{\\softwareversionurldoi}{https://doi.org/",
+                      config$doi$software$version,
+                      "}"),
+               "\n%-----Additional DOIs-----",
+               paste0("\\newcommand{\\aktenzeichenurldoi}{https://doi.org/",
+                      config$doi$aktenzeichen,
+                      "}"),
+               paste0("\\newcommand{\\personendatenurldoi}{https://doi.org/",
+                      config$doi$personendaten,
+                      "}"))
+
+
+
+
+#'### LaTeX Parameter schreiben
+
+writeLines(latexdefs,
+           paste0("temp/",
+                  config$project$shortname,
+                  "_Definitions.tex"))
+
+
+
+
 
 
 #'## Parallelisierung aktivieren
 #' Parallelisierung wird zur Beschleunigung der Konvertierung von PDF zu TXT und der Datenanalyse mittels **quanteda** und **data.table** verwendet. Die Anzahl threads wird automatisch auf das verfügbare Maximum des Systems gesetzt, kann aber auch nach Belieben auf das eigene System angepasst werden. Die Parallelisierung kann deaktiviert werden, indem die Variable **fullCores** auf 1 gesetzt wird.
-#'
-#' Der Download der Daten ist bewusst nicht parallelisiert, damit das Skript nicht versehentlich als DoS-Tool verwendet wird.
-#'
-#' Die hier verwendete Funktion **makeForkCluster()** ist viel schneller als die Alternativen, funktioniert aber nur auf Unix-basierten Systemen (Linux, MacOS).
+
+
 
 #+
-#'### Logische Kerne (Anzahl)
+#'### Anzahl logischer Kerne festlegen
 
-fullCores <- detectCores()
+if (config$cores$max == TRUE){
+    fullCores <- availableCores()
+}
+
+
+if (config$cores$max == FALSE){
+    fullCores <- as.integer(config$cores$number)
+}
+
+
+
 print(fullCores)
 
 #'### Quanteda
 quanteda_options(threads = fullCores) 
 
-#+
 #'### Data.table
 setDTthreads(threads = fullCores)  
+
+
 
 
 
