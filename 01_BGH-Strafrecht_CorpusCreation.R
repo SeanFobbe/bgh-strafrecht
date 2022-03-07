@@ -341,11 +341,17 @@ if (file.exists("data/PVP-FCG_2021-04-08_GermanFederalCourts_VicePresidents.csv"
 
 #'# Prepare Original PDF Files
 
+#+
+#'## Extract from ZIP
 
-files.zip <- list.files("zip_original")
+files.zip <- list.files("zip_original",
+                        full.names = TRUE)
 
-unzip(files.zip,
-      exdir = "pdf_original")
+
+mapply(unzip,
+       zipfile = files.zip,
+       exdir = "pdf_original")
+
 
 
 
