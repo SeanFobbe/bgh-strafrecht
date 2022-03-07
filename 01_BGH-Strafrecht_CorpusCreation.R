@@ -430,7 +430,7 @@ grep("[0-9]_((StR)|(ARS))_[0-9]{1,4}_[0-9]{2}_[A-Za-z]+_NA_[a-zA-Z]+\\.pdf",
 
 
 
-#'## Tesseract OCT step
+#'## Tesseract OCR step
 
 
 if (config$tesseract$skip == FALSE){
@@ -443,5 +443,3 @@ f.dopar.pdfocr(filenames.current,
     }
 
 
-zip("BGH_TXT_Tesseract.zip",
-    "TXT_Tesseract")
