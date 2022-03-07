@@ -352,6 +352,19 @@ mapply(unzip,
        zipfile = files.zip,
        exdir = "pdf_original")
 
+#'## [Debugging Mode]: Reduce Load
+
+if(config$debug$toggle == TRUE){
+
+    files.pdf <- list.files("pdf_original",
+                            full.names = TRUE)
+
+    files.delete <- files.pdf[-sample(length(files.pdf), config$debug$sample)]
+    
+    unlink(files.delete)
+    
+}
+
 
 
 #'## Rename
@@ -430,7 +443,7 @@ grep("[0-9]_((StR)|(ARS))_[0-9]{1,4}_[0-9]{2}_[A-Za-z]+_NA_[a-zA-Z]+\\.pdf",
 
 
 
-#'## Tesseract OCR step
+#'# Tesseract OCR step
 
 
 if (config$tesseract$skip == FALSE){
@@ -443,3 +456,8 @@ f.dopar.pdfocr(filenames.current,
     }
 
 
+
+
+
+
+#'# Cleaning Step
