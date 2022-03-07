@@ -484,3 +484,68 @@ print(f.hyphen.remove)
 #'### Funktion ausführen
 txt.bgh[, text := lapply(.(text), f.hyphen.remove)]
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#'# Abschluss
+
+#+
+#'## Datumsstempel
+print(datestamp)
+
+
+#'## Datum und Uhrzeit (Anfang)
+print(begin.script)
+
+
+#'## Datum und Uhrzeit (Ende)
+end.script <- Sys.time()
+print(end.script)
+
+
+#'## Laufzeit des gesamten Skriptes
+print(end.script - begin.script)
+
+
+#'## Warnungen
+warnings()
+
+
+
+#'# Parameter für strenge Replikationen
+
+system2("openssl", "version", stdout = TRUE)
+
+sessionInfo()
+
+
+#'# Literaturverzeichnis
+
