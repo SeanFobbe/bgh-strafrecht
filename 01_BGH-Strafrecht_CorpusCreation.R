@@ -457,7 +457,7 @@ files.txt <- list.files("txt_tesseract",
                         full.names = TRUE)[1:50] # testing restriction
 
 
-txt.bgh <- readtext(files.txt,
+txt.raw <- readtext(files.txt,
                     docvarsfrom = "filenames", 
                     docvarnames = c("spruchkoerper_az",
                                     "registerzeichen",
@@ -473,7 +473,7 @@ txt.bgh <- readtext(files.txt,
 
 
 #'## In Data Table umwandeln
-setDT(txt.bgh)
+setDT(txt.raw)
 
 
 #'## Perform Cleaning: Remove Hyphens
@@ -482,7 +482,7 @@ setDT(txt.bgh)
 print(f.hyphen.remove)
 
 #'### Funktion ausführen
-txt.bgh[, text := lapply(.(text), f.hyphen.remove)]
+txt.raw[, text := lapply(.(text), f.hyphen.remove)]
 
 
 
@@ -497,7 +497,7 @@ replacement.table <- fread("data/BGH-Strafrecht_ReplacementTable.csv")
 print(mgsub_clean)
 
 #'### Funktion ausführen
-txt.bgh[, text := lapply(.(text), function(x){mgsub_clean(x, replacement.table)})]
+txt.raw[, text := lapply(.(text), function(x){mgsub_clean(x, replacement.table)})]
 
 
 
@@ -505,9 +505,9 @@ txt.bgh[, text := lapply(.(text), function(x){mgsub_clean(x, replacement.table)}
 #'### Write TXT to Disk
 
 mapply(write.table,
-       x = txt.bgh$text,
+       x = txt.raw$text,
        file = file.path("txt_cleaned",
-                        txt.bgh$doc_id),
+                        txt.raw$doc_id),
        quote = FALSE,
        row.names = FALSE,
        col.names = FALSE)
