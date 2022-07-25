@@ -106,12 +106,21 @@ unlink(grep(datestamp,
 ```{r}
 
 #unlink("output", recursive = TRUE)
-dir.create("output", showWarnings = FALSE)
-dir.create("temp", showWarnings = FALSE)
+
+dirs <- c("output",
+          "temp",
+          "pdf_original",
+          "pdf_tesseract",
+          "txt_extracted",
+          "txt_tesseract",
+          "txt_cleaned")
+
+lapply(dirs, dir.create, showWarnings = FALSE)
 
 dir.create(dir.analysis, showWarnings = FALSE)
 
 ```
+
 
 
 
