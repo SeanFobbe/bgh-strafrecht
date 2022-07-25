@@ -2,4 +2,4 @@
 
 ## Version \version
 
-- Initial Submission to Journal
+- Initial release
