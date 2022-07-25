@@ -9,6 +9,7 @@ config <- RcppTOML::parseTOML("config.toml")
 rmarkdown::render("pipeline.Rmd",
                   output_file = file.path(dir.out,
                                           paste0(config$project$shortname,
-                                                 Sys.Date(),
+                                                 "_"
+                                                 config$version$semantic,
                                                  "_CompilationReport.pdf")))
 
