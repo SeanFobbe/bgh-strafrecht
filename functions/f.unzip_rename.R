@@ -1,5 +1,12 @@
 
 
+#' Entpackt die originalen ZIP-Archive und korrigiert die Dateinamen.
+#' 
+#' @param dir.in Der Ordner mit den originalen ZIP-Archiven.
+#' @param dir.out Der Ordner in dem die korrigierten PDF-Dateien gespeichert werden sollen.
+
+#' @return Ein Vektor der korrigierten PDF-Dateinamen mit Pfaden relativ zum Projektordner.
+
 
 
 f.unzip_rename  <- function(dir.in,
