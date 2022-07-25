@@ -265,6 +265,21 @@ files.source.raw <-  c(list.files(pattern = "\\.R$|\\.toml$|\\.md$|\\.Rmd$"),
 Mit diesem Abschnitt der Pipeline werden Input-Dateien getrackt. Mit der Option \enquote{format = "file"} werden für Input-Dateien Prüfsummen berechnet. Falls sich diese verändern werden alle von ihnen abhängigen Pipeline-Schritte als veraltet markiert und neu berechnet.
 
 
+### Korrektur-Tabelle
+
+Diese Tabelle enthält Korrekturen für OCR-Fehler.
+
+
+```{targets tar.file1}
+list(
+    tar_target(file.replacements,
+           "data/BGH-Strafrecht_ReplacementTable.csv",
+           format = "file"),
+     tar_target(replacements,
+                fread(file.replacements))
+     )
+```
+
 
 
 ### Source Code
