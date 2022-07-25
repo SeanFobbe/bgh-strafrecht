@@ -12,22 +12,24 @@
 f.unzip_rename  <- function(dir.in,
                             dir.out){
 
+    ## Ordner aufräumen
+    files.pdf <- list.files(dir.out,
+                            full.names = TRUE)
+    unlink(files.pdf)
 
     ## ZIP-Archive definieren
     files.zip <- list.files(dir.in,
                             full.names = TRUE)
 
     ## ZIP-Archive entpacken
-    mapply(unzip,
-           zipfile = files.zip,
-           exdir = dir.out)
+    files.old <- mapply(unzip,
+                        zipfile = files.zip,
+                        exdir = dir.out)
     
 
 
     ## Dateinamen laden
-    filenames.old <- list.files(dir.out,
-                            pattern = "\\.pdf",
-                            ignore.case = TRUE)
+    filenames.old <- unlist(files.old)
 
 
     ## Dateinamen korrigieren
