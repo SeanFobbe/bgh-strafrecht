@@ -5,7 +5,9 @@ project.shortname = "BGH-Strafrecht"
 project.author = "Seán Fobbe and Tilko Swalve"
 
 # Version
-version = "1.0.0"
+
+version.semantic = "1.0.0"
+version.files = "1-0-0"
 
 # License
 
