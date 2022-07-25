@@ -4,9 +4,11 @@ dir.out <- "output"
 
 dir.create(dir.out, showWarnings = FALSE)
 
+config <- RcppTOML::parseTOML("config.toml")
+
 rmarkdown::render("pipeline.Rmd",
                   output_file = file.path(dir.out,
-                                          paste0("BGH-Strafrecht_",
+                                          paste0(config$project$shortname,
                                                  Sys.Date(),
                                                  "_CompilationReport.pdf")))
 
