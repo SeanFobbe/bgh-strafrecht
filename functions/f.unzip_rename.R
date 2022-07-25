@@ -25,8 +25,7 @@ f.unzip_rename  <- function(dir.in,
     files.old <- mapply(unzip,
                         zipfile = files.zip,
                         exdir = dir.out)
-    
-
+   
 
     ## Dateinamen laden
     filenames.old <- unname(unlist(files.old))
@@ -92,12 +91,12 @@ f.unzip_rename  <- function(dir.in,
 
 
     ## Umbenennung durchführen
-    file.rename(file.path(dir.out, filenames.old),
-                file.path(dir.out, filenames.new))
+    file.rename(filenames.old,
+                filenames.new)
 
 
 
-    return(file.path(dir.out, filenames.new))
+    return(filenames.new)
     
 
 }
