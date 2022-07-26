@@ -28,8 +28,9 @@ f.unzip_rename  <- function(dir.in,
    
 
     ## Dateinamen laden
-    filenames.old <- unname(unlist(files.old))
-
+    filenames.old <-  list.files(dir.out,
+                                 full.names = TRUE)
+    
 
     ## Dateinamen korrigieren
 
@@ -92,7 +93,7 @@ f.unzip_rename  <- function(dir.in,
 
     ## Umbenennung durchführen
     file_move(filenames.old,
-                filenames.new)
+              filenames.new)
 
 
 
