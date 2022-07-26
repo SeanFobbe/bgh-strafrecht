@@ -4,7 +4,7 @@
 f.tar_pdf_ocr <- function(x,
                           dpi = 300,
                           lang = "eng",
-                          output = "pdf txt"
+                          output = "pdf txt",
                           dir.out.pdf,
                           dir.out.txt,
                           quiet = TRUE,
