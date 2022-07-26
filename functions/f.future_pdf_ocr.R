@@ -5,9 +5,8 @@
 
 
 f.future_pdf_ocr <- function(x,
-                        outputdir = NULL,
-                        quiet = TRUE,
-                           jobs = round(parallel::detectCores() / 4)){
+                             outputdir = NULL,
+                             quiet = TRUE){
 
     ## Timestamp: Begin
     begin.extract <- Sys.time()
@@ -18,21 +17,17 @@ f.future_pdf_ocr <- function(x,
         message(paste("Processing", length(x), "PDF files."))
     }
 
-    ## Perform conversion from PDF to TXT
-    invisible(future.apply::future_lapply(x,
-                                          pdf_extract_single,
-                                          outputdir = outputdir,
-                                          future.seed = TRUE))
+    ## Run Tesseract
+    results <- future.apply::future_lapply(x,
+                                           pdf_ocr_single,
+                                           outputdir = outputdir,
+                                           future.seed = TRUE)
+    
+
+    results <- unlist(results)
 
 
-    ## Construct full list of TXT names
-    txt.names <- gsub("\\.pdf$",
-                      "\\.txt",
-                      x,
-                      ignore.case = TRUE)
-
-    ## Check list of TXT files in folder
-    txt.results <- file.exists(txt.names)
+    
     
     ## Timestamp: End
     end.extract <- Sys.time()
@@ -44,9 +39,9 @@ f.future_pdf_ocr <- function(x,
     ## Outro messages
     if(quiet == FALSE){
         message(paste0("Successfully processed ",
-                       sum(txt.results),
+                       sum(results == 0),
                        " PDF files. ",
-                       sum(!txt.results),
+                       sum(results == 1),
                        " PDF files failed."))
         
         message(paste0("Runtime was ",
