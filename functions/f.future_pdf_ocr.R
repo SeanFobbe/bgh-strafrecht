@@ -7,7 +7,7 @@
 f.future_pdf_ocr <- function(x,
                              dpi = 300,
                              lang = "eng",
-                             output = "pdf txt"
+                             output = "pdf txt",
                              outputdir = NULL,
                              quiet = TRUE){
 
