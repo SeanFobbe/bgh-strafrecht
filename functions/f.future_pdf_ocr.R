@@ -5,8 +5,11 @@
 
 
 f.future_pdf_ocr <- function(x,
-                             outputdir = NULL,
-                             quiet = TRUE){
+                           dpi = 300,
+                           lang = "eng",
+                           output = "pdf txt"
+                           outputdir = NULL,
+                           quiet = TRUE){
 
     ## Timestamp: Begin
     begin.extract <- Sys.time()
@@ -20,6 +23,9 @@ f.future_pdf_ocr <- function(x,
     ## Run Tesseract
     results <- future.apply::future_lapply(x,
                                            pdf_ocr_single,
+                                           dpi = dpi,
+                                           lang = lang,
+                                           output = output,
                                            outputdir = outputdir,
                                            future.seed = TRUE)
     
