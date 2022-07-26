@@ -18,7 +18,7 @@ f.tar_pdf_ocr <- function(x,
 
     f.future_pdf_ocr(x = x,
                      dpi = dpi,
-                     lang = lang
+                     lang = lang,
                      output = output,
                      outputdir = "temp_tesseract",
                      quiet = quiet)
