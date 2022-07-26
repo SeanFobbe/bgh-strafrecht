@@ -318,10 +318,12 @@ tar_target(changelog,
 
 ### Unzip
 
-```{targets tar.unzip.rename}
+```{target tar.unzip.rename}
 
-f.unzip_rename(dir.in = "zip_original",
-               dir.out = "pdf_original")
+tar_target(pdf.original,
+           f.unzip_rename(dir.in = "zip_original",
+                          dir.out = "pdf_original"),
+           format = "file")
 
 ```
 
