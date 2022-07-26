@@ -97,6 +97,10 @@ unlink(grep(datestamp,
             invert = TRUE,
             value = TRUE))
 
+unlink("temp")
+#unlink("output", recursive = TRUE)
+
+
 ```
 
 
@@ -105,7 +109,7 @@ unlink(grep(datestamp,
 
 ```{r}
 
-#unlink("output", recursive = TRUE)
+
 
 dirs <- c("output",
           "temp",
