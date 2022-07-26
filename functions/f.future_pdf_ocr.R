@@ -84,6 +84,14 @@ pdf_ocr_single <- function(x,
                      x,
                      ignore.case = TRUE)
 
+    ## Alternate Folder Option
+    if (!is.null(outputdir)){
+        
+        name.out <- file.path(outputdir,
+                             basename(name.out))
+        
+        }
+    
     ## Convert to TIFF
     system2("convert",
             paste("-density",
@@ -92,12 +100,7 @@ pdf_ocr_single <- function(x,
                   x,
                   name.tiff))
 
-    ## Alternate Folder Option
-    if (!is.null(outputdir)){
-        
-        txtname <- file.path(outputdir, basename(txtname))
-        
-        }
+
 
     ## Run Tesseract
     system2("tesseract",
@@ -109,15 +112,5 @@ pdf_ocr_single <- function(x,
     
     unlink(name.tiff)
 
-    
-
-
-    
-    ## Write TXT to Disk
-    utils::write.table(pdf.extracted,
-                       txtname,
-                       quote = FALSE,
-                       row.names = FALSE,
-                       col.names = FALSE)
     
 }
