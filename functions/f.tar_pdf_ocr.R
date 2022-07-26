@@ -8,14 +8,19 @@ f.tar_pdf_ocr <- function(x,
                           dir.out.pdf = "pdf_tesseract",
                           dir.out.txt = "txt_tesseract",
                           quiet = TRUE,
-                          jobs = parallel::detectCores()){
+                          jobs = round(parallel::detectCores() / 4 )){
 
-    dir.create("temp_tesseract")
+    ## Create Directories
+    dir.create("temp_tesseract", showWarnings = FALSE)
+    dir.create(dir.out.pdf, showWarnings = FALSE)
+    dir.create(dir.out.txt, showWarnings = FALSE)
 
+    ## Set Parallel Futures
     plan(multicore,
          workers = jobs)
 
 
+    ## Run Tesseract
     f.future_pdf_ocr(x = x,
                      dpi = dpi,
                      lang = lang,
@@ -24,7 +29,20 @@ f.tar_pdf_ocr <- function(x,
                      quiet = quiet)
 
 
+    ## Sort files
+    files.pdf <- list.files("temp_tesseract", pattern = "\\.pdf", full.names = TRUE)
+    files.txt <- list.files("temp_tesseract", pattern = "\\.txt", full.names = TRUE)
 
-    
+    invisible(file.rename(files.pdf, file.path(dir.out.pdf, basename(files.pdf))))
+    invisible(file.rename(files.txt, file.path(dir.out.txt, basename(files.txt))))
+
+
+    ## Delete temp dir
+    unlink("temp_tesseract")
+
+    files.out <- c(list.files(dir.out.pdf, full.names = TRUE),
+                   list.files(dir.out.txt, full.names = TRUE))
+
+    return(files.out)
 
 }
