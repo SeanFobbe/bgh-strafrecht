@@ -327,6 +327,25 @@ tar_target(pdf.original,
 
 ```
 
+### Tesseract
+
+### Unzip
+
+```{targets tar.tesseract}
+
+tar_target(tesseract,
+           f.tar_pdf_ocr(pdf.original[1:30],
+                         dpi = 300,
+                         lang = "eng",
+                         output = "pdf txt",
+                         dir.out.pdf = "pdf_tesseract",
+                         dir.out.txt = "txt_tesseract",
+                         quiet = TRUE,
+                         jobs = 5,
+           format = "file")
+
+```
+
 
 
 ## Report Targets
