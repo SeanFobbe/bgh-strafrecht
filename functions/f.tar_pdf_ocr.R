@@ -10,8 +10,8 @@ f.tar_pdf_ocr <- function(x,
                           quiet = TRUE,
                           jobs = round(parallel::detectCores() / 4 )){
 
-    ## Clear temporary directory, if it exists
-    unlink("temp_tesseract")
+    ## Delete temp dir, if it exists
+    unlink("temp_tesseract", recursive = TRUE)
     
     ## Create directories
     dir.create("temp_tesseract", showWarnings = FALSE)
@@ -41,7 +41,7 @@ f.tar_pdf_ocr <- function(x,
 
 
     ## Delete temp dir
-    unlink("temp_tesseract")
+    unlink("temp_tesseract", recursive = TRUE)
 
     ## Define return value
     files.out <- c(list.files(dir.out.pdf, full.names = TRUE),
