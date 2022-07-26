@@ -318,7 +318,7 @@ tar_target(changelog,
 
 ### Unzip
 
-```{target tar.unzip.rename}
+```{targets tar.unzip.rename}
 
 tar_target(pdf.original,
            f.unzip_rename(dir.in = "zip_original",
