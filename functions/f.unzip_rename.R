@@ -91,7 +91,7 @@ f.unzip_rename  <- function(dir.in,
 
 
     ## Umbenennung durchführen
-    file.rename(filenames.old,
+    file_move(filenames.old,
                 filenames.new)
 
 
