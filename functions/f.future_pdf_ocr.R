@@ -5,11 +5,11 @@
 
 
 f.future_pdf_ocr <- function(x,
-                           dpi = 300,
-                           lang = "eng",
-                           output = "pdf txt"
-                           outputdir = NULL,
-                           quiet = TRUE){
+                             dpi = 300,
+                             lang = "eng",
+                             output = "pdf txt"
+                             outputdir = NULL,
+                             quiet = TRUE){
 
     ## Timestamp: Begin
     begin.extract <- Sys.time()
