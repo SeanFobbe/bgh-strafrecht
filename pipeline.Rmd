@@ -341,7 +341,7 @@ tar_target(tesseract,
                          dir.out.pdf = "pdf_tesseract",
                          dir.out.txt = "txt_tesseract",
                          quiet = TRUE,
-                         jobs = 5,
+                         jobs = 5),
            format = "file")
 
 ```
