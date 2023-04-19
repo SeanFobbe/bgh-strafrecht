@@ -111,15 +111,21 @@ unlink("temp")
 
 
 
+## dirs <- c("output",
+##           "temp",
+##           "pdf_original",
+##           "pdf_tesseract",
+##           "txt_extracted",
+##           "txt_tesseract",
+##           "txt_cleaned")
+
+
+
 dirs <- c("output",
           "temp",
-          "pdf_original",
-          "pdf_tesseract",
-          "txt_extracted",
-          "txt_tesseract",
-          "txt_cleaned")
+          "files")
 
-lapply(dirs, dir.create, showWarnings = FALSE)
+lapply(dirs, dir.create, showWarnings = FALSE, recursive = TRUE)
 
 dir.create(dir.analysis, showWarnings = FALSE)
 
@@ -164,6 +170,8 @@ tar_option_set(packages = c("tarchetypes",
                             "future",       # Parallelisierung
                             "future.apply"))# Funktionen höherer Ordnung für Parallelisierung
 
+tar_option_set(workspace_on_error = TRUE) # Save Workspace on Error
+tar_option_set(format = "qs")
 
 ```
 
