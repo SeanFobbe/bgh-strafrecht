@@ -22,7 +22,6 @@ RUN pip install -r requirements-python.txt
 COPY requirements-R.R .
 RUN Rscript requirements-R.R
 
-
+# Config layers
 WORKDIR /bgh-strafrecht
-
 CMD "R"
