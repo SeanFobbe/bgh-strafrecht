@@ -149,7 +149,7 @@ knitr::write_bib(renv::dependencies()$Package,
 
 ## Packages definieren
 
-```{targets global-packages, tar_globals = TRUE}
+```{r global-packages, tar_globals = TRUE}
 
 tar_option_set(packages = c("tarchetypes",  # Zusätzliche Targets Funktionen
                             "RcppTOML",     # TOML-Dateien lesen und schreiben
@@ -170,7 +170,7 @@ tar_option_set(packages = c("tarchetypes",  # Zusätzliche Targets Funktionen
                             "quanteda",     # Fortgeschrittene Computerlinguistik
                             "future",       # Parallelisierung
                             "future.apply", # Funktionen höherer Ordnung für Parallelisierung
-                            "data.table"   # Fortgeschrittene Datenverarbeitung))
+                            "data.table"))   # Fortgeschrittene Datenverarbeitung
 
 tar_option_set(workspace_on_error = TRUE) # Save Workspace on Error
 tar_option_set(format = "qs")
