@@ -12,6 +12,8 @@ temp/
 output/
 analyse/
 files/
+temp_tesseract/
+test/
 txt_tesseract/
 txt_cleaned/
 pdf_tesseract/
