@@ -28,8 +28,7 @@ f.unzip_rename  <- function(dir.in,
    
 
     ## Dateinamen laden
-    filenames.old <-  list.files(dir.out,
-                                 full.names = TRUE)
+    filenames.old <-  list.files(dir.out)
     
 
     ## Dateinamen korrigieren
@@ -91,13 +90,17 @@ f.unzip_rename  <- function(dir.in,
     }
 
 
+    ## Neuen Pfad einfügen
+
+    filenames.new.fullpath <- file.path(dir.out, filenames.new)
+    
     ## Umbenennung durchführen
     file_move(filenames.old,
-              filenames.new)
+              filenames.new.fullpath)
 
 
 
-    return(filenames.new)
+    return(filenames.new.fullpath)
     
 
 }
@@ -106,5 +109,16 @@ f.unzip_rename  <- function(dir.in,
 
 
 
+### DEBUGGING
+
+#dir.in  <-  "zip_original"
+#dir.out  <-  "files/pdf_original"
 
 
+
+Error:
+! Error running targets::tar_make()
+  Error messages: targets::tar_meta(fields = error, complete_only = TRUE)
+  Debugging guide: https://books.ropensci.org/targets/debugging.html
+  How to ask for help: https://books.ropensci.org/targets/help.html
+  Last error: [ENOENT] Failed to move 'files/pdf_original/1_StR___1-51.pdf'to 'files_NA_NA_NA.pdf_original/1_StR_1_51_NA_NA_NA.pdf': no such file or directory
