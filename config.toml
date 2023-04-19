@@ -20,11 +20,11 @@ code = "MIT-0"
 
 [doi] # Digital Object Identifier
 
-data.concept = "???"
-data.version = "???"
+data.concept = "10.5281/zenodo.4540376"
+data.version = "10.5281/zenodo.4540377"
 
-software.concept = "???" 
-software.version = "???"
+software.concept = "10.5281/zenodo.7847574" 
+software.version = "10.5281/zenodo.7847575"
 
 personendaten = "10.5281/zenodo.4568682"
 aktenzeichen = "10.5281/zenodo.4569564"
