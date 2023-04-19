@@ -149,7 +149,7 @@ knitr::write_bib(renv::dependencies()$Package,
 
 ## Packages definieren
 
-```{r global-packages, tar_globals = TRUE}
+```{targets global-packages, tar_globals = TRUE}
 
 tar_option_set(packages = c("tarchetypes",  # Zusätzliche Targets Funktionen
                             "RcppTOML",     # TOML-Dateien lesen und schreiben
