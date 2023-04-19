@@ -32,12 +32,12 @@ f.unzip_rename  <- function(dir.in,
    
 
     ## Dateinamen laden
-    filenames.old <-  list.files(dir.out)
+    filenames.old <-  list.files(dir.out, full.names = TRUE)
     
 
     ## Dateinamen korrigieren
 
-    filenames.new <- gsub("\\.PDF", "\\.pdf", filenames.old)
+    filenames.new <- gsub("\\.PDF", "\\.pdf", basename(filenames.old))
     filenames.new <- gsub("STR", "StR", filenames.new)
     filenames.new <- gsub("stR", "StR", filenames.new)
     filenames.new <- gsub("[_]{1,4}", "_", filenames.new)
