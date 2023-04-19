@@ -341,9 +341,10 @@ tar_target(pdf.original,
 
 ```
 
+
+
 ### Tesseract
 
-### Unzip
 
 ```{targets tar.tesseract}
 
@@ -352,8 +353,8 @@ tar_target(tesseract,
                          dpi = 300,
                          lang = "eng",
                          output = "pdf txt",
-                         dir.out.pdf = "pdf_tesseract",
-                         dir.out.txt = "txt_tesseract",
+                         dir.out.pdf = "files/pdf_tesseract",
+                         dir.out.txt = "files/txt_tesseract",
                          quiet = TRUE,
                          jobs = 5),
            format = "file")
