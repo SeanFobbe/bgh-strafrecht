@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  bgh-strafrecht:
+    container_name: bgh-strafrecht
+    image: bgh-strafrecht:4.2.2
+    tty: true
+    volumes:
+      - .:/bgh-strafrecht:z
+      - ./gitconfig:/etc/gitconfig:z
