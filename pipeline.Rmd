@@ -170,7 +170,7 @@ tar_option_set(packages = c("tarchetypes",  # Zusätzliche Targets Funktionen
                             "quanteda",     # Fortgeschrittene Computerlinguistik
                             "future",       # Parallelisierung
                             "future.apply", # Funktionen höherer Ordnung für Parallelisierung
-                            "data.table",   # Fortgeschrittene Datenverarbeitung))
+                            "data.table"   # Fortgeschrittene Datenverarbeitung))
 
 tar_option_set(workspace_on_error = TRUE) # Save Workspace on Error
 tar_option_set(format = "qs")
