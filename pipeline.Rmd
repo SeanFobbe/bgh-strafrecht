@@ -208,11 +208,13 @@ prefix.files <- paste0(config$project$shortname,
 
 if (config$cores$max == TRUE){
     fullCores <- future::availableCores() - 1
+	tessJobs <- round(fullCores / 4)
 }
 
 
 if (config$cores$max == FALSE){
     fullCores <- as.integer(config$cores$number)
+    tessJobs <- as.integer(config$cores$tessjobs)
 }
 
 ```
@@ -351,14 +353,14 @@ tar_target(pdf.original,
 ```{targets tar.tesseract}
 
 tar_target(tesseract,
-           f.tar_pdf_ocr(pdf.original[1:30],
+           f.tar_pdf_ocr(pdf.original[1:100],
                          dpi = 300,
                          lang = "eng",
                          output = "pdf txt",
                          dir.out.pdf = "files/pdf_tesseract",
                          dir.out.txt = "files/txt_tesseract",
                          quiet = TRUE,
-                         jobs = 5),
+                         jobs = tessJobs),
            format = "file")
 
 ```
