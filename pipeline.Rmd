@@ -252,19 +252,8 @@ docvarnames <- c("gericht",
 
 ```{targets global-sourcefiles, tar_globals = TRUE}
 
-files.source.raw <-  c(list.files(pattern = "\\.R$|\\.toml$|\\.md$|\\.Rmd$"),
-                       "R-fobbe-proto-package",
-					   "reports",
-                       "data",
-                       "functions",
-                       "tex",
-                       "gpg",
-                       "buttons",
-                       list.files(pattern = "renv\\.lock|\\.Rprofile",
-                                  all.files = TRUE),
-                       list.files("renv",
-                                  pattern = "activate\\.R",
-                                  full.names = TRUE))
+files.source.raw <-  c(system2("git", "ls-files", stdout = TRUE),
+                       ".git")
 
 ```
 
