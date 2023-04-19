@@ -1,67 +1,75 @@
-# Project
+[project]
 
-project.fullname = "Historische Entscheidungen des Bundesgerichtshofs für Strafsachen"
-project.shortname = "BGH-Strafrecht"
-project.author = "Seán Fobbe and Tilko Swalve"
-
-# Version
-
-version.semantic = "1.0.0"
-version.files = "1-0-0"
-
-# License
-
-license.data = "Creative Commons Zero 1.0 Universal"
-license.code = "MIT-0"
+fullname = "Historische Entscheidungen des Bundesgerichtshofs für Strafsachen"
+shortname = "BGH-Strafrecht"
+author = "Seán Fobbe and Tilko Swalve"
 
 
+[version]
 
-# Digital Object Identifier (DOI)
-
-doi.data.concept = "???"
-doi.data.version = "???"
-
-doi.software.concept = "???" 
-doi.software.version = "???"
-
-doi.personendaten = "10.5281/zenodo.4568682"
-doi.aktenzeichen = "10.5281/zenodo.4569564"
+semantic = "1.0.0"
+dash = "1-0-0"
 
 
-# Debugging
+[license]
 
-debug.toggle = false   # Ob Debugging aktiv ist; Möglichkeiten sind "true" oder "false"
-
-debug.sample = 50   # Die Anzahl der zufällig ausgewählten Entscheidungen, die im Debugging-Modus berücksichtigt werden sollen
-
-tesseract.skip = true # Tesseract überspringen
+data = "Creative Commons Zero 1.0 Universal"
+code = "MIT-0"
 
 
 
-# Parallelization
+[doi] # Digital Object Identifier
 
-cores.max = true  # Ob die maximale Anzahl an logischen Kernen genutzt werden soll; Möglichkeiten sind "true" oder "false"
-cores.number = 8   # Die Anzahl Rechenkerne, die verwendet werden soll; wird nur berücksichtigt falls "cores.max" auf "false" steht
+data.concept = "???"
+data.version = "???"
 
+software.concept = "???" 
+software.version = "???"
 
-parallel.extractPDF = true
-parallel.lingsummarize = true
-parallel.multihashes = true
-
-
-
-# Download
-download.timeout = 600			# Timeout für Downloads
+personendaten = "10.5281/zenodo.4568682"
+aktenzeichen = "10.5281/zenodo.4569564"
 
 
+[debug]
 
-# Quanteda
-quanteda.tokens_locale = "de_DE" # Locale in denen Tokens analyisert werden
+toggle = false   # Ob Debugging aktiv ist; Möglichkeiten sind "true" oder "false"
+
+sample = 50   # Die Anzahl der zufällig ausgewählten Entscheidungen, die im Debugging-Modus berücksichtigt werden sollen
+
+cleanrun = false # Ob alle Ergebnisse vor jedem neuen Run gelöscht werden sollen
+
+tesseractskip = true # Tesseract überspringen
 
 
 
-# Knitr
-fig.format = [ "pdf", "png" ] 	# Ausgabe-Format für Diagramme
-fig.dpi = 300     	 	# Auflösung für Diagramme
-fig.align = "center"    	# Ausrichtung von Diagrammen im Compilation Report
+[cores]
+
+max = true  # Ob die maximale Anzahl an logischen Kernen genutzt werden soll; Möglichkeiten sind "true" oder "false"
+number = 8   # Die Anzahl Rechenkerne, die verwendet werden soll; wird nur berücksichtigt falls "cores.max" auf "false" steht
+
+
+[parallel]
+
+extractPDF = true
+lingsummarize = true
+multihashes = true
+
+
+[download]
+
+timeout = 600			# Timeout für Downloads
+
+
+
+[quanteda]
+
+tokens_locale = "de_DE" # Locale in denen Tokens analyisert werden
+
+
+
+[fig] # Knitr
+
+format = [ "pdf", "png" ] 	# Ausgabe-Format für Diagramme
+dpi = 300     	 	# Auflösung für Diagramme
+align = "center"    	# Ausrichtung von Diagrammen im Compilation Report
 
