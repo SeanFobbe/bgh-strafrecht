@@ -114,11 +114,3 @@ f.unzip_rename  <- function(dir.in,
 #dir.in  <-  "zip_original"
 #dir.out  <-  "files/pdf_original"
 
-
-
-Error:
-! Error running targets::tar_make()
-  Error messages: targets::tar_meta(fields = error, complete_only = TRUE)
-  Debugging guide: https://books.ropensci.org/targets/debugging.html
-  How to ask for help: https://books.ropensci.org/targets/help.html
-  Last error: [ENOENT] Failed to move 'files/pdf_original/1_StR___1-51.pdf'to 'files_NA_NA_NA.pdf_original/1_StR_1_51_NA_NA_NA.pdf': no such file or directory
