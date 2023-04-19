@@ -277,7 +277,7 @@ Mit diesem Abschnitt der Pipeline werden Input-Dateien getrackt. Mit der Option 
 Diese Tabelle enthält Korrekturen für OCR-Fehler.
 
 
-```{targets tar.file1}
+```{targets tar.file.replacements}
 list(
     tar_target(file.replacements,
            "data/BGH-Strafrecht_ReplacementTable.csv",
@@ -293,7 +293,7 @@ list(
 
 Dies sind alle Dateien, die den Source Code für den Datensatz bereitstellen.
 
-```{targets tar.file4}
+```{targets tar.file.source}
 tar_target(files.source,
            files.source.raw,
            format = "file")
@@ -302,7 +302,7 @@ tar_target(files.source,
 
 ### Changelog
 
-```{targets tar.file5}
+```{targets tar.file.changelog}
 tar_target(changelog,
            "CHANGELOG.md",
            format = "file")
@@ -358,7 +358,7 @@ Dieser Abschnitt der Pipeline erstellt die finalen Berichte (Codebook und Robust
 
 Um gewisse Variablen aus der Pipeline in die LaTeX-Kompilierung einzuführen müssen diese als .tex-Datei auf die Festplatte geschrieben werden.
 
-```{targets tar.report1}
+```{targets tar.report.latexdefs}
 tar_target(latexdefs,
                 f.latexdefs(config,
                             dir = "temp",
