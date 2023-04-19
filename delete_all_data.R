@@ -7,7 +7,8 @@ targets::tar_destroy(ask = FALSE)
 delete <- c("files/",
             "temp/",
             "analysis/",
-            "output/")
+            "output/",
+            "temp_tesseract")
 
 
 
