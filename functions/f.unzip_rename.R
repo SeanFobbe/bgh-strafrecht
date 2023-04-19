@@ -17,6 +17,10 @@ f.unzip_rename  <- function(dir.in,
                             full.names = TRUE)
     unlink(files.pdf)
 
+    ## Ordner erstellen
+    dir.create(dir.out, showWarnings = FALSE, recursive = TRUE)
+    
+
     ## ZIP-Archive definieren
     files.zip <- list.files(dir.in,
                             full.names = TRUE)
