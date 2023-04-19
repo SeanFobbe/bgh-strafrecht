@@ -33,11 +33,9 @@ aktenzeichen = "10.5281/zenodo.4569564"
 [debug]
 
 toggle = false   # Ob Debugging aktiv ist; Möglichkeiten sind "true" oder "false"
-
 sample = 50   # Die Anzahl der zufällig ausgewählten Entscheidungen, die im Debugging-Modus berücksichtigt werden sollen
 
 cleanrun = false # Ob alle Ergebnisse vor jedem neuen Run gelöscht werden sollen
-
 tesseractskip = true # Tesseract überspringen
 
 
