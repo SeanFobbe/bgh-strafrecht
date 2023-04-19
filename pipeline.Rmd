@@ -151,10 +151,11 @@ knitr::write_bib(renv::dependencies()$Package,
 
 ```{targets global-packages, tar_globals = TRUE}
 
-tar_option_set(packages = c("tarchetypes",
+tar_option_set(packages = c("tarchetypes",  # Zusätzliche Targets Funktionen
                             "RcppTOML",     # TOML-Dateien lesen und schreiben
                             "fs",           # Verbessertes File Handling
                             "zip",          # Verbessertes ZIP Handling
+                            "testthat",     # Unit tests
                             "mgsub",        # Vektorisiertes Gsub
                             "httr",         # HTTP-Werkzeuge
                             "rvest",        # HTML/XML-Extraktion
@@ -164,11 +165,12 @@ tar_option_set(packages = c("tarchetypes",
                             "ggplot2",      # Fortgeschrittene Datenvisualisierung
 							"ggraph",       # Visualisierung von Graphen
                             "scales",       # Skalierung von Diagrammen
-                            "data.table",   # Fortgeschrittene Datenverarbeitung
+                            "magick",       # Image processing
                             "readtext",     # TXT-Dateien einlesen
                             "quanteda",     # Fortgeschrittene Computerlinguistik
                             "future",       # Parallelisierung
-                            "future.apply"))# Funktionen höherer Ordnung für Parallelisierung
+                            "future.apply", # Funktionen höherer Ordnung für Parallelisierung
+                            "data.table",   # Fortgeschrittene Datenverarbeitung))
 
 tar_option_set(workspace_on_error = TRUE) # Save Workspace on Error
 tar_option_set(format = "qs")
