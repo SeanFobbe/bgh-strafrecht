@@ -393,9 +393,33 @@ tar_target(latexdefs,
 # Pipeline: Kompilierung
 
 
+
+## Durchführen der Kompilierung
+
+```{r pipeline-run, results = "hide"}
+tar_make()
+```
+
+
+## Pipeline archivieren
+
+
+```{r pipeline-zip}
+zip(paste0("output/",
+           paste0(config$project$shortname,
+                  "_",
+                  datestamp),
+           "_Targets_Storage.zip"),
+    "_targets/")
+```
+
+
+
+
+
 ## Visualisierung
 
-```{r, pipeline-graph, width = 9, height = 9}
+```{r, pipeline-graph, fig.width = 12, fig.height = 18}
 
 edgelist <- tar_network(targets_only = TRUE)$edges
 setDT(edgelist)
@@ -405,7 +429,7 @@ g  <- igraph::graph.data.frame(edgelist,
 
 
 ggraph(g,
-       'dh') + 
+       'sugiyama') + 
     geom_edge_diagonal(colour = "grey")+
     geom_node_point()+
     geom_node_text(aes(label = name),
@@ -413,32 +437,25 @@ ggraph(g,
                    repel = TRUE)+
     theme_void()
 
-```
-                       
 
-
-## Durchführen der Kompilierung
-
-```{r pipeline-run, results = "hide"}
-tar_make()
 ```
 
 
 
+# Liste aller Targets (alphabetisch)
 
-# Pipeline: Analyse
-
-
-## Gesamte Liste
-
-Die vollständige Liste aller Targets, inklusive ihres Types und ihrer Größe in Bytes. Targets die auf Dateien verweisen (z.B. alle PDF-Dateien) geben die Gesamtgröße der Dateien auf der Festplatte an.
+Die vollständige Liste aller Targets, inklusive ihres Types und ihrer Größe. Targets die auf Dateien verweisen (z.B. alle PDF-Dateien) geben die Gesamtgröße der Dateien auf der Festplatte an.
 
 
 
 ```{r, pipeline-list}
 
-meta <- tar_meta(fields = c("type", "bytes"), complete_only = TRUE)
+meta <- tar_meta(fields = c("type", "bytes", "format"), complete_only = TRUE)
 setDT(meta)
+meta$MB <- round(meta$bytes / 1e6, digits = 2)
+
+# Gesamter Speicherplatzverbrauch
+sum(meta$MB, na.rm = TRUE)
 
 kable(meta[order(type, name)],
       format = "latex",
@@ -449,29 +466,19 @@ kable(meta[order(type, name)],
 
 ```
 
+
+
+
 \newpage
-## Timing
+# Timing
 
-Der Zeitpunkt an dem die Targets berechnet wurden und ihre jeweilige Laufzeit in Sekunden.
-
-
-```{r, pipeline-timing}
-
-meta <- tar_meta(fields = c("time", "seconds"), complete_only = TRUE)
-setDT(meta)
-
-kable(meta[order(-seconds)],
-      format = "latex",
-      align = "r",
-      booktabs = TRUE,
-      longtable = TRUE) %>% kable_styling(latex_options = "repeat_header")
-
-
-```
-
-Gesamte Laufzeit in Sekunden, Minuten und Stunden.
+## Gesamte Laufzeit
 
 ```{r, pipeline-runtime}
+meta <- tar_meta(fields = c("time", "seconds"), complete_only = TRUE)
+setDT(meta)
+meta$mins <- round(meta$seconds / 60, digits = 2)
+
 runtime.sum <- sum(meta$seconds)
 
 ## Sekunden
@@ -484,16 +491,16 @@ runtime.sum / 60
 runtime.sum / 3600
 ```
 
-\newpage
-## Warnungen
 
 
-```{r, pipeling-warnings}
 
-meta <- tar_meta(fields = "warnings", complete_only = TRUE)
-setDT(meta)
+## Laufzeit einzelner Targets
 
-kable(meta,
+Der Zeitpunkt an dem die Targets berechnet wurden und ihre jeweilige Laufzeit in Sekunden.
+
+
+```{r, pipeline-timing}
+kable(meta[order(-seconds)],
       format = "latex",
       align = "r",
       booktabs = TRUE,
@@ -503,19 +510,59 @@ kable(meta,
 ```
 
 
+\newpage
+# Warnungen
 
-## Fehlermeldungen
+
+
+```{r, pipline-warnings, results = 'asis'}
+
+meta <- tar_meta(fields = "warnings", complete_only = TRUE)
+setDT(meta)
+meta$warnings <- gsub("(\\.pdf|\\.html?|\\.txt)", "\\1 \n\n", meta$warnings)
+meta <- meta[name != "dt.annotated"] # de_core_news_sm does not work correctly with lemmatization; warnings are not reported because they flood the document; should be inspected directly
+
+if (meta[,.N > 0]){
+
+    for(i in 1:meta[,.N]){
+
+        cat(paste("##", meta[i]$name), "\n\n")
+        cat(paste(meta[i]$warnings, "\n\n"))
+        
+    }
+
+}else{
+
+    cat("No warnings to report.")
+
+}
+
+```
+
+
+
+\newpage
+# Fehlermeldungen
 
 ```{r, pipeline-errors}
 
 meta <- tar_meta(fields = "error", complete_only = TRUE)
 setDT(meta)
 
-kable(meta,
-      format = "latex",
-      align = "r",
-      booktabs = TRUE,
-      longtable = TRUE) %>% kable_styling(latex_options = "repeat_header")
+if (meta[,.N > 0]){
+
+    for(i in 1:meta[,.N]){
+
+        cat(paste("##", meta[i]$name), "\n\n")
+        cat(paste(meta[i]$error, "\n\n"))
+        
+    }
+
+}else{
+
+    cat("No errors to report.")
+
+}
 
 
 ```
@@ -526,8 +573,33 @@ kable(meta,
 
 
 
+# Dateigrößen
 
 
+
+
+## ZIP-Dateien
+
+```{r filesize.zip}
+
+files <- list.files("output", pattern = "\\.zip", full.names = TRUE)
+
+filesize <- round(file.size(files) / 10^6, digits = 2)
+
+table.size <- data.table(basename(files),
+                         filesize)
+
+
+kable(table.size,
+      format = "latex",
+      align = c("l", "r"),
+      format.args = list(big.mark = ","),
+      booktabs = TRUE,
+      longtable = TRUE,
+      col.names = c("Datei",
+                    "Größe in MB"))
+
+```
 
 
 
