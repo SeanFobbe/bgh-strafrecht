@@ -11,6 +11,7 @@ _targets/
 temp/
 output/
 analyse/
+files/
 txt_tesseract/
 txt_cleaned/
 pdf_tesseract/
@@ -23,17 +24,8 @@ PDF/
 TXT/
 EPUB/
 
-*.zip
-*.xml
-*.jpg
-*.JPG
-*.JPEG
-*.jpeg
-*.gif
-*.txt
-*.epub
-*.html
-*.htm
+
+
 
 *.RData
 
