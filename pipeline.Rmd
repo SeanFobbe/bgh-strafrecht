@@ -207,7 +207,7 @@ prefix.files <- paste0(config$project$shortname,
 
 
 if (config$cores$max == TRUE){
-    fullCores <- future::availableCores() - 1
+    fullCores <- parallel::detectCores()
 	tessJobs <- round(fullCores / 4)
 }
 
