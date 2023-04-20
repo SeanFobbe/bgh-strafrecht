@@ -135,7 +135,7 @@ f.future_pdf_ocr <- function(x,
 
     ## Intro messages
     if(quiet == FALSE){
-        message(paste("Begin at:", begin.extract))
+        message(paste("Begin at:", begin))
         message(paste("Processing", length(x), "PDF files."))
     }
 
@@ -422,3 +422,20 @@ f.convert_crop <- function(x,
 
 
 }
+
+
+
+
+
+## DEBUGGING
+
+
+f.future_pdf_ocr(x,
+                 dpi = 300,
+                 lang = "deu",
+                 crop.firstpage = 0,
+                 crop.lastpage = 0,
+                 output = "pdf txt",
+                 skip = TRUE,
+                 dir.out = ".",
+                 quiet = FALSE)
