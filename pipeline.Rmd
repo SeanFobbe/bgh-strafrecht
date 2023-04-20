@@ -345,7 +345,7 @@ tar_target(pdf.original,
 ```{targets tar.tesseract}
 
 tar_target(tesseract,
-           f.tar_pdf_ocr(pdf.original[1:100],
+           f.tar_pdf_ocr(pdf.original[1:1000],
                          dpi = 300,
                          lang = "deu",
                          output = "pdf txt",
