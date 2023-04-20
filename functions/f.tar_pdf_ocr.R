@@ -69,10 +69,12 @@ f.tar_pdf_ocr <- function(x,
     }
     
     
-    ## Set parallel futures
-    plan(multisession,
-         workers = jobs)
-    
+    ## ## Set parallel futures
+    ## plan(multisession,
+    ##      workers = jobs)
+
+    ## Set sequential futures
+    plan(sequential)
     
     ## Run Tesseract
 
