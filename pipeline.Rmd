@@ -91,6 +91,8 @@ Löscht Dateien im Output-Ordner, die nicht vom heutigen Tag sind.
 
 ```{r}
 
+unlink(list.files(pattern = "\\.tiff"))
+
 unlink(grep(datestamp,
             list.files("output",
                        full.names = TRUE),
@@ -98,6 +100,7 @@ unlink(grep(datestamp,
             value = TRUE))
 
 unlink("temp")
+unlink("temp_tesseract")
 #unlink("output", recursive = TRUE)
 
 
@@ -353,7 +356,7 @@ tar_target(pdf.original,
 ```{targets tar.tesseract}
 
 tar_target(tesseract,
-           f.tar_pdf_ocr(pdf.original[1:1000],
+           f.tar_pdf_ocr(pdf.original[1:100],
                          dpi = 300,
                          lang = "deu",
                          output = "pdf txt",
