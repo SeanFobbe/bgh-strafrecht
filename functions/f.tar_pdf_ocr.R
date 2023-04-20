@@ -69,12 +69,11 @@ f.tar_pdf_ocr <- function(x,
     }
     
     
-    ## ## Set parallel futures
-    ## plan(multisession,
-    ##      workers = jobs)
+    ## Set parallel futures
+    plan(multisession,
+         workers = jobs)
 
-    ## Set sequential futures
-    plan(sequential)
+
     
     ## Run Tesseract
 
@@ -261,6 +260,8 @@ pdf_ocr_single <- function(x,
                            dir.out = "."){
 
     tryCatch({
+
+        print(x) ### DEBUGGING ONLY
         
         filename.out <- gsub("\\.pdf",
                              "_TESSERACT",
@@ -429,13 +430,47 @@ f.convert_crop <- function(x,
 
 ## DEBUGGING
 
+## x <- tar_read(pdf.original)
 
-f.future_pdf_ocr(x,
-                 dpi = 300,
-                 lang = "deu",
-                 crop.firstpage = 0,
-                 crop.lastpage = 0,
-                 output = "pdf txt",
-                 skip = TRUE,
-                 dir.out = ".",
-                 quiet = FALSE)
+
+## f.future_pdf_ocr(x[1:50],
+##                  dpi = 300,
+##                  lang = "deu",
+##                  crop.firstpage = 0,
+##                  crop.lastpage = 0,
+##                  output = "pdf txt",
+##                  skip = TRUE,
+##                  dir.out = ".",
+##                  quiet = FALSE)
+
+
+
+## f.convert_crop(x[4],
+##                dpi = 300,
+##                crop.firstpage = 0,
+##                crop.lastpage = 0,                               
+##                dir.out = ".")
+
+
+
+
+## ERRORs
+
+## > f.convert_crop(x[1],
+## +                dpi = 300,
+## +                crop.firstpage = 0,
+## +                crop.lastpage = 0,                               
+## +                dir.out = ".")
+## [1] "1_StR_1_51_NA_NA_NA.tiff"
+## > f.convert_crop(x[2],
+## +                dpi = 300,
+## +                crop.firstpage = 0,
+## +                crop.lastpage = 0,                               
+## +                dir.out = ".")
+## Error: R: cache resources exhausted `' @ error/cache.c/OpenPixelCache/4095
+## > f.convert_crop(x[3],
+## +                dpi = 300,
+## +                crop.firstpage = 0,
+## +                crop.lastpage = 0,                               
+## +                dir.out = ".")
+## R: ../../magick/image.c:2285: ResetImagePixels: Assertion `image != (Image *) NULL' failed.
