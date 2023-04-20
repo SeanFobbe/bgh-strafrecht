@@ -113,17 +113,6 @@ unlink("temp_tesseract")
 ```{r}
 
 
-
-## dirs <- c("output",
-##           "temp",
-##           "pdf_original",
-##           "pdf_tesseract",
-##           "txt_extracted",
-##           "txt_tesseract",
-##           "txt_cleaned")
-
-
-
 dirs <- c("output",
           "temp",
           "files")
