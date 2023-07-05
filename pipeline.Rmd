@@ -359,6 +359,7 @@ tar_target(tesseract,
                          crop.lastpage = 0,
                          dir.out.pdf = "files/pdf_tesseract",
                          dir.out.txt = "files/txt_tesseract",
+						 tempfile = TRUE,
                          quiet = TRUE,
                          jobs = tessJobs),
            format = "file")
