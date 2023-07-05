@@ -1,11 +1,12 @@
-version: "3.9"
+version: "3.7"
 
 services:
   bgh-strafrecht:
     container_name: bgh-strafrecht
     image: bgh-strafrecht:4.2.2
     tty: true
+    tmpfs: /tmp
     volumes:
-      - .:/bgh-strafrecht:z
-      - ./etc/gitconfig:/etc/gitconfig:z
-      - ./etc/magick-policy.xml:/etc/ImageMagick-6/policy.xml:z
+      - .:/bgh-strafrecht
+      - ./etc/gitconfig:/etc/gitconfig
+      - ./etc/magick-policy.xml:/etc/ImageMagick-6/policy.xml
