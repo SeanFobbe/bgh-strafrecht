@@ -41,7 +41,7 @@ rmarkdown::render("pipeline.Rmd",
                   output_file = file.path(dir.out,
                                           paste0(config$project$shortname,
                                                  "_",
-                                                 config$version$files,
+                                                 config$version$dash,
                                                  "_CompilationReport.pdf")))
 
 
