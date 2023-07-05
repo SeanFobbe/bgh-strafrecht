@@ -7,6 +7,7 @@ f.tar_pdf_ocr <- function(x,
                           skip = TRUE,
                           dir.out.pdf = "pdf_tesseract",
                           dir.out.txt = "txt_tesseract",
+                          tempfile = FALSE,
                           quiet = TRUE,
                           jobs = round(parallel::detectCores() / 4 )){
 
@@ -72,8 +73,7 @@ f.tar_pdf_ocr <- function(x,
     ## Set parallel futures
     plan(multisession,
          workers = jobs)
-
-
+    
     
     ## Run Tesseract
 
@@ -87,6 +87,7 @@ f.tar_pdf_ocr <- function(x,
                      output = output,
                      skip = skip,
                      dir.out = "temp_tesseract",
+                     tempfile = tempfile,
                      quiet = quiet)
 
     }
@@ -127,6 +128,7 @@ f.future_pdf_ocr <- function(x,
                              output = "pdf txt",
                              skip = TRUE,
                              dir.out = ".",
+                             tempfile = FALSE,
                              quiet = TRUE){
 
     ## Timestamp: Begin
@@ -134,7 +136,7 @@ f.future_pdf_ocr <- function(x,
 
     ## Intro messages
     if(quiet == FALSE){
-        message(paste("Begin at:", begin))
+        message(paste("Begin at:", begin.extract))
         message(paste("Processing", length(x), "PDF files."))
     }
 
@@ -206,6 +208,7 @@ f.future_pdf_ocr <- function(x,
                                                crop.lastpage = crop.lastpage,
                                                output = output,
                                                dir.out = dir.out,
+                                               tempfile = tempfile,
                                                future.seed = TRUE)
         
 
@@ -257,11 +260,10 @@ pdf_ocr_single <- function(x,
                            crop.firstpage = 0,
                            crop.lastpage = 0,
                            output = "pdf txt",
-                           dir.out = "."){
+                           dir.out = ".",
+                           tempfile = FALSE){
 
     tryCatch({
-
-        print(x) ### DEBUGGING ONLY
         
         filename.out <- gsub("\\.pdf",
                              "_TESSERACT",
@@ -275,6 +277,7 @@ pdf_ocr_single <- function(x,
         ## Convert to TIFF
         filename.tiff <- f.convert_crop(x = x,
                                         dir.out = ".",
+                                        tempfile = tempfile,
                                         dpi = dpi,
                                         crop.firstpage = crop.firstpage,
                                         crop.lastpage = crop.lastpage)
@@ -315,10 +318,12 @@ pdf_ocr_single <- function(x,
 #' @param dpi Integer. The density to convert the image at. Defaults to 300.
 #' @param crop.firstpage Numeric. The proportion of the first page to crop. Crop begins at the top of the page. Accepts values between 0 and 1, but not 1. Defaults to 0. Example: 0.2 will crop 20% off the top of the first page.
 #' @param crop.lastpage Numeric. The proportion of the last page to crop. Crop begins at the bottom of the page. Accepts values between 0 and 1, but not 1. Defaults to 0. Example: 0.2 will crop 20% off the bottom of the last page.
-#' @param dir.out String. The output directory. Defaults to working directory.
+#' @param dir.out String. The output directory. Defaults to working directory. Will be ignored if tempfile = TRUE.
+#' @param tempfile Logical. Output system-bound temporary files with random names instead of a modified version of the original filename? Useful if used in conjunction with Tesseract and tempfs. Defaults to FALSE.
 #'
 #' @return String. Returns path to output TIFF.
     
+
 
 
 
@@ -326,7 +331,8 @@ f.convert_crop <- function(x,
                            dpi = 300,
                            crop.firstpage = 0,
                            crop.lastpage = 0,                               
-                           dir.out = "."){
+                           dir.out = ".",
+                           tempfile = FALSE){
 
     
     if(crop.firstpage == 1 || crop.lastpage == 1){
@@ -342,57 +348,119 @@ f.convert_crop <- function(x,
 
 
 
+    info <- image_info(img)
+    index.lastpage <- nrow(info)
+
+    width.firstpage  <-  info[1,]$width
+    height.firstpage <- info[1,]$height
+
+    width.lastpage <- info[index.lastpage,]$width
+    height.lastpage <- info[index.lastpage,]$height
+
+
+    
+
     if (crop.firstpage != 0 || crop.lastpage != 0){
 
 
-        info <- image_info(img)
-        index.lastpage <- nrow(info)
-
-
-        dims.firstpage <- geometry_area(width = info[1,]$width,
-                                        height = round(info[1,]$height * (1 - crop.firstpage)),
-                                        x_off = 0,
-                                        y_off = 0)
-
-
-        ## Crop first page
-        firstpage <- image_crop(img[1],
-                                dims.firstpage,
-                                gravity = "South")
-
-
-
         
-        ## Crop last page
+        ## Case 1: Crop for one or more pages
+        
         if (index.lastpage > 1){
 
-            dims.lastpage <- geometry_area(width = info[index.lastpage,]$width,
-                                        height = round(info[index.lastpage,]$height * (1 - crop.lastpage)),
-                                        x_off = 0,
-                                        y_off = 0)
+            ## Crop first page
+
+            height.firstpage.new <- round(height.firstpage * (1 - crop.firstpage))
+            
+            dims.firstpage <- geometry_area(width = width.firstpage,
+                                            height = height.firstpage.new,
+                                            x_off = 0,
+                                            y_off = 0)
+
+
+
+            firstpage <- image_crop(img[1],
+                                    dims.firstpage,
+                                    gravity = "South")
+
+            
+
+            ## Crop last page
+
+            height.lastpage.new <- round(height.lastpage * (1 - crop.lastpage))
+            
+            dims.lastpage <- geometry_area(width = width.lastpage,
+                                           height = height.lastpage.new,
+                                           x_off = 0,
+                                           y_off = 0)
 
 
             lastpage <- image_crop(img[index.lastpage],
                                    dims.lastpage,
                                    gravity = "North")
 
-        }
 
 
-        if(index.lastpage == 1){
+            if(index.lastpage == 2){
+                
+                img.final <- c(firstpage, lastpage)
+                
+            }else{
+                
+                middlepages <- img[-c(1, index.lastpage)]
+                
+                img.final <- c(firstpage, middlepages, lastpage)
+                
+            }
             
-            img.final <- firstpage
             
-        }else if(index.lastpage == 2){
-            
-            img.final <- c(firstpage, lastpage)
-            
+            ## Case 2: Crop for single page
         }else{
+
+
+            ## Top 
+            height.firstpage.new <- round(height.firstpage * (1 - crop.firstpage))
+
             
-            middlepages <- img[-c(1, index.lastpage)]
+            dims.firstpage <- geometry_area(width = width.firstpage,
+                                            height = height.firstpage.new,
+                                            x_off = 0,
+                                            y_off = 0)
+
+
+
+            singlepage <- image_crop(img[1],
+                                     dims.firstpage,
+                                     gravity = "South")
+
+
+
+            info.singlepage <- image_info(singlepage)
+
+            height.singlepage.postcrop  <-  info.singlepage[1,]$height
             
-            img.final <- c(firstpage, middlepages, lastpage)
+
+            ## Bottom
+            height.lastpage.new <- height.singlepage.postcrop - round(height.firstpage * crop.lastpage)
+
+
+            dims.lastpage <- geometry_area(width = width.firstpage,
+                                           height = height.lastpage.new,
+                                           x_off = 0,
+                                           y_off = 0)
+
+
+            singlepage <- image_crop(singlepage,
+                                     dims.lastpage,
+                                     gravity = "North")
             
+
+
+            
+            img.final <- singlepage
+            
+            
+
         }
 
 
@@ -402,14 +470,24 @@ f.convert_crop <- function(x,
 
     }
 
-    filename.new <- paste0(tools::file_path_sans_ext(basename(x)), ".tiff")
 
+
+
+    if(tempfile == TRUE){
+
+        filename.new <- tempfile(pattern = "tesseract", fileext = ".tiff")
+
+    }else{
+        filename.new <- file.path(dir.out,
+                                  paste0(tools::file_path_sans_ext(basename(x)), ".tiff"))
+        }
+    
 
 
     ## Write image
     image_write(
         img.final,
-        path = file.path(dir.out, filename.new),
+        path = filename.new,
         format = "tiff",
         quality = NULL,
         depth = 8,
@@ -424,53 +502,3 @@ f.convert_crop <- function(x,
 
 }
 
-
-
-
-
-## DEBUGGING
-
-## x <- tar_read(pdf.original)
-
-
-## f.future_pdf_ocr(x[1:50],
-##                  dpi = 300,
-##                  lang = "deu",
-##                  crop.firstpage = 0,
-##                  crop.lastpage = 0,
-##                  output = "pdf txt",
-##                  skip = TRUE,
-##                  dir.out = ".",
-##                  quiet = FALSE)
-
-
-
-## f.convert_crop(x[4],
-##                dpi = 300,
-##                crop.firstpage = 0,
-##                crop.lastpage = 0,                               
-##                dir.out = ".")
-
-
-
-
-## ERRORs
-
-## > f.convert_crop(x[1],
-## +                dpi = 300,
-## +                crop.firstpage = 0,
-## +                crop.lastpage = 0,                               
-## +                dir.out = ".")
-## [1] "1_StR_1_51_NA_NA_NA.tiff"
-## > f.convert_crop(x[2],
-## +                dpi = 300,
-## +                crop.firstpage = 0,
-## +                crop.lastpage = 0,                               
-## +                dir.out = ".")
-## Error: R: cache resources exhausted `' @ error/cache.c/OpenPixelCache/4095
-## > f.convert_crop(x[3],
-## +                dpi = 300,
-## +                crop.firstpage = 0,
-## +                crop.lastpage = 0,                               
-## +                dir.out = ".")
-## R: ../../magick/image.c:2285: ResetImagePixels: Assertion `image != (Image *) NULL' failed.
