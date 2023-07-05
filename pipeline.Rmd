@@ -190,12 +190,12 @@ caption <- paste("Fobbe/Swalve | DOI:",
 ## Prefix for figure titles
 prefix.figuretitle <- paste(config$project$shortname,
                             "| Version",
-                            datestamp)
+                            config$version$semantic)
 
 ## File prefix
 prefix.files <- paste0(config$project$shortname,
                        "_",
-                       datestamp)
+                       config$version$dash)
 
 
 if (config$cores$max == TRUE){
