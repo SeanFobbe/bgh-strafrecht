@@ -267,6 +267,33 @@ files.source.raw <-  c(system2("git", "ls-files", stdout = TRUE), ".git")
 Mit diesem Abschnitt der Pipeline werden Input-Dateien getrackt. Mit der Option \enquote{format = "file"} werden für Input-Dateien Prüfsummen berechnet. Falls sich diese verändern werden alle von ihnen abhängigen Pipeline-Schritte als veraltet markiert und neu berechnet.
 
 
+
+### Source Code
+
+Dies sind alle Dateien, die den Source Code für den Datensatz bilden.
+
+```{targets tar.file.source}
+tar_target(files.source,
+           files.source.raw,
+           format = "file")
+
+```
+
+
+### Changelog
+
+```{targets tar.file.changelog}
+tar_target(changelog,
+           "CHANGELOG.md",
+           format = "file")
+```
+
+
+
+
+
+
+
 ### Datenmodell
 
 Dieses Target liest das maschinenlesbare Datenmodell für den Datensatz ein.
@@ -297,27 +324,6 @@ list(
      )
 ```
 
-
-
-### Source Code
-
-Dies sind alle Dateien, die den Source Code für den Datensatz bilden.
-
-```{targets tar.file.source}
-tar_target(files.source,
-           files.source.raw,
-           format = "file")
-
-```
-
-
-### Changelog
-
-```{targets tar.file.changelog}
-tar_target(changelog,
-           "CHANGELOG.md",
-           format = "file")
-```
 
 
 
