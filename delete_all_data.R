@@ -8,7 +8,8 @@ delete <- c("files/",
             "temp/",
             "analysis/",
             "output/",
-            "temp_tesseract")
+            "temp_tesseract",
+            list.files(pattern = "\\.tiff"))
 
 
 
