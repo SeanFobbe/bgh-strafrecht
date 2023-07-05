@@ -412,7 +412,7 @@ tar_make()
 zip(paste0("output/",
            paste0(config$project$shortname,
                   "_",
-                  datestamp),
+                  config$version$dash),
            "_Targets_Storage.zip"),
     "_targets/")
 ```
