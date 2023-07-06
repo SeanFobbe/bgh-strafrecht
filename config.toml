@@ -36,7 +36,7 @@ toggle = false   # Ob Debugging aktiv ist; Möglichkeiten sind "true" oder "fals
 sample = 50   # Die Anzahl der zufällig ausgewählten Entscheidungen, die im Debugging-Modus berücksichtigt werden sollen
 
 cleanrun = false # Ob alle Ergebnisse vor jedem neuen Run gelöscht werden sollen
-tesseractskip = true # Tesseract überspringen
+tesseractresume = true # OCR Prozess fortsetzen (mit "false" werden alle vorherigen OCR-Ergebniss gelöscht)
 
 
 
