@@ -100,8 +100,14 @@ unlink(grep(datestamp,
             value = TRUE))
 
 unlink("temp")
-unlink("temp_tesseract")
-#unlink("output", recursive = TRUE)
+##unlink("output", recursive = TRUE)
+
+
+if(config$debug$tesseractresume == FALSE){
+    
+    unlink("temp_tesseract")
+    
+    }
 
 
 ```
