@@ -4,16 +4,21 @@ f.tar_pdf_ocr <- function(x,
                           crop.firstpage = 0,
                           crop.lastpage = 0,
                           output = "pdf txt",
-                          skip = TRUE,
+                          resume = TRUE,
                           dir.out.pdf = "pdf_tesseract",
                           dir.out.txt = "txt_tesseract",
                           tempfile = FALSE,
                           quiet = TRUE,
                           jobs = round(parallel::detectCores() / 4 )){
 
+
+    ## Delete temp dir, if clean run is required
+    if(resume == FALSE){
+   
+        unlink("temp_tesseract", recursive = TRUE)
+
+    }
     
-    ## Delete temp dir, if it exists
-    unlink("temp_tesseract", recursive = TRUE)
     
     ## Create directories
     dir.create("temp_tesseract", showWarnings = FALSE)
@@ -25,7 +30,7 @@ f.tar_pdf_ocr <- function(x,
     ## Define Workload
 
 
-    if(skip == TRUE){
+    if(resume == TRUE){
         
         pdf <- gsub("\\.pdf",
                     "_TESSERACT\\.pdf",
@@ -85,7 +90,7 @@ f.tar_pdf_ocr <- function(x,
                      crop.firstpage = crop.firstpage,
                      crop.lastpage = crop.lastpage,
                      output = output,
-                     skip = skip,
+                     resume = resume,
                      dir.out = "temp_tesseract",
                      tempfile = tempfile,
                      quiet = quiet)
@@ -126,7 +131,7 @@ f.future_pdf_ocr <- function(x,
                              crop.firstpage = 0,
                              crop.lastpage = 0,
                              output = "pdf txt",
-                             skip = TRUE,
+                             resume = TRUE,
                              dir.out = ".",
                              tempfile = FALSE,
                              quiet = TRUE){
@@ -149,7 +154,7 @@ f.future_pdf_ocr <- function(x,
     ## Define Workload
 
 
-    if(skip == TRUE){
+    if(resume == TRUE){
         
         pdf <- gsub("\\.pdf",
                     "_TESSERACT\\.pdf",
