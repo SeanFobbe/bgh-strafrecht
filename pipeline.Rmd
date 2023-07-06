@@ -350,11 +350,11 @@ tar_target(pdf.original,
 ```{targets tar.tesseract}
 
 tar_target(tesseract,
-           f.tar_pdf_ocr(pdf.original[1:1000],
+           f.tar_pdf_ocr(pdf.original[1:10],
                          dpi = 300,
                          lang = "deu",
                          output = "pdf txt",
-                         skip = TRUE,
+                         resume = TRUE,
                          crop.firstpage = 0,
                          crop.lastpage = 0,
                          dir.out.pdf = "files/pdf_tesseract",
