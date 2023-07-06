@@ -17,8 +17,8 @@ f.tar_pdf_ocr <- function(x,
     
     ## Create directories
     dir.create("temp_tesseract", showWarnings = FALSE)
-    dir.create(dir.out.pdf, showWarnings = FALSE)
-    dir.create(dir.out.txt, showWarnings = FALSE)
+    dir.create(dir.out.pdf, showWarnings = FALSE, recursive = TRUE)
+    dir.create(dir.out.txt, showWarnings = FALSE, recursive = TRUE)
 
 
 
