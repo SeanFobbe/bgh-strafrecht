@@ -79,9 +79,20 @@ f.tar_pdf_ocr <- function(x,
     
     
     ## Set parallel futures
+
+    if(future.plan = "multicore"){
+        
+        plan(plan = multicore,
+             workers = jobs)
+        
+    }else{
+
+        plan(plan = multisession,
+             workers = jobs)
+
+    }
     
-    plan(as.symbol(future.plan),
-         workers = jobs)
+
     
     
     ## Run Tesseract
