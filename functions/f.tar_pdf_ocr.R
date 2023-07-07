@@ -79,7 +79,8 @@ f.tar_pdf_ocr <- function(x,
     
     
     ## Set parallel futures
-    plan(future.plan,
+    
+    plan(as.symbol(future.plan),
          workers = jobs)
     
     
