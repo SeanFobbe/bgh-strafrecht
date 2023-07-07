@@ -353,7 +353,7 @@ tar_target(pdf.original,
 ### Tesseract
 
 
-```{targets tar.tesseract}
+```{targets  tar.tesseract}
 
 tar_target(tesseract,
            f.tar_pdf_ocr(pdf.original,
@@ -365,7 +365,9 @@ tar_target(tesseract,
                          crop.lastpage = 0,
                          dir.out.pdf = "files/pdf_tesseract",
                          dir.out.txt = "files/txt_tesseract",
-						 tempfile = TRUE,
+						 tempfile = TRUE,						 
+                         chunksperworker = 1,
+                         chunksize = NULL,
                          quiet = TRUE,
                          jobs = tessJobs),
            format = "file")
