@@ -10,7 +10,7 @@ f.tar_pdf_ocr <- function(x,
                           tempfile = FALSE,
                           jobs = round(parallel::detectCores() / 4),
                           chunksperworker = 1,
-                          chunksize = NULL,
+                          chunksize = 1,
                           quiet = TRUE){
 
 
@@ -143,7 +143,7 @@ f.future_pdf_ocr <- function(x,
                              dir.out = ".",
                              tempfile = FALSE,
                              chunksperworker = 1,
-                             chunksize = NULL,
+                             chunksize = 1,
                              quiet = TRUE){
 
     ## Timestamp: Begin
