@@ -367,7 +367,7 @@ tar_target(tesseract,
                          dir.out.txt = "files/txt_tesseract",
 						 tempfile = TRUE,
                          chunksperworker = 1,
-                         chunksize = NULL,
+                         chunksize = 1,
                          quiet = TRUE,
                          jobs = tessJobs),
            format = "file")
