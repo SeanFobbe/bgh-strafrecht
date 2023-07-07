@@ -95,8 +95,8 @@ f.tar_pdf_ocr <- function(x,
                      resume = resume,
                      dir.out = "temp_tesseract",
                      tempfile = tempfile,
-                     future.scheduling = chunksperworker,
-                     future.chunk.size = chunksize,
+                     chunksperworker = chunksperworker,
+                     chunksize = chunksize,
                      quiet = quiet)
 
     }
