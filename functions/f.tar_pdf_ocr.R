@@ -8,8 +8,10 @@ f.tar_pdf_ocr <- function(x,
                           dir.out.pdf = "pdf_tesseract",
                           dir.out.txt = "txt_tesseract",
                           tempfile = FALSE,
-                          quiet = TRUE,
-                          jobs = round(parallel::detectCores() / 4 )){
+                          jobs = round(parallel::detectCores() / 4),
+                          chunksperworker = 1,
+                          chunksize = NULL,
+                          quiet = TRUE){
 
 
     ## Delete temp dir, if clean run is required
@@ -93,6 +95,8 @@ f.tar_pdf_ocr <- function(x,
                      resume = resume,
                      dir.out = "temp_tesseract",
                      tempfile = tempfile,
+                     future.scheduling = chunksperworker,
+                     future.chunk.size = chunksize,
                      quiet = quiet)
 
     }
@@ -134,6 +138,8 @@ f.future_pdf_ocr <- function(x,
                              resume = TRUE,
                              dir.out = ".",
                              tempfile = FALSE,
+                             chunksperworker = 1,
+                             chunksize = NULL,
                              quiet = TRUE){
 
     ## Timestamp: Begin
@@ -214,6 +220,8 @@ f.future_pdf_ocr <- function(x,
                                                output = output,
                                                dir.out = dir.out,
                                                tempfile = tempfile,
+                                               future.scheduling = chunksperworker,
+                                               future.chunk.size = chunksize,
                                                future.seed = TRUE)
         
 
