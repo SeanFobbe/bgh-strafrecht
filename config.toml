@@ -42,7 +42,7 @@ tesseractresume = true # OCR Prozess fortsetzen (mit "false" werden alle vorheri
 
 [cores]
 
-max = true  # Ob die maximale Anzahl an logischen Kernen genutzt werden soll; Möglichkeiten sind "true" oder "false"
+max = false  # Ob die maximale Anzahl an logischen Kernen genutzt werden soll; Möglichkeiten sind "true" oder "false"
 number = 8   # Die Anzahl Rechenkerne, die verwendet werden soll; wird nur berücksichtigt falls "cores.max" auf "false" steht
 tessjobs = 4 # Die Anzahl Tesseract Jobs; jeder Tesseract Job ruft bis zu 4 weitere threads
 
