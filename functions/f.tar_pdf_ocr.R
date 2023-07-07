@@ -9,6 +9,7 @@ f.tar_pdf_ocr <- function(x,
                           dir.out.txt = "txt_tesseract",
                           tempfile = FALSE,
                           jobs = round(parallel::detectCores() / 4),
+                          future.plan = "multisession",
                           chunksperworker = 1,
                           chunksize = NULL,
                           quiet = TRUE){
@@ -78,7 +79,7 @@ f.tar_pdf_ocr <- function(x,
     
     
     ## Set parallel futures
-    plan(multisession,
+    plan(future.plan,
          workers = jobs)
     
     
