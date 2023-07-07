@@ -351,6 +351,9 @@ f.convert_crop <- function(x,
                            dir.out = ".",
                            tempfile = FALSE){
 
+
+    tryCatch({
+    
     
     if(crop.firstpage == 1 || crop.lastpage == 1){
         
@@ -515,6 +518,12 @@ f.convert_crop <- function(x,
 
     
     return(filename.new)
+
+    },
+    
+    error = function(cond) {
+        return(NA)}
+    )
 
 
 }
