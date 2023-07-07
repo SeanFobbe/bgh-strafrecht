@@ -79,7 +79,7 @@ f.tar_pdf_ocr <- function(x,
     
     ## Set parallel futures
 
-    plan(plan = future.callr::callr,
+    plan(plan = multisession,
          workers = jobs)
 
     
