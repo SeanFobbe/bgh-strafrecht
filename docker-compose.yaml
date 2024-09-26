@@ -3,9 +3,11 @@ version: "3.7"
 services:
   bgh-strafrecht:
     container_name: bgh-strafrecht
-    image: bgh-strafrecht:4.2.2
+    image: bgh-strafrecht:4.4.0
     tty: true
     tmpfs: /tmp
+    environment:
+      - TZ=Europe/Berlin
     volumes:
       - .:/bgh-strafrecht
       - ./etc/gitconfig:/etc/gitconfig
