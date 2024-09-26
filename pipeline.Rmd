@@ -375,6 +375,26 @@ tar_target(tesseract,
 ```
 
 
+# Convert
+
+```{targets tar.convert}
+
+list(tar_target(files.txt,
+                f.tar_pdf_extract(x = pdf.original,
+                                  outputdir = "files/txt",
+								  multicore = config$parallel$extractPDF,
+                                  cores = fullCores),
+                format = "file"),
+     tar_target(dt.bgh,
+                f.readtext(x = files.txt,
+                           docvarnames = docvarnames))
+     )
+					
+```					
+
+
+
+
 
 ## Report Targets
 
