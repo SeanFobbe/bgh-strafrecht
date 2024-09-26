@@ -17,6 +17,7 @@ libjpeg-dev
 libgif-dev
 librsvg2-dev
 libglpk-dev
+libtbb-dev
 libleptonica-dev
 imagemagick
 make
