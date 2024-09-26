@@ -24,23 +24,6 @@ ldconfig
 ## Download Language Models
 
 
-# Arabic
-wget -O /usr/local/share/tessdata/ara.traineddata https://github.com/tesseract-ocr/tessdata_fast/raw/main/ara.traineddata
-
-# Chinese
-wget -O /usr/local/share/tessdata/chi_sim.traineddata https://github.com/tesseract-ocr/tessdata_fast/raw/main/chi_sim.traineddata
-
-# English
-wget -O /usr/local/share/tessdata/eng.traineddata https://github.com/tesseract-ocr/tessdata_fast/raw/main/eng.traineddata
-
-# French
-wget -O /usr/local/share/tessdata/fra.traineddata https://github.com/tesseract-ocr/tessdata_fast/raw/main/fra.traineddata
-
 # German
 wget -O /usr/local/share/tessdata/deu.traineddata https://github.com/tesseract-ocr/tessdata_fast/raw/main/deu.traineddata
 
-# Russian
-wget -O /usr/local/share/tessdata/rus.traineddata https://github.com/tesseract-ocr/tessdata_fast/raw/main/rus.traineddata
-
-# Spanish
-wget -O /usr/local/share/tessdata/spa.traineddata https://github.com/tesseract-ocr/tessdata_fast/raw/main/spa.traineddata
