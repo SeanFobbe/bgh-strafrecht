@@ -1,4 +1,4 @@
-FROM rocker/r-ver:4.2.2
+FROM rocker/r-ver:4.4.0
 
 #RUN sudo apt-get remove -y rstudio-server # only if tidyverse or verse base images used
 
@@ -13,10 +13,6 @@ RUN apt-get update && apt-get -y install $(cat requirements-system.txt)
 # Tesseract layer
 COPY etc/requirements-tesseract.sh .
 RUN sh requirements-tesseract.sh
-
-# Python layer
-COPY etc/requirements-python.txt .
-RUN pip install -r requirements-python.txt
 
 # R layer
 COPY etc/requirements-R.R .
