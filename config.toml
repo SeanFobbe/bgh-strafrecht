@@ -14,7 +14,7 @@ dash = "1-0-0"
 [license]
 
 data = "Creative Commons Zero 1.0 Universal"
-code = "MIT-0"
+code = "GNU General Public License Version 3 (GPLv3)"
 
 
 
