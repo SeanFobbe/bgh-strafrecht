@@ -2,4 +2,4 @@
 
 ## Version \version
 
-- Initial release
+- Erstveröffentlichung
