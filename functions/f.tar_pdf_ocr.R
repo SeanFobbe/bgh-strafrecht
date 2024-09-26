@@ -13,6 +13,13 @@ f.tar_pdf_ocr <- function(x,
                           chunksize = 1,
                           quiet = TRUE){
 
+    testthat::test_that("Crop instructions are within acceptable bounds.", {
+        testthat::expect_true(all(crop.firstpage >= 0))
+        testthat::expect_true(all(crop.lastpage >= 0))
+        testthat::expect_true(all(crop.firstpage < 1))
+        testthat::expect_true(all(crop.lastpage < 1))
+    })
+    
 
     ## Delete temp dir, if clean run is required
     if(resume == FALSE){
@@ -90,18 +97,18 @@ f.tar_pdf_ocr <- function(x,
 
     if (length(x) > 0){
         
-    f.future_pdf_ocr(x = x,
-                     dpi = dpi,
-                     lang = lang,
-                     crop.firstpage = crop.firstpage,
-                     crop.lastpage = crop.lastpage,
-                     output = output,
-                     resume = resume,
-                     dir.out = "temp_tesseract",
-                     tempfile = tempfile,
-                     chunksperworker = chunksperworker,
-                     chunksize = chunksize,
-                     quiet = quiet)
+        result.ocr <- f.future_pdf_ocr(x = x,
+                                       dpi = dpi,
+                                       lang = lang,
+                                       crop.firstpage = crop.firstpage,
+                                       crop.lastpage = crop.lastpage,
+                                       output = output,
+                                       resume = resume,
+                                       dir.out = "temp_tesseract",
+                                       tempfile = tempfile,
+                                       chunksperworker = chunksperworker,
+                                       chunksize = chunksize,
+                                       quiet = quiet)
 
     }
         
@@ -215,8 +222,8 @@ f.future_pdf_ocr <- function(x,
 
     if (length(x) > 0){
         
-        results <- future.apply::future_lapply(x,
-                                               pdf_ocr_single,
+        results <- future.apply::future_mapply(pdf_ocr_single,
+                                               x = x,
                                                dpi = dpi,
                                                lang = lang,
                                                crop.firstpage = crop.firstpage,
@@ -228,9 +235,6 @@ f.future_pdf_ocr <- function(x,
                                                future.chunk.size = chunksize,
                                                future.seed = TRUE)
         
-
-        results <- unlist(results)
-
 
     }
     
@@ -260,6 +264,8 @@ f.future_pdf_ocr <- function(x,
         message(paste0("Ended at: ",
                        end))
     }
+
+    invisible(results)
 
 }
 
@@ -310,7 +316,7 @@ pdf_ocr_single <- function(x,
         
         unlink(filename.tiff)
 
-        invisible(filename.out)
+        invisible(paste(filename.out, unlist(strsplit(output, split = " ")), sep = "."))
 
     },
     
@@ -351,24 +357,26 @@ f.convert_crop <- function(x,
                            dir.out = ".",
                            tempfile = FALSE){
 
-
-    tryCatch({
-    
-    
-    if(crop.firstpage == 1 || crop.lastpage == 1){
-        
-        stop("You cannot crop an entire page. Remove it instead.")
-        
+    if(length(crop.firstpage) != 1 || length(crop.lastpage) != 1){        
+        stop("Single crop instructions must be a vector of length 1.")        
     }
     
 
-    img <- image_read_pdf(x,
-                          pages = NULL,
-                          density = dpi)
+    if(crop.firstpage == 1 || crop.lastpage == 1){        
+        stop("You cannot crop an entire page. Remove it instead.")        
+    }
+    
+    
+    tryCatch({
+    
+
+    img <- magick::image_read_pdf(x,
+                                  pages = NULL,
+                                  density = dpi)
 
 
 
-    info <- image_info(img)
+    info <- magick::image_info(img)
     index.lastpage <- nrow(info)
 
     width.firstpage  <-  info[1,]$width
@@ -392,16 +400,16 @@ f.convert_crop <- function(x,
 
             height.firstpage.new <- round(height.firstpage * (1 - crop.firstpage))
             
-            dims.firstpage <- geometry_area(width = width.firstpage,
-                                            height = height.firstpage.new,
-                                            x_off = 0,
-                                            y_off = 0)
+            dims.firstpage <- magick::geometry_area(width = width.firstpage,
+                                                    height = height.firstpage.new,
+                                                    x_off = 0,
+                                                    y_off = 0)
 
 
 
-            firstpage <- image_crop(img[1],
-                                    dims.firstpage,
-                                    gravity = "South")
+            firstpage <- magick::image_crop(img[1],
+                                            dims.firstpage,
+                                            gravity = "South")
 
             
 
@@ -409,15 +417,15 @@ f.convert_crop <- function(x,
 
             height.lastpage.new <- round(height.lastpage * (1 - crop.lastpage))
             
-            dims.lastpage <- geometry_area(width = width.lastpage,
-                                           height = height.lastpage.new,
-                                           x_off = 0,
-                                           y_off = 0)
+            dims.lastpage <- magick::geometry_area(width = width.lastpage,
+                                                   height = height.lastpage.new,
+                                                   x_off = 0,
+                                                   y_off = 0)
 
 
-            lastpage <- image_crop(img[index.lastpage],
-                                   dims.lastpage,
-                                   gravity = "North")
+            lastpage <- magick::image_crop(img[index.lastpage],
+                                           dims.lastpage,
+                                           gravity = "North")
 
 
 
@@ -442,20 +450,20 @@ f.convert_crop <- function(x,
             height.firstpage.new <- round(height.firstpage * (1 - crop.firstpage))
 
             
-            dims.firstpage <- geometry_area(width = width.firstpage,
-                                            height = height.firstpage.new,
-                                            x_off = 0,
-                                            y_off = 0)
+            dims.firstpage <- magick::geometry_area(width = width.firstpage,
+                                                    height = height.firstpage.new,
+                                                    x_off = 0,
+                                                    y_off = 0)
 
 
 
-            singlepage <- image_crop(img[1],
-                                     dims.firstpage,
-                                     gravity = "South")
+            singlepage <- magick::image_crop(img[1],
+                                             dims.firstpage,
+                                             gravity = "South")
 
 
 
-            info.singlepage <- image_info(singlepage)
+            info.singlepage <- magick::image_info(singlepage)
 
             height.singlepage.postcrop  <-  info.singlepage[1,]$height
             
@@ -464,15 +472,15 @@ f.convert_crop <- function(x,
             height.lastpage.new <- height.singlepage.postcrop - round(height.firstpage * crop.lastpage)
 
 
-            dims.lastpage <- geometry_area(width = width.firstpage,
-                                           height = height.lastpage.new,
-                                           x_off = 0,
-                                           y_off = 0)
+            dims.lastpage <- magick::geometry_area(width = width.firstpage,
+                                                   height = height.lastpage.new,
+                                                   x_off = 0,
+                                                   y_off = 0)
 
 
-            singlepage <- image_crop(singlepage,
-                                     dims.lastpage,
-                                     gravity = "North")
+            singlepage <- magick::image_crop(singlepage,
+                                             dims.lastpage,
+                                             gravity = "North")
             
 
 
@@ -505,14 +513,14 @@ f.convert_crop <- function(x,
 
 
     ## Write image
-    image_write(
-        img.final,
-        path = filename.new,
-        format = "tiff",
-        quality = NULL,
-        depth = 8,
-        density = dpi,
-        compression = "LZW")
+    magick::image_write(
+                img.final,
+                path = filename.new,
+                format = "tiff",
+                quality = NULL,
+                depth = 8,
+                density = dpi,
+                compression = "LZW")
 
 
 
@@ -528,3 +536,29 @@ f.convert_crop <- function(x,
 
 }
 
+
+
+
+
+## DEBUGGING CODE
+
+## library(future)
+## tar_load(split.instructions)
+
+## N <- 30
+
+## x = tar_read(pdf.split)[1:N]
+## dpi = 300
+## lang = split.instructions$Language[1:N]
+## crop.firstpage = split.instructions$crop_firstpage[1:N]
+## crop.lastpage = split.instructions$crop_lastpage[1:N]
+## output = "pdf txt"
+## resume = TRUE
+## dir.out.pdf = "pdf_tesseract"
+## dir.out.txt = "txt_tesseract"
+## tempfile = TRUE
+## jobs = 5
+## chunksperworker = 1
+## chunksize = 1
+## quiet = TRUE
+## dir.out = "."
