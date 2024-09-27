@@ -90,7 +90,7 @@ f.unzip_rename  <- function(dir.in,
         warning("Folgende Dateinamen sind fehlerhaft:")
         warning(paste0(regex.fail, collapse = ", "))
         
-        stop("REGEX-Validierung gescheitert: Dateinamen entsprechen nicht dem Codebook-Schema!!")
+        stop("REGEX-Validierung gescheitert: Dateinamen entsprechen nicht dem Codebook-Schema!")
     }
 
 
