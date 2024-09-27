@@ -50,6 +50,7 @@ f.unzip_rename  <- function(dir.in,
     filenames.new  <- gsub("ok\\.pdf", "\\.pdf", filenames.new, ignore.case = TRUE)
 
     filenames.new  <- gsub(".pdf", "_NA_NA_NA.pdf", filenames.new)
+
     filenames.new <- gsub("[_]{1,4}", "_", filenames.new)
 
     filenames.new  <- gsub("([a-dA-D])_NA_NA_NA", "_NA_NA_\\1", filenames.new)
@@ -58,7 +59,9 @@ f.unzip_rename  <- function(dir.in,
     filenames.new <- gsub("[_]{1,4}", "_", filenames.new)
 
     filenames.new  <- gsub("\\(S\\)_NA", "S", filenames.new)
-    filenames.new  <- gsub("NA_NA_NA_NA_NA_NA", "NA_NA_NA", filenames.new)   
+    filenames.new  <- gsub("_NA_NA_NA.pdf_NA_NA_NA.pdf", "_NA_NA_NA.pdf", filenames.new)
+
+    
 
     
 
