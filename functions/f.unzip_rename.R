@@ -12,12 +12,12 @@
 f.unzip_rename  <- function(dir.in,
                             dir.out){
 
-    ## Ordner aufräumen
+    ## Output-Ordner löschen
     files.pdf <- list.files(dir.out,
                             full.names = TRUE)
     unlink(files.pdf)
 
-    ## Ordner erstellen
+    ## Output-Ordner neu erstellen
     dir.create(dir.out, showWarnings = FALSE, recursive = TRUE)
     
 
@@ -31,7 +31,7 @@ f.unzip_rename  <- function(dir.in,
                         exdir = dir.out)
    
 
-    ## Dateinamen laden
+    ## Dateinamen lesen
     filenames.old <-  list.files(dir.out, full.names = TRUE)
     
 
