@@ -235,11 +235,7 @@ lapply(list.files("functions", pattern = "\\.R$", full.names = TRUE), source)
 
 ```{targets global-txtvars, tar_globals = TRUE}
 
-docvarnames <- c("gericht",
-                 "spruchkoerper_db",
-                 "leitsatz",
-                 "datum",
-                 "spruchkoerper_az",
+docvarnames <- c("spruchkoerper_az",
                  "registerzeichen",
                  "eingangsnummer",
                  "eingangsjahr_az",
