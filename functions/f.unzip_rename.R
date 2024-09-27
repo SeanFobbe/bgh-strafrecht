@@ -64,7 +64,7 @@ f.unzip_rename  <- function(dir.in,
 
     ## REGEX-Validierung der Dateinamen
 
-    regex.test <- grep(paste0("[0-5]", # Senatsnummer
+    regex.fail <- grep(paste0("[0-5]", # Senatsnummer
                               "_",
                               "((StR)|(ARS))", # Registerzeichen
                               "_",
@@ -85,10 +85,10 @@ f.unzip_rename  <- function(dir.in,
     
     ## Stoppen falls REGEX-Validierung gescheitert
 
-    if (length(regex.test) != 0){
+    if (length(regex.fail) != 0){
 
         warning("Folgende Dateinamen sind fehlerhaft:")
-        warning(regex.test)
+        warning(paste0(regex.fail, collapse = ", "))
         
         stop("REGEX-Validierung gescheitert: Dateinamen entsprechen nicht dem Codebook-Schema!!")
     }
