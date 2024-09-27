@@ -64,7 +64,7 @@ f.unzip_rename  <- function(dir.in,
 
     ## REGEX-Validierung der Dateinamen
 
-    regex.test <- grep(paste0("[0-9]", # Senats
+    regex.test <- grep(paste0("[0-5]", # Senatsnummer
                               "_",
                               "((StR)|(ARS))", # Registerzeichen
                               "_",
