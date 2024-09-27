@@ -330,10 +330,7 @@ list(
 
 
 
-## Main Pipeline
-
-
-### Unzip
+## Entpacken und Standardisieren von Dateinamen
 
 ```{targets tar.unzip.rename}
 
@@ -345,44 +342,49 @@ tar_target(pdf.original,
 ```
 
 
+## Konvertieren
 
-### Tesseract
+### Optical Character Recognition (OCR)
 
 
 ```{targets  tar.tesseract}
 
-tar_target(tesseract,
-           f.tar_pdf_ocr(pdf.original[1:30],
-                         dpi = 300,
-                         lang = "deu",
-                         output = "txt",
-                         resume = config$debug$tesseractresume,
-                         crop.firstpage = 0,
-                         crop.lastpage = 0,
-                         dir.out.pdf = "files/pdf_tesseract",
-                         dir.out.txt = "files/txt_tesseract",
-						 tempfile = TRUE,
-                         chunksperworker = 1,
-                         chunksize = 1,
-                         quiet = TRUE,
-                         jobs = tessJobs),
-           format = "file")
+list(tar_target(txt.ocr,
+                f.tar_pdf_ocr(pdf.original[1:30],
+                              dpi = 300,
+                              lang = "deu",
+                              output = "txt",
+                              resume = config$debug$tesseractresume,
+                              crop.firstpage = 0,
+                              crop.lastpage = 0,
+                              dir.out.pdf = "files/pdf_tesseract",
+                              dir.out.txt = "files/txt_tesseract",
+                              tempfile = TRUE,
+                              chunksperworker = 1,
+                              chunksize = 1,
+                              quiet = TRUE,
+                              jobs = tessJobs),
+                format = "file"),
+     tar_target(dt.ocr,
+                f.readtext(x = txt.ocr,
+                           docvarnames = docvarnames))
+     )
 
 ```
 
 
-# Convert
+### PDF Text Layer extrahieren
 
-```{targets tar.convert}
+```{targets tar.pdfextract}
 
-list(tar_target(files.txt,
+list(tar_target(txt.extracted,
                 f.tar_pdf_extract(x = pdf.original,
-                                  outputdir = "files/txt",
+                                  outputdir = "files/txt_extracted",
 								  multicore = config$parallel$extractPDF,
                                   cores = fullCores),
                 format = "file"),
-     tar_target(dt.bgh,
-                f.readtext(x = files.txt,
+     tar_target(dt.extracted,
+                f.readtext(x = txt.extracted,
                            docvarnames = docvarnames))
      )
 					
