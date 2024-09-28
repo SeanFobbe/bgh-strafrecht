@@ -342,14 +342,14 @@ tar_target(pdf.original,
 
 ```
 
-<!-- ### Testen auf Querformat -->
+### Testen auf Querformat
 
-<!-- ```{targets tar.landscape} -->
+```{targets tar.landscape}
 
-<!-- tar_target(dt.landscape, -->
-<!--            f.landscape(x = pdf.original)) -->
+tar_target(dt.landscape,
+           f.landscape(x = pdf.original))
 
-<!-- ``` -->
+```
 
 <!-- ### Querformat zu Hochformat rotieren -->
 
