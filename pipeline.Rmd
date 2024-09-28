@@ -329,8 +329,9 @@ list(
 
 
 
+## Vorbereitung des Korpus
 
-## Entpacken und Standardisieren von Dateinamen
+### Entpacken und Standardisieren von Dateinamen
 
 ```{targets tar.unzip.rename}
 
@@ -338,6 +339,28 @@ tar_target(pdf.original,
            f.unzip_rename(dir.in = "zip_original",
                           dir.out = "files/pdf_original"),
            format = "file")
+
+```
+
+### Testen auf Querformat
+
+```{targets tar.landscape}
+
+tar_target(dt.landscape,
+           f.landscape(x = pdf.original))
+
+```
+
+### Querformat zu Hochformat rotieren
+
+```{targets tar.rotate}
+
+tar_target(pdf.rotated,
+           f.rotate(dt.landscape$x[dt.landscape$landscape],
+                    files.opposite = NULL,
+                    angle = -90,
+                    dir.output = "files/pdf_rotated",
+                    clean = TRUE))
 
 ```
 
