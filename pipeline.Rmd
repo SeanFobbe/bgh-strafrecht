@@ -387,7 +387,7 @@ tar_target(pdf.cleaned,
 ```{targets tar.tesseract}
 
 list(tar_target(txt.ocr,
-                f.tar_pdf_ocr(pdf.original[1:130],
+                f.tar_pdf_ocr(pdf.cleaned[1:150],
                               dpi = 300,
                               lang = "deu",
                               output = "txt",
