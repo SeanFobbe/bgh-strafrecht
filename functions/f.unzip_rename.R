@@ -29,14 +29,17 @@ f.unzip_rename  <- function(dir.in,
     files.old <- mapply(unzip,
                         zipfile = files.zip,
                         exdir = dir.out)
-   
+    
 
     ## Dateinamen lesen
     filenames.old <-  list.files(dir.out, full.names = TRUE)
-    
+
+    ## Identische Dateien entfernen
+    delete <- grep("(1_StR_275-83-ok.pdf)|(3_StR_546-96.pdf.pdf)", filenames.old, value = TRUE)
+    unlink(delete)
+    filenames.old <-  list.files(dir.out, full.names = TRUE)
 
     ## Dateinamen korrigieren
-
     filenames.new <- gsub("\\.PDF", "\\.pdf", basename(filenames.old))
     filenames.new <- gsub("STR", "StR", filenames.new)
     filenames.new <- gsub("stR", "StR", filenames.new)
@@ -51,7 +54,7 @@ f.unzip_rename  <- function(dir.in,
 
     filenames.new  <- gsub(".pdf", "_NA_NA_NA.pdf", filenames.new)
 
-    filenames.new <- gsub("[_]{1,4}", "_", filenames.new)
+    filenames.new <- gsub("[_]{1,4}", "_", filenames.new) #dup
 
     filenames.new  <- gsub("([a-dA-D])_NA_NA_NA", "_NA_NA_\\1", filenames.new)
 
@@ -59,11 +62,19 @@ f.unzip_rename  <- function(dir.in,
     filenames.new <- gsub("[_]{1,4}", "_", filenames.new)
 
     filenames.new  <- gsub("\\(S\\)_NA", "S", filenames.new)
-    filenames.new  <- gsub("_NA_NA_NA.pdf_NA_NA_NA.pdf", "_NA_NA_NA.pdf", filenames.new)
 
     
+    ## Test auf Einzigartigkeit
 
-    
+    test.unique <- sum(duplicated(filenames.new))
+
+    if(test.unique > 0){
+        warning("Folgende Dateien sind nicht einzigartig:")
+        warning(paste0(filenames.new[duplicated(filenames.new)], collapse = ", "))
+        stop("Dateinamen sind nicht einzigartig.")
+    }
+
+
 
     ## REGEX-Validierung der Dateinamen
 
