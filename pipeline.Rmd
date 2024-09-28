@@ -351,32 +351,32 @@ tar_target(dt.landscape,
 
 ```
 
-<!-- ### Querformat zu Hochformat rotieren -->
+### Querformat zu Hochformat rotieren
 
-<!-- ```{targets tar.rotate} -->
+```{targets tar.rotate}
 
-<!-- tar_target(pdf.rotated, -->
-<!--            f.rotate(dt.landscape$x[dt.landscape$landscape], -->
-<!--                     files.opposite = c("2_StR_481_84_NA_NA_NA.pdf" -->
-<!--                                        "4_StR_131_60_NA_NA_NA.pdf" -->
-<!--                                        "4_StR_190_70_NA_NA_NA.pdf" -->
-<!--                                        "4_StR_512_89_NA_NA_NA.pdf"), -->
-<!--                     angle = -90, -->
-<!--                     dir.output = "files/pdf_rotated", -->
-<!--                     clean = TRUE)) -->
+tar_target(pdf.rotated,
+           f.rotate(dt.landscape$x[dt.landscape$landscape],
+                    files.opposite = c("2_StR_481_84_NA_NA_NA.pdf",
+                                       "4_StR_131_60_NA_NA_NA.pdf",
+                                       "4_StR_190_70_NA_NA_NA.pdf",
+                                       "4_StR_512_89_NA_NA_NA.pdf"),
+                    angle = -90,
+                    dir.output = "files/pdf_rotated",
+                    clean = TRUE))
 
-<!-- ``` -->
+```
 
-<!-- ### Originale und rotierte PDF-Dateien vereinigen -->
+### Originale und rotierte PDF-Dateien vereinigen
 
 
-<!-- ```{targets tar.original.rotate.unite} -->
+```{targets tar.original.rotate.unite}
 
-<!-- tar_target(pdf.cleaned, -->
-<!--            c(pdf.original[basename(pdf.original) %notin% basename(pdf.rotated)], -->
-<!--              pdf.rotated)) -->
+tar_target(pdf.cleaned,
+           c(pdf.original[basename(pdf.original) %notin% basename(pdf.rotated)],
+             pdf.rotated))
 
-<!-- ``` -->
+```
 
 
 ## Konvertieren
