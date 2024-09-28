@@ -367,7 +367,16 @@ tar_target(pdf.rotated,
 
 ```
 
+### Originale und rotierte PDF-Dateien vereinigen
 
+
+```{targets tar.original.rotate.unite}
+
+tar_target(pdf.cleaned,
+           c(pdf.original[basename(pdf.original) %notin% basename(pdf.rotated)],
+             pdf.rotated))
+
+```
 
 ## Konvertieren
 
