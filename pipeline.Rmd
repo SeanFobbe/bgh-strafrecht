@@ -293,9 +293,6 @@ tar_target(changelog,
 
 
 
-
-
-
 ### Datenmodell
 
 Dieses Target liest das maschinenlesbare Datenmodell für den Datensatz ein.
@@ -309,6 +306,22 @@ list(
                fread(file.datamodel))
 )
 ```
+
+### Problematische OCR-Dateien
+
+Diese Dateien verursachen seltsames Verhalten in der OCR-Pipeline. In der Regel reichen 10-15 GB Arbeitsspeicher aus um 5-6 Tesseract Jobs parallel laufen zu lassen, diese Dateien verbrauchen über 64GB Arbeitsspeicher selbst bei nur einem Tesseract Job.
+
+
+```{targets tar.file.datamodel}
+list(
+    tar_target(file.ocrprob,
+               "data/ocr-problem-cases.txt",
+               format = "file"),
+    tar_target(pdf.ocrprob,
+               readLines(file.ocrprob))
+)
+```
+
 
 
 ### Tabelle mit OCR-Korrekturen
@@ -381,13 +394,25 @@ tar_target(pdf.cleaned,
 
 ## Konvertieren
 
+### Problematische PDF-Dateien entfernen
+
+```{targets tar.original.rotate.unite}
+
+tar_target(pdf.cleaned.noprob,
+           pdf.cleaned[basename(pdf.cleaned) %notin% basename(pdf.ocrprob)])
+
+```
+
+
+
+
 ### Optical Character Recognition (OCR)
 
 
 ```{targets tar.tesseract}
 
 list(tar_target(txt.ocr,
-                f.tar_pdf_ocr(pdf.cleaned,
+                f.tar_pdf_ocr(pdf.cleaned.noprob,
                               dpi = 300,
                               lang = "deu",
                               output = "txt",
