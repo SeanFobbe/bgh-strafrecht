@@ -415,30 +415,30 @@ tar_target(length,
 ### Optical Character Recognition (OCR)
 
 
-<!-- ```{targets tar.convert.tesseract} -->
+```{targets tar.convert.tesseract}
 
-<!-- list(tar_target(txt.ocr, -->
-<!--                 f.tar_pdf_ocr(pdf.cleaned, -->
-<!--                               dpi = 300, -->
-<!--                               lang = "deu", -->
-<!--                               output = "txt", -->
-<!--                               resume = config$debug$tesseractresume, -->
-<!--                               crop.firstpage = 0, -->
-<!--                               crop.lastpage = 0, -->
-<!--                               dir.out.pdf = "files/pdf_tesseract", -->
-<!--                               dir.out.txt = "files/txt_tesseract", -->
-<!--                               tempfile = TRUE, -->
-<!--                               chunksperworker = 1, -->
-<!--                               chunksize = 1, -->
-<!--                               quiet = TRUE, -->
-<!--                               jobs = tessJobs), -->
-<!--                 format = "file"), -->
-<!--      tar_target(dt.ocr, -->
-<!--                 f.readtext(x = txt.ocr, -->
-<!--                            docvarnames = docvarnames)) -->
-<!--      ) -->
+list(tar_target(txt.ocr,
+                f.tar_pdf_ocr(pdf.cleaned.noprob,
+                              dpi = 300,
+                              lang = "deu",
+                              output = "txt",
+                              resume = config$debug$tesseractresume,
+                              crop.firstpage = 0,
+                              crop.lastpage = 0,
+                              dir.out.pdf = "files/pdf_tesseract",
+                              dir.out.txt = "files/txt_tesseract",
+                              tempfile = TRUE,
+                              chunksperworker = 1,
+                              chunksize = 1,
+                              quiet = TRUE,
+                              jobs = tessJobs),
+                format = "file"),
+     tar_target(dt.ocr,
+                f.readtext(x = txt.ocr,
+                           docvarnames = docvarnames))
+     )
 
-<!-- ``` -->
+```
 
 
 ### PDF Text Layer extrahieren
