@@ -404,6 +404,12 @@ tar_target(pdf.cleaned.noprob,
 ```
 
 
+```{targets tar.TESTING1}
+
+tar_target(length,
+           length(pdf.cleaned.noprob))
+
+```
 
 
 ### Optical Character Recognition (OCR)
