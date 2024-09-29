@@ -114,13 +114,18 @@ f.tar_pdf_ocr <- function(x,
         
 
     ## Sort files
-    files.pdf <- list.files("temp_tesseract", pattern = "\\.pdf", full.names = TRUE)
-    files.txt <- list.files("temp_tesseract", pattern = "\\.txt", full.names = TRUE)
 
-    invisible(file.rename(files.pdf, file.path(dir.out.pdf, basename(files.pdf))))
-    invisible(file.rename(files.txt, file.path(dir.out.txt, basename(files.txt))))
+    if (grepl("txt", output) == TRUE){
+        files.txt <- list.files("temp_tesseract", pattern = "\\.txt", full.names = TRUE)
+        invisible(file.rename(files.txt, file.path(dir.out.txt, basename(files.txt))))
+    }
+    
+    if (grepl("pdf", output) == TRUE){
+        files.pdf <- list.files("temp_tesseract", pattern = "\\.pdf", full.names = TRUE)
+        invisible(file.rename(files.pdf, file.path(dir.out.pdf, basename(files.pdf))))
+    }
 
-
+    
     ## Delete temp dir
     unlink("temp_tesseract", recursive = TRUE)
 
