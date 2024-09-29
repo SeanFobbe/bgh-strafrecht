@@ -396,7 +396,7 @@ tar_target(pdf.cleaned,
 
 ### Problematische PDF-Dateien entfernen
 
-```{targets tar.original.rotate.unite}
+```{targets tar.convert.removeprob}
 
 tar_target(pdf.cleaned.noprob,
            pdf.cleaned[basename(pdf.cleaned) %notin% basename(pdf.ocrprob)])
@@ -409,7 +409,7 @@ tar_target(pdf.cleaned.noprob,
 ### Optical Character Recognition (OCR)
 
 
-```{targets tar.tesseract}
+```{targets tar.convert.tesseract}
 
 list(tar_target(txt.ocr,
                 f.tar_pdf_ocr(pdf.cleaned.noprob,
@@ -437,7 +437,7 @@ list(tar_target(txt.ocr,
 
 ### PDF Text Layer extrahieren
 
-```{targets tar.pdfextract}
+```{targets tar.convert.pdfextract}
 
 list(tar_target(txt.extracted,
                 f.tar_pdf_extract(x = pdf.original,
