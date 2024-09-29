@@ -459,6 +459,16 @@ list(tar_target(txt.extracted,
 ```					
 
 
+## Enhance
+
+
+```{targets tar.enhance.cleantext}
+
+tar_target(text_cleaned,
+           f.clean_text(dt.ocr$text))
+
+```
+
 
 
 
