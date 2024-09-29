@@ -465,6 +465,17 @@ tar_target(var_text,
 
 ```
 
+### Variable erstellen: \enquote{datum}
+
+
+```{targets tar.enhance.date}
+
+tar_target(var_date,
+           f.var_date(dt.ocr$text))
+
+```
+
+
 
 ### Variablen erstellen: \enquote{bghst, bghz, bghr, nachschlagewerk}
 
