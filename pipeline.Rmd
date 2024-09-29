@@ -483,7 +483,7 @@ Berechnung klassischer linguistischer Kennzahlen.
 
 ```{targets tar.enhance.lingstats}
 tar_target(var_lingstats,
-                f.lingstats(dt.ocr,
+                f.lingstats(data.table(doc_id = 1:length(var_text), text = var_text),
                             multicore = config$parallel$lingsummarize,
                             cores = fullCores,
                             germanvars = TRUE))
