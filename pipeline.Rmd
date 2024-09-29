@@ -471,7 +471,8 @@ tar_target(var_text,
 ```{targets tar.enhance.date}
 
 tar_target(var_date,
-           f.var_date(dt.ocr$text))
+           f.var_date(x = dt.ocr$text,
+                      limit = 2000))
 
 ```
 
