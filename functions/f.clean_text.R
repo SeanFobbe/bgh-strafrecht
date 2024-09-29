@@ -21,7 +21,7 @@ f.clean_text <- function(x){
                                          replacement = "§ $1")
 
 
-    return(revised
+    return(revised)
     
 }
 
