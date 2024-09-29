@@ -456,6 +456,8 @@ list(tar_target(txt.extracted,
 ## Enhance
 
 
+### OCR-Fehler im Text bereinigen
+
 ```{targets tar.enhance.cleantext}
 
 tar_target(var_text,
