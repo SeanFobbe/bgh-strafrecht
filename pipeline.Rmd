@@ -312,7 +312,7 @@ list(
 Diese Dateien verursachen seltsames Verhalten in der OCR-Pipeline. In der Regel reichen 10-15 GB Arbeitsspeicher aus um 5-6 Tesseract Jobs parallel laufen zu lassen, diese Dateien verbrauchen über 64GB Arbeitsspeicher selbst bei nur einem Tesseract Job.
 
 
-```{targets tar.file.datamodel}
+```{targets tar.file.ocrprob}
 list(
     tar_target(file.ocrprob,
                "data/ocr-problem-cases.txt",
