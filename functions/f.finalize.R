@@ -13,7 +13,6 @@ f.finalize <- function(x,
                        vars.additional,
                        varnames){
 
-
     
     ## Unit Test
     test_that("Input is of correct type.", {
