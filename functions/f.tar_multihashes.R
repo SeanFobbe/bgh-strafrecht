@@ -58,8 +58,8 @@ f.tar_multihashes <- function(x,
 #' Please note that you must declare your own future evaluation strategy prior to using the function to enable parallelization. By default the function will be evaluated sequentially. On Windows, use future::plan(multisession, workers = n), on Linux/Mac, use future::plan(multicore, workers = n), where n stands for the number of CPU cores you wish to use. Due to the need to read/write to the disk the function may not work properly on high-performance clusters.
 
 
-#' @param x A vector of filenames. Should be located in the working directory.
-
+#' @param x Character. A vector of filenames or paths.
+#' @param quiet Logical. Whether to print length, begin, end and duration.
 
 
 
@@ -112,12 +112,12 @@ f.future_multihashes <- function(x,
 
 #' Computation of SHA2 and SHA3 Hashes
 
-#' Computes SHA2-256 and SHA3-512 hashes for a single file. It returns a data frame with the file name, SHA2-256 hashe and SHA3-512 hash.
+#' Computes SHA2-256 and SHA3-512 hashes for a single file. The function requires the system "openssl" library.
+
+
+#' @param x Character. A vector of file names or paths to files.
 #'
-#' The function calls the system "openssl" library.
-
-
-#' @param x Path to file.
+#' @return Data.table. Contains file name and hashes.
 
 
 #+
@@ -126,6 +126,7 @@ f.future_multihashes <- function(x,
 
 
 f.multihashes <- function(x){
+    
     sha2.256 <- system2("openssl",
                         paste("sha256",
                               x),
@@ -144,11 +145,12 @@ f.multihashes <- function(x){
                      "",
                      sha3.512)
     
-    hashes <- data.frame(x,
-                         sha2.256,
-                         sha3.512)
+    hashes <- data.table::data.table(x,
+                                     sha2.256,
+                                     sha3.512)
     
     return(hashes)
+    
 }
 
 
