@@ -34,12 +34,22 @@ f.finalize <- function(x,
 
     ## Clean Dates (also sorts by date!)
     dt.final <- f.clean_dates_courts_de(x = dt.final,
-                                       boundary = 50)
+                                        boundary = 50)
 
+    ## Remove implausible dates
+    index <- dt.final$datum > 1950-10-1 # 1 October 1950 is founding of BGH
+    dt.final$datum[index] <- NA
+
+    index <- dt.final$datum < 2000-01-01 # 1 January 2000 is limit of dataset
+    dt.final$datum[index] <- NA
+    
+    
+    ## Add variable "gericht"
+    dt.final$gericht <- rep("BGH", nrow(dt.final))
 
     ## Unit Test: Check if all variables are documented
     varnames <- gsub("\\\\", "", varnames) # Remove LaTeX escape characters
-    stopifnot(length(setdiff(names(dt.final), varnames)) == 0)
+    stopifnot(setequal(names(dt.final), varnames))
     
     ## Order variables as in Codebook
     data.table::setcolorder(dt.final, varnames)
@@ -52,8 +62,8 @@ f.finalize <- function(x,
     })
 
     test_that("Date is plausible", {
-        expect_true(all(dt.final$datum > "2000-01-01"))
-        expect_true(all(dt.final$datum <= Sys.Date()))
+        expect_true(all(dt.final$datum > "1950-10-01")) # Minimum
+        expect_true(all(dt.final$datum <= "2000-01-01")) # Maximum
     })
 
     test_that("Year is plausible", {
