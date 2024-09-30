@@ -48,8 +48,25 @@ f.finalize <- function(x,
     dt.final$gericht <- rep("BGH", nrow(dt.final))
 
     ## Add variable "spruchkoerper_db"
-
     dt.final$spruchkoerper_db <- paste0("Strafsenat-", dt.final$spruchkoerper_az)
+
+    ## Rebuild variable "doc_id"
+    dt.final$doc_id <- with(data = dt.final,
+                            paste(gericht,
+                                  spruchkoerper_db,
+                                  "NA",
+                                  datum,
+                                  spruchkoerper_az,
+                                  registerzeichen,
+                                  eingangsnummer,
+                                  eingangsjahr_az,
+                                  zusatz_az,
+                                  "NA",
+                                  kollision,
+                                  sep = "_"))
+
+    dt.final$doc_id <- paste0(dt.final$doc_id, ".txt")
+
 
     ## Unit Test: Check if all variables are documented
     varnames <- gsub("\\\\", "", varnames) # Remove LaTeX escape characters
