@@ -725,6 +725,89 @@ tarchetypes::tar_render(report.codebook,
 
 
 
+## ZIP Targets
+
+Diese Abschnitt der Pipeline erstellt ZIP-Archive für alle zentralen Rechenergebnisse und speichert diese im Ordner \enquote{output}.
+
+
+
+
+
+### ZIP erstellen: Analyse-Dateien
+
+```{targets tar.zip.analysis}
+tar_target(zip.analysis,
+           f.tar_zip("analysis/",
+                     filename = paste(prefix.files,
+                                      "DE_Analyse.zip",
+                                      sep = "_"),
+                     dir = "output",
+                     mode = "cherry-pick",
+                     report.codebook,    # manually enforced dependency relationship
+                     report.robustness), # manually enforced dependency relationship
+           format = "file")
+```
+
+
+
+
+
+### ZIP erstellen: Source Code
+
+
+```{targets tar.zip.source}
+tar_target(zip.source,
+                f.tar_zip(files.source,
+                              filename = paste0(prefix.files,
+                                                "_Source_Code.zip"),
+                              dir = "output",
+                              mode = "mirror"),
+                format = "file")
+```
+
+
+
+
+### ZIP erstellen: CSV-Datei (voller Datensatz)
+
+
+```{targets tar.zip.csv.full}
+tar_target(zip.csv.final,
+                f.tar_zip(csv.final,
+                              filename = gsub("\\.csv", "\\.zip", basename(csv.final)),
+                              dir = "output",
+                              mode = "cherry-pick"),
+                format = "file")
+```
+
+
+
+### ZIP erstellen: CSV-Datei (nur Metadaten)
+
+
+```{targets tar.zip.csv.meta}
+tar_target(zip.csv.meta,
+                f.tar_zip(csv.meta,
+                              filename = gsub("\\.csv", "\\.zip", basename(csv.meta)),
+                              dir = "output",
+                              mode = "cherry-pick"),
+                format = "file")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Pipeline: Kompilierung
 
 
