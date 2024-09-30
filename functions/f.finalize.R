@@ -32,10 +32,6 @@ f.finalize <- function(x,
     dt.final <- cbind(x,
                      vars.additional)
 
-    ## Clean Dates (also sorts by date!)
-    dt.final <- f.clean_dates_courts_de(x = dt.final,
-                                        boundary = 50)
-
     ## Remove implausible dates
     index <- dt.final$datum > 1950-10-1 # 1 October 1950 is founding of BGH
     dt.final$datum[index] <- NA
@@ -43,6 +39,10 @@ f.finalize <- function(x,
     index <- dt.final$datum < 2000-01-01 # 1 January 2000 is limit of dataset
     dt.final$datum[index] <- NA
     
+    ## Clean Dates (also sorts by date!)
+    dt.final <- f.clean_dates_courts_de(x = dt.final,
+                                        boundary = 50)
+
     
     ## Add variable "gericht"
     dt.final$gericht <- rep("BGH", nrow(dt.final))
@@ -61,14 +61,14 @@ f.finalize <- function(x,
         expect_s3_class(dt.final, "data.table")
     })
 
-    test_that("Date is plausible", {
-        expect_true(all(dt.final$datum > "1950-10-01")) # Minimum
-        expect_true(all(dt.final$datum <= "2000-01-01")) # Maximum
+    test_that("Decision Date is plausible", {
+        expect_true(all(na.omit(dt.final$datum) > "1950-10-01")) # Minimum
+        expect_true(all(na.omit(dt.final$datum) <= "2000-01-01")) # Maximum
     })
 
-    test_that("Year is plausible", {
-        expect_true(all(dt.final$entscheidungsjahr >= 2000))
-        expect_true(all(dt.final$entscheidungsjahr <= year(Sys.Date())))
+    test_that("Decision Year is plausible", {
+        expect_true(all(na.omit(dt.final$entscheidungsjahr) >= 1950))
+        expect_true(all(na.omit(dt.final$entscheidungsjahr) <= 2000))
     })
 
 
