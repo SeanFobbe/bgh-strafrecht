@@ -483,6 +483,36 @@ tar_target(var_date,
 
 
 
+### Variable erstellen: \enquote{verfahrensart}
+
+Die Variable \enquote{verfahrensart} wird aus den Registerzeichen berechnet.
+
+```{targets tar.enhance.verfahrensart}
+tar_target(var_verfahrensart,
+                f.var_verfahrensart(dt.ocr$registerzeichen,
+                                    az.brd = az.brd,
+                                    gericht = "BGH"))
+```
+
+
+
+
+
+### Variable erstellen: \enquote{aktenzeichen}
+
+Das Aktenzeichen wird aus seinen Komponenten berechnet.
+
+
+```{targets tar.enhance.az}
+tar_target(var_aktenzeichen,
+                f.var_aktenzeichen(x = dt.ocr,
+                                   az.brd = az.brd,
+                                   gericht = "BGH"))
+```
+
+
+
+
 ### Variablen erstellen: \enquote{bghst, bghz, bghr, nachschlagewerk}
 
 ```{targets tar.enhance.sammlungen}
