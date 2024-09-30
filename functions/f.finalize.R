@@ -32,6 +32,9 @@ f.finalize <- function(x,
     dt.main <- cbind(x,
                      vars.additional)
 
+    ## Clean Dates (also sorts by date!)
+    dt.main <- f.clean_dates(dt.main)
+
 
     ## Unit Test: Check if all variables are documented
     varnames <- gsub("\\\\", "", varnames) # Remove LaTeX escape characters
