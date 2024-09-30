@@ -543,6 +543,19 @@ tar_target(vars_additional,
 
 
 
+### Finalen Datensatz erstellen
+
+Die Verbesserungen der vorherigen Schritte werden in dieser Funktion zusammengefügt um den finalen Datenatz herzustellen.
+
+
+```{targets tar.enhance.final}
+tar_target(dt.final,
+           f.finalize(x = dt.ocr,
+                      vars.additional = vars_additional,
+                      varnames = datamodel$varname))
+
+```
+
 
 
 
