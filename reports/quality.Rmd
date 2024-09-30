@@ -1,5 +1,5 @@
 ---
-title: "Robustness Checks | Corpus der Entscheidungen des Bundesgerichtshofs (CE-BGH)"
+title: "Robustness Checks | Entscheidungen des Bundesgerichtshofs für Strafsachen aus dem 20. Jahrhundert (BGH-Strafrecht-20Jhd)"
 author: Seán Fobbe
 geometry: margin=3cm
 papersize: a4
