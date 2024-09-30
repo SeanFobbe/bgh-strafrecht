@@ -80,6 +80,15 @@ f.finalize <- function(x,
         expect_true(all(na.omit(dt.final$eingangsjahr_iso) <= 2000))
     })
 
+    test_that("Spruchkörper_db contains only expected values.", {
+        expect_in(dt.final$spruchkoerper_db, paste0("Strafsenat-", 1:6))
+    })
+
+    
+    test_that("Spruchkörper_az contains only expected values.", {
+        expect_in(dt.final$spruchkoerper_az, c(1:6))
+    })
+    
 
     test_that("Registerzeichen contain only expected values", {
         expect_in(dt.final$registerzeichen,
