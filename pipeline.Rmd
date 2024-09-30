@@ -241,8 +241,7 @@ docvarnames <- c("spruchkoerper_az",
                  "eingangsjahr_az",
                  "zusatz_az",
                  "name",
-                 "kollision",
-				 "tesseract")
+                 "kollision")
 
 ```
 

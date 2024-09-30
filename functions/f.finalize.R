@@ -22,7 +22,7 @@ f.finalize <- function(x,
     })
 
     ## Remove Tesseract Indicator
-    x$tesseract <- NULL
+    x$docvar8 <- NULL
         
     ## Rename Raw OCR Text Variable
     setnames(x, "text", "text_raw")
