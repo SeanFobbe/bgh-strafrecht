@@ -14,7 +14,7 @@ eingangsjahr\_iso,Integer,Eingangsjahr im Format YYYY-MM-DD (ISO-8601).
 zusatz\_az,String,"Der Zusatz zu einem Aktenzeichen, falls vorhanden."
 name,String,Der Name der Entscheidung wie er in der amtlichen Datenbank angegeben ist. In diesem Datensatz nicht vergeben. Nur für Kompatibilität der Dateinamen mit dem CE-BGH enthalten.
 kollision,Integer,In wenigen Fällen sind am gleichen Tag mehrere Entscheidungen zum gleichen Aktenzeichen ergangen. Diese werden ab der zweiten Entscheidung pro Tag durch eine Kollisions-ID ausdifferenziert.
-aktenzeichen,String,Das amtliche Aktenzeichen im Format [senatsnummer] [registerzeichen] [eingangsnummer] / [eingangsjahr] [ggf. zusatz\_az]
+aktenzeichen,String,Das amtliche Aktenzeichen im Format [senatsnummer] [registerzeichen] [eingangsnummer] / [eingangsjahr] [ggf. zusatz\_az]. Das Aktenzeichen wurde vom BGH zusammen mit den Dateien im Dateinamen mitgeliefert und von den Autoren bereinigt und auf Plausibilität getestet
 bghst,Binary,"(Nur CSV-Datei) Ob die Entscheidung in die amtliche Sammlung BGHSt aufgenommen wird. \enquote{1} falls ja, \enquote{0} falls nein."
 bghz,Binary,"(Nur CSV-Datei) Ob die Entscheidung in die amtliche Sammlung BGHZ aufgenommen wird. \enquote{1} falls ja, \enquote{0} falls nein."
 bghr,Binary,"(Nur CSV-Datei) Ob die Entscheidung in die Sammlung BGHR aufgenommen wird. \enquote{1} falls ja, \enquote{0} falls nein."
