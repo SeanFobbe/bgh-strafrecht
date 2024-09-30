@@ -29,11 +29,11 @@ f.finalize <- function(x,
     
 
     ## Bind additional vars
-    dt.main <- cbind(x,
+    dt.final <- cbind(x,
                      vars.additional)
 
     ## Clean Dates (also sorts by date!)
-    dt.main <- f.clean_dates_courts_de(x = dt.main,
+    dt.final <- f.clean_dates_courts_de(x = dt.final,
                                        boundary = 50)
 
 
