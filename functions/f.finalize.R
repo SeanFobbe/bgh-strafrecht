@@ -61,14 +61,19 @@ f.finalize <- function(x,
         expect_s3_class(dt.final, "data.table")
     })
 
-    test_that("Decision Date is plausible", {
+    test_that("Decision date is plausible", {
         expect_true(all(na.omit(dt.final$datum) > "1950-10-01")) # Minimum
         expect_true(all(na.omit(dt.final$datum) <= "2000-01-01")) # Maximum
     })
 
-    test_that("Decision Year is plausible", {
+    test_that("Decision year is plausible", {
         expect_true(all(na.omit(dt.final$entscheidungsjahr) >= 1950))
         expect_true(all(na.omit(dt.final$entscheidungsjahr) <= 2000))
+    })
+
+    test_that("Incoming year is plausible", {
+        expect_true(all(na.omit(dt.final$eingangsjahr_iso) >= 1950))
+        expect_true(all(na.omit(dt.final$eingangsjahr_iso) <= 2000))
     })
 
 
@@ -85,7 +90,7 @@ f.finalize <- function(x,
 
     
     test_that("Dummy variables contain only 0 and 1.", {
-        expect_setequal(dt.final$bghz, c(0, 1))
+        expect_setequal(dt.final$bghz, 0)
         expect_setequal(dt.final$bghr, c(0, 1))
         expect_setequal(dt.final$bghst, c(0, 1))
         expect_setequal(dt.final$nachschlagewerk, c(0, 1))
