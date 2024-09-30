@@ -34,6 +34,152 @@ knitr::opts_chunk$set(fig.path = file.path("..", "analysis/"),
 
 
 
+# Ergebnisse laden
+
+
+```{r}
+tar_load(latexdefs)
+tar_load(dt.final)
+
+```
+
+
+
+
+
+
+# Pipeline visualisieren
+
+
+
+```{r, CE-BGH_00_Pipeline_Graph_karmesinrot, fig.width = 12, fig.height = 14, fig.pos = "p", fig.cap = "Der vollständige Prozess der Datensatz-Kompilierung."}
+
+
+edgelist <- tar_network(targets_only = TRUE)$edges
+setDT(edgelist)
+
+g  <- igraph::graph_from_data_frame(edgelist,
+                                    directed = TRUE)
+
+ggraph(g,
+       'sugiyama') + 
+    geom_edge_diagonal(colour = "#7e0731")+
+    geom_node_point(size = 2,
+                    color = "white")+
+    geom_node_text(aes(label = name),
+                   color = "white",
+                   size = 2,
+                   repel = TRUE)+
+    theme_void()+
+    labs(
+        title = paste(prefix.figuretitle,
+                      "| Vollständiger Prozess der Datensatz-Kompilierung"),
+        caption = caption
+    )+
+    theme(
+        plot.title = element_text(size = 14,
+                                  face = "bold",
+                                  color = "white"),                        
+        plot.background = element_rect(fill = "black"),
+        plot.caption = element_text(color = "white"),
+        plot.margin = margin(10, 20, 10, 10)
+    )
+
+```
+
+
+
+
+# Variablen
+
+## Anzahl Variablen
+
+```{r}
+length(dt.final)
+```
+
+
+## Alle Namen der Variablen
+
+```{r}
+names(dt.final)
+```
+
+
+## Beispiel-Werte
+
+```{r}
+str(dt.final)
+```
+
+
+
+
+
+
+
+# Frequenztabellen erstellen
+
+
+## Ignorierte Variablen
+
+ **Hinweis:** Diese Variablen werden bei der Erstellung der Frequenztabellen nicht berücksichtigt.
+
+```{r}
+freqtable.ignore  <-  c("text",
+                        "text_raw",
+                        "eingangsnummer",
+                        "datum",
+                        "doc_id",
+                        "aktenzeichen",
+                        "name",
+                        "tokens",
+                        "typen",
+                        "saetze",
+                        "zeichen")
+```
+
+
+
+
+
+
+## Vorbereitung
+
+
+```{r}
+
+## Liste zu prüfender Variablen
+
+varlist <- setdiff(names(dt.bgh.final), freqtable.ignore)
+print(varlist)
+
+
+## Präfix definieren
+
+prefix <- paste0(config$project$shortname,
+                 "_01_Frequenztabelle_var-")
+
+```
+
+## Frequenztabellen berechnen
+
+
+```{r, results = "asis"}
+
+f.fast.freqtable(dt.bgh.final,
+                 varlist = varlist,
+                 sumrow = TRUE,
+                 output.list = FALSE,
+                 output.kable = TRUE,
+                 output.csv = TRUE,
+                 outputdir = dir.analysis,
+                 prefix = prefix,
+                 align = c("p{5cm}",
+                           rep("r", 4)))
+
+```
+
 
 
 
@@ -42,9 +188,6 @@ cat(readLines(tar_read(changelog)),
     sep = "\n")
 
 ```
-
-
-
 
 
 
