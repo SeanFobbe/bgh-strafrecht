@@ -47,6 +47,10 @@ f.finalize <- function(x,
     ## Add variable "gericht"
     dt.final$gericht <- rep("BGH", nrow(dt.final))
 
+    ## Add variable "spruchkoerper_db"
+
+    dt.final$spruchkoerper_db <- paste0("Strafsenat-", dt.final$spruchkoerper_az)
+
     ## Unit Test: Check if all variables are documented
     varnames <- gsub("\\\\", "", varnames) # Remove LaTeX escape characters
     stopifnot(setequal(names(dt.final), varnames))
