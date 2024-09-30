@@ -301,7 +301,7 @@ Dieses Target liest das maschinenlesbare Datenmodell für den Datensatz ein.
 ```{targets tar.file.datamodel}
 list(
     tar_target(file.datamodel,
-               "data/BGH-Strafrecht_Datamodel.csv",
+               "data/BGH-Strafrecht_Variables.csv",
                format = "file"),
     tar_target(datamodel,
                fread(file.datamodel))
