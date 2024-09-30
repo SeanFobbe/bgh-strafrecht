@@ -41,7 +41,7 @@ f.finalize <- function(x,
     
     ## Clean Dates (also sorts by date!)
     dt.final <- f.clean_dates_courts_de(x = dt.final,
-                                        boundary = 50)
+                                        boundary = 45)
 
     
     ## Add variable "gericht"
