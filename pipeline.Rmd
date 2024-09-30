@@ -812,6 +812,19 @@ tar_target(zip.csv.meta,
 
 
 
+### ZIP erstellen: TXT-Dateien
+
+```{targets tar.zip.txt}
+tar_target(zip.txt,
+           f.tar_zip(x = txt_best,
+                     filename = paste(prefix.files,
+                                      "DE_TXT_Datensatz.zip",
+                                      sep = "_"),
+                     dir = "output",
+                     mode = "cherry-pick"),
+           format = "file")
+```
+
 
 
 
