@@ -68,3 +68,13 @@ f.finalize <- function(x,
     
 
 }
+
+
+## DEBUGGING CODE
+
+## library(data.table)
+## library(testthat)
+
+## x <- tar_read(dt.ocr)
+## vars.additional <-  tar_read(vars_additional)
+## varnames <- tar_read(datamodel)$varname
