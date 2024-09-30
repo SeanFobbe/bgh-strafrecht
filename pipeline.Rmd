@@ -529,6 +529,23 @@ tar_target(var_constants,
 
 
 
+### Zusätzliche Variablen zusammenführen
+
+```{targets tar.enhance.unify}
+tar_target(vars_additional,
+           data.table(var_date,
+                      var_text,
+                      var_lingstats,
+					  var_sammlungen,
+                      var_constants))
+
+```
+
+
+
+
+
+
 
 ## Report Targets
 
