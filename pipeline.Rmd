@@ -1,5 +1,5 @@
 ---
-title: "Compilation Report | Historische Entscheidungen des Bundesgerichtshofs in Strafsachen"
+title: "Compilation Report | Entscheidungen des Bundesgerichtshofs in Strafsachen aus dem 20. Jahrhundert"
 author: Seán Fobbe und Tilko Swalve
 geometry: margin=3cm
 fontsize: 11pt
