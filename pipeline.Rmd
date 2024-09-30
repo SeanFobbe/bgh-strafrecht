@@ -656,6 +656,22 @@ tar_target(csv.meta,
 
 
 
+### TXT schreiben: Voller Datensatz (reduziert)
+
+```{targets tar.write.txt.best}
+tar_target(txt_best,
+           f.tar_write_txt(text = dt.final$text,
+                           doc_id = dt.final$doc_id,
+                           dir = "files/txt_best",
+                           cleandir = TRUE))
+
+```
+
+
+
+
+
+
 ## Report Targets
 
 Dieser Abschnitt der Pipeline erstellt die finalen Berichte (Codebook und Robustness Checks).
