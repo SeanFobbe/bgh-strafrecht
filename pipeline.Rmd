@@ -517,14 +517,14 @@ Konstanten die dem Datensatz wichtige Herkunftsinformationen hinzufügen. Darunt
 
 
 
-<!-- ```{targets tar.enhance.constants} -->
-<!-- tar_target(var_constants, -->
-<!--            data.frame(version = config$version$semantic, -->
-<!--                       doi_concept = config$doi$data$concept, -->
-<!--                       doi_version = config$doi$data$version, -->
-<!--                       lizenz = as.character(config$license$data))[rep(1, -->
-<!--                                                                       nrow(dt.ocr)),]) -->
-<!-- ``` -->
+```{targets tar.enhance.constants}
+tar_target(var_constants,
+           data.frame(version = config$version$semantic,
+                      doi_concept = config$doi$data$concept,
+                      doi_version = config$doi$data$version,
+                      lizenz = as.character(config$license$data))[rep(1,
+                                                                      nrow(dt.ocr)),])
+```
 
 
 
