@@ -293,6 +293,24 @@ tar_target(changelog,
 
 
 
+### Aktenzeichen der Bundesrepublik Deutschland (AZ-BRD)
+
+Die Tabelle der Registerzeichen und der ihnen zugeordneten Verfahrensarten stammt aus dem folgenden Datensatz: \enquote{Seán Fobbe (2021). Aktenzeichen der Bundesrepublik Deutschland (AZ-BRD). Version 1.0.1. Zenodo. DOI: 10.5281/zenodo.4569564.}
+
+
+
+```{targets tar.file.az}
+list(
+    tar_target(file.az.brd,
+           "data/AZ-BRD_1-0-1_DE_Registerzeichen_Datensatz.csv",
+           format = "file"),
+     tar_target(az.brd,
+                fread(file.az.brd))
+     )
+```
+
+
+
 
 ### Datenmodell
 
