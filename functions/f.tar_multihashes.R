@@ -71,7 +71,7 @@ f.future_multihashes <- function(x,
     begin <- Sys.time()
 
     ## Intro Message
-    if (quiet = FALSE){
+    if (quiet == FALSE){
     message(paste("Processing",
                   length(x),
                   "files. Begin at:",
@@ -93,7 +93,7 @@ f.future_multihashes <- function(x,
 
 
     ## Result Message
-    if (quiet = FALSE){
+    if (quiet == FALSE){
     message(paste0("Processed ",
                   length(x),
                   " files. Runtime was ",
