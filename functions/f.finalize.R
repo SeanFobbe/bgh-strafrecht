@@ -33,10 +33,10 @@ f.finalize <- function(x,
                      vars.additional)
 
     ## Remove implausible dates
-    index <- dt.final$datum > 1950-10-1 # 1 October 1950 is founding of BGH
+    index <- dt.final$datum < "1950-10-1" # 1 October 1950 is founding of BGH
     dt.final$datum[index] <- NA
 
-    index <- dt.final$datum < 2000-01-01 # 1 January 2000 is limit of dataset
+    index <- dt.final$datum > "2000-01-01" # 1 January 2000 is limit of dataset
     dt.final$datum[index] <- NA
     
     ## Clean Dates (also sorts by date!)
