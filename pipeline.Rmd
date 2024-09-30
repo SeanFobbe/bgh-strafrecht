@@ -607,6 +607,19 @@ tar_target(dt.final,
 ```
 
 
+### Variante erstellen: Nur Metadaten
+
+Hier wird die Text-Variable entfernt, um eine deutlich platzsparendere Variante des Datensatzes zu erstellen. Enthalten sind nur noch die Metadaten.
+
+
+
+```{targets tar.enhance.meta}
+tar_target(dt.meta,
+           dt.final[, !"text"])
+
+```
+
+
 
 
 
