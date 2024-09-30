@@ -698,7 +698,7 @@ tarchetypes::tar_render(report.quality,
                         output_file = file.path("../output",
                                                 paste0(config$project$shortname,
                                                        "_",
-                                                       datestamp,
+                                                       config$version$dash,
                                                        "_QualityControlReport.pdf")))
 
 ```
@@ -716,7 +716,7 @@ tarchetypes::tar_render(report.codebook,
                         output_file = file.path("../output",
                                                 paste0(config$project$shortname,
                                                        "_",
-                                                       datestamp,
+                                                       config$version$dash,
                                                        "_Codebook.pdf")))
 
 ```
