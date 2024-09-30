@@ -534,8 +534,8 @@ tar_target(var_constants,
 
 ```{targets tar.enhance.unify}
 tar_target(vars_additional,
-           data.table(var_date,
-                      var_text,
+           data.table(datum = var_date,
+                      text = var_text,
                       var_lingstats,
 					  var_sammlungen,
                       var_constants))
