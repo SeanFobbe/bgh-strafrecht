@@ -683,23 +683,23 @@ tar_target(latexdefs,
 
 ```{targets tar.report.lingstat.summ}
 tar_target(lingstats.summary,
-                f.lingstats_summary(dt.bgh.final,
+                f.lingstats_summary(dt.final,
                                     germanvars = TRUE))
 
 ```
 
 
-### Report erstellen: Robustness Checks
+### Report erstellen: Quality Control
 
 ```{targets tar.report.robustness}
-tarchetypes::tar_render(report.robustness,
+tarchetypes::tar_render(report.quality,
                         file.path("reports",
-                                  "RobustnessChecks.Rmd"),
+                                  "quality.Rmd"),
                         output_file = file.path("../output",
                                                 paste0(config$project$shortname,
                                                        "_",
                                                        datestamp,
-                                                       "_RobustnessChecks.pdf")))
+                                                       "_QualityControlReport.pdf")))
 
 ```
 
