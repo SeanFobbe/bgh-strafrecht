@@ -1,0 +1,87 @@
+%===========================
+% Titelseite
+%===========================
+
+
+\pagestyle{empty}
+
+\begin{tikzpicture}[overlay,remember picture]
+ 
+\node[align=center] at ($(current page.center)+(0,8.5)$)
+{ \scshape \Huge \bfseries Corpus der Entscheidungen \\[0.5cm] \Huge \bfseries \scshape des \\[0.5cm] \Huge \bfseries \scshape Bundesgerichtshofs \\[0.5cm] \LARGE \bfseries (\softwareshort )};
+
+\node[align=center] at ($(current page.center)+(0,2)$) 
+{ \scshape \LARGE Robustness Checks};
+
+\node[align=center] at ($(current page.center)+(0,-8)$)
+{ \large Version \version};
+
+\node[align=center] at ($(current page.center)+(0,-10)$)
+    {\includegraphics[width=0.18\linewidth]{../buttons/gplv3.png}};
+
+\node[align=center] at ($(current page.center)+(0,-12)$) 
+{ \large DOI: \softwareversiondoi};
+
+\end{tikzpicture}
+
+\newpage
+
+\pagestyle{plain}
+
+
+
+%===========================
+% Inside Cover
+%===========================
+
+\newpage
+\ra{1.5}
+
+
+\begin{centering}
+\begin{longtable}{p{2.5cm}p{12.5cm}}
+
+\textbf{Titel} & \softwaretitle \\
+\textbf{Abkürzung} & \softwareshort \\
+\textbf{Autor} & \projectauthor \\
+\textbf{Version} & \version \\
+\textbf{Download} & \url{\softwareversionurldoi}\\
+\textbf{Lizenz} & GNU General Public License Version 3 (GPLv3) \\
+
+\end{longtable}
+\end{centering}
+
+\vspace{0.5cm}
+
+\textbf{Zitiervorschlag}
+
+\emph{\projectauthor} (\the\year ). \softwaretitle\ (\softwareshort ). Version \version . Zenodo. DOI: \softwareversiondoi .
+
+
+\vspace{0.5cm}
+
+\textbf{Digital Object Identifier (DOI): Concept DOI und Version DOI}
+
+Soweit nicht anders angegeben ist die DOI immer eine \enquote{Version DOI} und bezieht sich nur auf eine bestimmte Version der Software. Sie verlinkt daher nur Version \version . Für das Gesamtkonzept der Software steht eine \enquote{Concept DOI} zur Verfügung, die auf der Zenodo-Seite jeder Version unter \enquote{Cite all versions?} zu finden ist.   Sie lautet \softwareconceptdoi . Die \enquote{Concept DOI} verlinkt immer die aktuellste Version.
+
+\vspace{0.5cm}
+
+
+\textbf{GNU General Public License Version 3 (GPLv3)}
+
+Copyright --- \the\year --- \projectauthor
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program.  If not, see \url{https://www.gnu.org/licenses/}.
+
+
+\vspace{0.5cm}
+
+\textbf{Disclaimer} 
+
+Dieser Datensatz ist eine private wissenschaftliche Initiative und steht in keiner Verbindung zu Behörden, Gerichten oder anderen amtlichen Stellen der Bundesrepublik Deutschland.
+
+\newpage
