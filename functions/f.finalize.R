@@ -83,6 +83,14 @@ f.finalize <- function(x,
         expect_true(all(dt.final$eingangsnummer < 1e4))
     })
 
+    
+    test_that("Dummy variables contain only 0 and 1.", {
+        expect_setequal(dt.final$bghz, c(0, 1))
+        expect_setequal(dt.final$bghr, c(0, 1))
+        expect_setequal(dt.final$bghst, c(0, 1))
+        expect_setequal(dt.final$nachschlagewerk, c(0, 1))
+    })
+
 
     return(dt.final)
     
