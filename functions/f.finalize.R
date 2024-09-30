@@ -20,6 +20,12 @@ f.finalize <- function(x,
         expect_s3_class(vars.additional, "data.table")
         expect_type(varnames, "character")
     })
+
+    ## Remove Tesseract Indicator
+    x$tesseract <- NULL
+        
+    ## Rename Raw OCR Text Variable
+    setnames(x, "text", "text_raw")
     
 
     ## Bind additional vars
