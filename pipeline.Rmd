@@ -507,9 +507,9 @@ Die Variable \enquote{verfahrensart} wird aus den Registerzeichen berechnet.
 
 ```{targets tar.enhance.verfahrensart}
 tar_target(var_verfahrensart,
-                f.var_verfahrensart(dt.ocr$registerzeichen,
-                                    az.brd = az.brd,
-                                    gericht = "BGH"))
+           f.var_verfahrensart(dt.ocr$registerzeichen,
+                               az.brd = az.brd,
+                               gericht = "BGH"))
 ```
 
 
@@ -523,9 +523,9 @@ Das Aktenzeichen wird aus seinen Komponenten berechnet.
 
 ```{targets tar.enhance.az}
 tar_target(var_aktenzeichen,
-                f.var_aktenzeichen(x = dt.ocr,
-                                   az.brd = az.brd,
-                                   gericht = "BGH"))
+           f.var_aktenzeichen(x = dt.ocr,
+                              az.brd = az.brd,
+                              gericht = "BGH"))
 ```
 
 
