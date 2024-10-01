@@ -52,7 +52,7 @@ tar_load(dt.final)
 
 
 
-```{r, CE-BGH_00_Pipeline_Graph_karmesinrot, fig.width = 12, fig.height = 14, fig.pos = "p", fig.cap = "Der vollständige Prozess der Datensatz-Kompilierung."}
+```{r, BGH-Strafrecht-20Jhd_Pipeline_Graph_karmesinrot, fig.width = 12, fig.height = 14, fig.pos = "p", fig.cap = "Der vollständige Prozess der Datensatz-Kompilierung."}
 
 
 edgelist <- tar_network(targets_only = TRUE)$edges
@@ -131,6 +131,7 @@ freqtable.ignore  <-  c("text",
                         "eingangsnummer",
                         "datum",
                         "doc_id",
+                        "doc_id_raw",
                         "aktenzeichen",
                         "name",
                         "tokens",
