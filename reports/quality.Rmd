@@ -106,12 +106,6 @@ names(dt.final)
 ```
 
 
-## Beispiel-Werte
-
-```{r}
-str(dt.final)
-```
-
 
 
 
