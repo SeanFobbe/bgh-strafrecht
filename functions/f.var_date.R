@@ -20,9 +20,18 @@ f.var_date <- function(x,
     months.german <- c("Januar", "Februar", "März", "April", "Mai", "Juni",
                        "Juli", "August", "September", "Oktober", "November", "Dezember")
     
+    ## date.string <- stringi::stri_extract_first(str = reduced,
+    ##                                            regex = paste0("(Sitzung|Beschluss|Beschluß|Urteil)",
+    ##                                                           "\\s*vom\\s*",
+    ##                                                           "[0-9]{1,2}\\.\\s*",
+    ##                                                           "(",
+    ##                                                           paste0(months.german,
+    ##                                                                  collapse = "|"),
+    ##                                                           ")\\s*",
+    ##                                                           "[0-9]{4}"))
+
     date.string <- stringi::stri_extract_first(str = reduced,
-                                               regex = paste0("(Sitzung|Beschluss|Beschluß|Urteil)",
-                                                              "\\s*vom\\s*",
+                                               regex = paste0("(am|vom)\\s*",
                                                               "[0-9]{1,2}\\.\\s*",
                                                               "(",
                                                               paste0(months.german,
@@ -30,6 +39,7 @@ f.var_date <- function(x,
                                                               ")\\s*",
                                                               "[0-9]{4}"))
 
+    
     date.string <- stringi::stri_replace_all(str = date.string,
                                              regex = "\\s+",
                                              replacement = " ")
