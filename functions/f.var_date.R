@@ -49,7 +49,7 @@ f.var_date <- function(x,
 
 
     date.string <- stringi::stri_replace_all(str = date.string,
-                                             regex = ".+ vom ",
+                                             regex = "(am|vom) ",
                                              replacement = "")
 
     date.string <- stringi::stri_replace_all(str = date.string,
