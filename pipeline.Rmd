@@ -1044,7 +1044,7 @@ if (meta[,.N > 0]){
 
 
 
-\newpage
+
 # Fehlermeldungen
 
 ```{r, pipeline-errors}
