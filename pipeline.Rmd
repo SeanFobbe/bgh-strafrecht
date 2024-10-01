@@ -91,14 +91,6 @@ Löscht Dateien im Output-Ordner, die nicht vom heutigen Tag sind.
 
 ```{r}
 
-unlink(list.files(pattern = "\\.tiff"))
-
-unlink(grep(datestamp,
-            list.files("output",
-                       full.names = TRUE),
-            invert = TRUE,
-            value = TRUE))
-
 unlink("temp")
 ##unlink("output", recursive = TRUE)
 
