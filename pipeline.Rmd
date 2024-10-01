@@ -826,6 +826,18 @@ tar_target(zip.txt,
 ```
 
 
+### ZIPs erstellen: PDF-Dateien
+
+```{targets tar.zip.pdf}
+tar_target(zip.pdf,
+           f.tar_zip_bgh_custompacker(pdf = pdf.cleaned.noprob,
+                                      dt.final = dt.final,
+                                      dir = "output",
+                                      prefix.files = prefix.files),
+           format = "file")
+```
+
+
 
 
 
