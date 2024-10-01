@@ -707,7 +707,7 @@ tar_target(lingstats.summary,
 
 ### Report erstellen: Quality Control
 
-```{targets tar.report.robustness}
+```{targets tar.report.quality}
 tarchetypes::tar_render(report.quality,
                         file.path("reports",
                                   "quality.Rmd"),
@@ -760,7 +760,7 @@ tar_target(zip.analysis,
                      dir = "output",
                      mode = "cherry-pick",
                      report.codebook,    # manually enforced dependency relationship
-                     report.robustness), # manually enforced dependency relationship
+                     report.quality), # manually enforced dependency relationship
            format = "file")
 ```
 
@@ -840,6 +840,54 @@ tar_target(zip.pdf,
 
 
 
+
+
+
+
+
+
+
+## Kryptographische Hashes
+
+### Zu hashende ZIP-Archive definieren
+
+
+```{targets tar.hashes.all}
+tar_target(zip.all,
+           c(zip.pdf,
+             zip.txt,
+             zip.csv.final,
+             zip.csv.meta,
+             zip.analysis,
+             zip.source))
+```
+
+### Kryptographische Hashes berechnen
+
+
+```{targets tar.hashes.calc}
+tar_target(hashes,
+           f.tar_multihashes(c(zip.all,
+                               report.codebook[1],
+                               report.quality[1]),
+                             multicore = config$parallel$multihashes,
+                             cores = fullCores))
+```
+
+
+
+### CSV schreiben: Kryptographische Hashes
+
+
+```{targets tar.hashes.csv}
+tar_target(csv.hashes,
+           f.tar_fwrite(x = hashes,
+                        filename = file.path("output",
+                                             paste0(prefix.files,
+                                                    "_KryptographischeHashes.csv"))
+                        )
+           )
+```
 
 
 
