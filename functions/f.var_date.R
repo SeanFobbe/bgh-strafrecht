@@ -21,7 +21,7 @@ f.var_date <- function(x,
                        "Juli", "August", "September", "Oktober", "November", "Dezember")
     
     date.string <- stringi::stri_extract_first(str = reduced,
-                                               regex = paste0("(Sitzung| Beschluss|Beschluß|Urteil)",
+                                               regex = paste0("(Sitzung|Beschluss|Beschluß|Urteil)",
                                                               "\\s*vom\\s*",
                                                               "[0-9]{1,2}\\.\\s*",
                                                               "(",
