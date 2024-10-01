@@ -50,6 +50,9 @@ f.finalize <- function(x,
     ## Add variable "spruchkoerper_db"
     dt.final$spruchkoerper_db <- paste0("Strafsenat-", dt.final$spruchkoerper_az)
 
+    ## Rename raw doc_id variable
+    setnames(x, "doc_id", "doc_id_raw")
+    
     ## Rebuild variable "doc_id"
     dt.final$doc_id <- with(data = dt.final,
                             paste(gericht,
