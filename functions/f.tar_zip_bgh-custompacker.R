@@ -32,10 +32,13 @@ f.tar_zip_bgh_custompacker <- function(pdf,
     ## Create Temp Directory
     tempdir <- tempdir()
 
-    ## Rename PDF files and move to temp dir
-    file.rename(pdf,
-                file.path(tempdir, pdfnames.out))
-    
+    ## Copy and rename PDF files to temp dir
+    copy.result <- file.copy(pdf,
+                             file.path(tempdir, pdfnames.out))
+    if(sum(copy.result) != length(pdf)){
+        warning("Files were NOT copied successfully to tempdir. Check function!")
+        }
+
     
     length(pdf)
     length(names.old)
