@@ -30,7 +30,7 @@ f.tar_zip_bgh_custompacker <- function(pdf,
     pdfnames.new <- gsub("\\.txt", "\\.pdf", dt.final$doc_id)
 
     ## Assign new file names
-    index <- match(pdfnames.old, basename(pdf))
+    index <- match(basename(pdf), pdfnames.old)
     pdfnames.final <- pdfnames.new[index]
 
     ## Create Temp Directory
