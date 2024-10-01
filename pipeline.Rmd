@@ -1128,7 +1128,7 @@ kable(table.size,
 ## PDF-Dateien (MB)
 
 ```{r}
-tar_load(files.pdf)
+tar_load(pdf.cleaned.noprob)
 pdf.MB <- file.size(files.pdf) / 10^6
 sum(pdf.MB)
 ```
@@ -1138,7 +1138,7 @@ sum(pdf.MB)
 
 
 ```{r}
-tar_load(files.txt)
+tar_load(txt_best)
 txt.MB <- file.size(files.txt) / 10^6
 sum(txt.MB)
 ```
