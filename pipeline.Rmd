@@ -1014,7 +1014,6 @@ kable(meta[order(-seconds)],
 ```
 
 
-\newpage
 # Warnungen
 
 
