@@ -1023,7 +1023,7 @@ kable(meta[order(-seconds)],
 meta <- tar_meta(fields = "warnings", complete_only = TRUE)
 setDT(meta)
 meta$warnings <- gsub("(\\.pdf|\\.html?|\\.txt)", "\\1 \n\n", meta$warnings)
-meta <- meta[name != "dt.annotated"] # de_core_news_sm does not work correctly with lemmatization; warnings are not reported because they flood the document; should be inspected directly
+
 
 if (meta[,.N > 0]){
 
