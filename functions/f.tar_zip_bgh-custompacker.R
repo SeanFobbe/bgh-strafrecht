@@ -7,29 +7,32 @@
 #'
 #' @return Character. The path to the ZIP file.
 
-## f.tar_zip_bgh_custompacker <- function(x,
-##                                        names.new,
-##                                        dir){
+f.tar_zip_bgh_custompacker <- function(pdf,
+                                       names.old,
+                                       names.new,
+                                       dir){
 
 
     
-##     length(x)
-##     length(names.new)
+    length(x)
+    length(names.new)
     
     
     
-##     filename <- file.path(dir, filename)
+    filename <- file.path(dir, filename)
     
-##     zip::zip(filename,
-##              x,
-##              mode = mode)
+    zip::zip(filename,
+             x,
+             mode = mode)
     
-##     return(filename)
+    return(filename)
     
-## }
+}
 
 ## DEBUGGING CODE
 
-## x <- tar_read(pdf.cleaned.noprob)
-## names.new <- tar_read(dt.final)$doc_id
+## pdf <- tar_read(pdf.cleaned.noprob)
+## tar_load(dt.final)
+## names.old <- dt.final$doc_id_raw
+## names.new <- dt.final$doc_id
 ## dir <- "output"
