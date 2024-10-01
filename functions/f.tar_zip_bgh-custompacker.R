@@ -31,7 +31,6 @@ f.tar_zip_bgh_custompacker <- function(pdf,
     index <- match(pdfnames.old, basename(pdf))
     pdfnames.out <- pdfnames.new[index]
 
-
     ## Create Temp Directory
     tempdir <- tempdir()
 
@@ -47,13 +46,13 @@ f.tar_zip_bgh_custompacker <- function(pdf,
 
     packlist <- vector("list", 3)
     
-    packlist$package1 <- grep("BGH_Strafsenat-[1]", tempdir.files, value = TRUE)
-    packlist$package2 <- grep("BGH_Strafsenat-[23]", tempdir.files, value = TRUE)
-    packlist$package3 <- grep("BGH_Strafsenat-[45]", tempdir.files, value = TRUE)
+    packlist[[1]] <- grep("BGH_Strafsenat-[1]", tempdir.files, value = TRUE)
+    packlist[[2]] <- grep("BGH_Strafsenat-[23]", tempdir.files, value = TRUE)
+    packlist[[3]] <- grep("BGH_Strafsenat-[45]", tempdir.files, value = TRUE)
 
-    ## sum(file.size(package1)) / 1e6
-    ## sum(file.size(package2)) / 1e6
-    ## sum(file.size(package3)) / 1e6
+    ## sum(file.size(packlist[[1]])) / 1e6
+    ## sum(file.size(packlist[[2]])) / 1e6
+    ## sum(file.size(packlist[[3]])) / 1e6
 
     zip.filenames <- file.path(dir, paste0(prefix.files,
                                            "_DE_PDF_Senat-",
@@ -65,7 +64,7 @@ f.tar_zip_bgh_custompacker <- function(pdf,
 
     for(i in 1:3){
         zip::zip(zipfile = zip.filenames[i],
-                 files = packlist[i],
+                 files = packlist[[i]],
                  mode = "cherry-pick")
         }
     
