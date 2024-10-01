@@ -34,6 +34,7 @@ aktenzeichen = "10.5281/zenodo.4569564"
 
 tesseractresume = true # OCR Prozess fortsetzen (mit "false" werden alle vorherigen OCR-Ergebnisse gelöscht)
 skipzip = true # Ob die Erstellung von PDF-ZIPs übersprungen werden soll, falls sie schon existieren
+cleanrun = false # Ob alle vorherigen Ergebnisse vor jedem Durchlauf gelöscht werden sollen.
 
 
 [cores]
