@@ -4,12 +4,14 @@
 #' @param x Character. The files to be added to the ZIP archive.
 #' @param names.new Character. The new file names of the files specified in "x".
 #' @param dir Character. The directory in which to create the ZIP archive.
-#'
+#' @param prefix.files Character. The prefix to be attached to each output ZIP archive.
+#' 
 #' @return Character. The path to the ZIP file.
 
 f.tar_zip_bgh_custompacker <- function(pdf,
                                        dt.final,
-                                       dir){
+                                       dir,
+                                       prefix.files){
 
     ## Recreate original file names
     pdfnames.old <- with(dt.final,
@@ -21,6 +23,7 @@ f.tar_zip_bgh_custompacker <- function(pdf,
                                name,
                                kollision,
                                sep = "_"))
+    
     pdfnames.old <- paste0(pdfnames.old, ".pdf")
     pdfnames.new <- gsub("\\.txt", "\\.pdf", dt.final$doc_id)
 
@@ -35,26 +38,41 @@ f.tar_zip_bgh_custompacker <- function(pdf,
     ## Copy and rename PDF files to temp dir
     copy.result <- file.copy(pdf,
                              file.path(tempdir, pdfnames.out))
+    
     if(sum(copy.result) != length(pdf)){
         warning("Files were NOT copied successfully to tempdir. Check function!")
         }
 
+    tempdir.files <- list.files(tempdir, full.names = TRUE)
+
+    packlist <- vector("list", 3)
     
-    length(pdf)
-    length(names.old)
-    length(names.new)
+    packlist$package1 <- grep("BGH_Strafsenat-[1]", tempdir.files, value = TRUE)
+    packlist$package2 <- grep("BGH_Strafsenat-[23]", tempdir.files, value = TRUE)
+    packlist$package3 <- grep("BGH_Strafsenat-[45]", tempdir.files, value = TRUE)
+
+    ## sum(file.size(package1)) / 1e6
+    ## sum(file.size(package2)) / 1e6
+    ## sum(file.size(package3)) / 1e6
+
+    zip.filenames <- file.path(dir, paste0(prefix.files,
+                                           "_DE_PDF_Senat-",
+                                           c("1",
+                                             "2-und-3",
+                                             "4-und-5"),
+                                           ".zip"))
+                                                           
+
+    for(i in 1:3){
+        zip::zip(zipfile = zip.filenames[i],
+                 files = packlist[i],
+                 mode = "cherry-pick")
+        }
     
-    
-    
-    filename <- file.path(dir, filename)
-    
-    zip::zip(filename,
-             x,
-             mode = mode)
-    
-    return(filename)
+    return(zip.filenames)
     
 }
+
 
 ## DEBUGGING CODE
 
