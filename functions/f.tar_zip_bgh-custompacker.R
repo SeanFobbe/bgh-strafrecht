@@ -5,13 +5,15 @@
 #' @param names.new Character. The new file names of the files specified in "x".
 #' @param dir Character. The directory in which to create the ZIP archive.
 #' @param prefix.files Character. The prefix to be attached to each output ZIP archive.
+#' @param skip Logical. Skip ZIP creation if ZIP file already exists.
 #' 
 #' @return Character. The path to the ZIP file.
 
 f.tar_zip_bgh_custompacker <- function(pdf,
                                        dt.final,
                                        dir,
-                                       prefix.files){
+                                       prefix.files,
+                                       skip = FALSE){
 
     ## Recreate original file names
     pdfnames.old <- with(dt.final,
@@ -63,10 +65,12 @@ f.tar_zip_bgh_custompacker <- function(pdf,
                                                            
 
     for(i in 1:3){
-        zip::zip(zipfile = zip.filenames[i],
-                 files = packlist[[i]],
-                 mode = "cherry-pick")
+        if(skip == TRUE && !file.exists(zip.filenames[i])){
+            zip::zip(zipfile = zip.filenames[i],
+                     files = packlist[[i]],
+                     mode = "cherry-pick")
         }
+    }
     
     return(zip.filenames)
     
