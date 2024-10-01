@@ -1129,7 +1129,7 @@ kable(table.size,
 
 ```{r}
 tar_load(pdf.cleaned.noprob)
-pdf.MB <- file.size(files.pdf) / 10^6
+pdf.MB <- file.size(pdf.cleaned.noprob) / 10^6
 sum(pdf.MB)
 ```
 
@@ -1139,7 +1139,7 @@ sum(pdf.MB)
 
 ```{r}
 tar_load(txt_best)
-txt.MB <- file.size(files.txt) / 10^6
+txt.MB <- file.size(pdf.cleaned.noprob) / 10^6
 sum(txt.MB)
 ```
 
