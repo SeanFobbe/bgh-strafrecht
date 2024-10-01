@@ -1,9 +1,10 @@
 varname,type,explanation
-doc\_id,String,(Nur CSV) Dateiname der zugehörigen TXT-Datei.
+doc\_id,String,Dateiname der redigierten TXT-Datei.
+doc\_id\_raw,String,(Nur CSV) Dateiname der durch OCR erstellten TXT-Datei.
 text,String,(Nur CSV) Volltext der Entscheidung. Es handelt sich um vorsichtig redigierten OCR-Text. Über Zeilengrenzen gebrochene Wörter wurden zusammengefügt. Achtung: je nach Qualität des Scans ist die OCR-Qualität bei nicht wenigen Entscheidungen stellenweise schlecht.
 text_raw,String,"(Nur CSV) Volltext der Entscheidung. Unredigierter OCR-Text, nur über Zeilengrenzen gebrochene Wörter wurden zusammengefügt."
 gericht,String,Name des Gerichts. Es ist nur der Wert \enquote{BGH} vergeben. Dies ist der ECLI-Code für \enquote{Bundesgerichtshof}. Diese Variable dient vor allem zur einfachen und transparenten Verbindung der Daten mit anderen Datensätzen.
-datum,Date,Datum der Entscheidung im Format YYYY-MM-DD (ISO-8601). Wurde aus dem Text mit REGEX extrahiert und daher nicht für alle Entscheidungen verfügbar. Gesucht wurde (grob) nach Erwähnungen von \enquote{Beschluss/Beschluß/Urteil/Sitzung vom dd.mm.yyyy} in den ersten 2000 Zeichen des Volltextes. Bei Detailfragen sehen sie sich bitte die REGEX an.
+datum,Date,"Datum der Entscheidung im Format YYYY-MM-DD (ISO-8601). Wurde aus dem Text mit REGEX extrahiert und daher nicht für alle Entscheidungen verfügbar. Gesucht wurde (grob) nach Erwähnungen von \enquote{Beschluss/Beschluß/Urteil/Sitzung vom dd.mm.yyyy} in den ersten 2000 Zeichen des Volltextes. Bei Detailfragen sehen sie sich bitte die REGEX an. Wegen der unsicheren Qualität der Scans sollte diese Variable eher als Schätzung, denn als genaue Angabe verstanden werden."
 entscheidungsjahr,Integer,(Nur CSV) Jahr der Entscheidung im Format YYYY (ISO-8601). Berechnet aus der Variable \enquote{datum}.
 spruchkoerper\_db,String,Der Name des Senats im Format \enquote{Strafsenat-1} usw. Enthalten zur Kompatibilität mit dem CE-BGH. Berechnet aus der Variable \enquote{spruchkoerper_az}.
 spruchkoerper\_az,String,"Der im Aktenzeichen angegebene Spruchkörper. Arabische Ziffern stehen für die Strafsenate, römische Ziffern für die Zivilsenate. Die Spezialsenate und großen Senate sind in dieser Variable nicht codiert (weil über die Registerzeichen eindeutig identifiziert) und weisen daher immer den Wert \enquote{NA} auf. Nutzen Sie für Analysen aller Senate bitte die Variablen \enquote{spruchkoerper\_db} oder \enquote{registerzeichen}."
