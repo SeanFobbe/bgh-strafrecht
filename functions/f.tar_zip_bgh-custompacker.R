@@ -8,13 +8,37 @@
 #' @return Character. The path to the ZIP file.
 
 f.tar_zip_bgh_custompacker <- function(pdf,
-                                       names.old,
-                                       names.new,
+                                       dt.final,
                                        dir){
 
+    ## Recreate original file names
+    pdfnames.old <- with(dt.final,
+                         paste(spruchkoerper_az,
+                               registerzeichen,
+                               eingangsnummer,
+                               eingangsjahr_az,
+                               zusatz_az,
+                               name,
+                               kollision,
+                               sep = "_"))
+    pdfnames.old <- paste0(pdfnames.old, ".pdf")
+    pdfnames.new <- gsub("\\.txt", "\\.pdf", dt.final$doc_id)
 
+    ## Assign new file names
+    index <- match(pdfnames.old, basename(pdf))
+    pdfnames.out <- pdfnames.new[index]
+
+
+    ## Create Temp Directory
+    tempdir <- tempdir()
+
+    ## Rename PDF files and move to temp dir
+    file.rename(pdf,
+                file.path(tempdir, pdfnames.out))
     
-    length(x)
+    
+    length(pdf)
+    length(names.old)
     length(names.new)
     
     
