@@ -57,4 +57,9 @@ f.presidents <- function(datum,
 
 
 
+## datum <- tar_read(var_date)
+## pvp.fcg <- tar_read(presidents)
+## gericht <- "BGH"
 
+
+## pvp.fcg <- tar_read(vpresidents)
