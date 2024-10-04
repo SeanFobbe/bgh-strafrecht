@@ -284,6 +284,24 @@ tar_target(changelog,
 
 
 
+
+### Datenmodell
+
+Dieses Target liest das maschinenlesbare Datenmodell für den Datensatz ein.
+
+```{targets tar.file.datamodel}
+list(
+    tar_target(file.datamodel,
+               "data/BGH-Strafrecht_Variables.csv",
+               format = "file"),
+    tar_target(datamodel,
+               fread(file.datamodel))
+)
+```
+
+
+
+
 ### Aktenzeichen der Bundesrepublik Deutschland (AZ-BRD)
 
 Die Tabelle der Registerzeichen und der ihnen zugeordneten Verfahrensarten stammt aus dem folgenden Datensatz: \enquote{Seán Fobbe (2021). Aktenzeichen der Bundesrepublik Deutschland (AZ-BRD). Version 1.0.1. Zenodo. DOI: 10.5281/zenodo.4569564.}
@@ -302,20 +320,37 @@ list(
 
 
 
+### Presidents and Vice-Presidents of the Federal Courts of Germany (PVP-FCG)
 
-### Datenmodell
+ Die Personendaten stammen aus folgendem Datensatz: \enquote{Seán Fobbe and Tilko Swalve (2021). Presidents and Vice-Presidents of the Federal Courts of Germany (PVP-FCG). Version 2021-04-08. Zenodo. DOI: 10.5281/zenodo.4568682}.
 
-Dieses Target liest das maschinenlesbare Datenmodell für den Datensatz ein.
 
-```{targets tar.file.datamodel}
+```{targets tar.file.presi}
 list(
-    tar_target(file.datamodel,
-               "data/BGH-Strafrecht_Variables.csv",
-               format = "file"),
-    tar_target(datamodel,
-               fread(file.datamodel))
-)
+    tar_target(file.presidents,
+           "data/PVP-FCG_2021-04-08_GermanFederalCourts_Presidents.csv",
+           format = "file"),
+     tar_target(presidents,
+                fread(file.presidents))
+     )
 ```
+
+
+
+```{targets tar.file.vpresi}
+list(
+    tar_target(file.vpresidents,
+           "data/PVP-FCG_2021-04-08_GermanFederalCourts_VicePresidents.csv",
+           format = "file"),
+     tar_target(vpresidents,
+                fread(file.vpresidents))
+     )
+```
+
+
+
+
+
 
 ### Problematische OCR-Dateien
 
