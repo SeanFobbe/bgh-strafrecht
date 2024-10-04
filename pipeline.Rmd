@@ -557,6 +557,32 @@ tar_target(var_aktenzeichen,
 
 
 
+### Variable erstellen: \enquote{praesi}
+
+
+```{targets tar.enhance.praesi}
+tar_target(var_praesi,
+           f.presidents(datum = var_date,
+                        gericht = "BGH",
+						pvp.fcg = presidents))
+```
+
+### Variable erstellen: \enquote{vpraesi}
+
+
+```{targets tar.enhance.vpraesi}
+tar_target(var_vpraesi,
+           f.presidents(datum = var_date,
+                        gericht = "BGH",
+						pvp.fcg = vpresidents))
+```
+
+
+
+
+
+
+
 ### Variablen erstellen: \enquote{bghst, bghz, bghr, nachschlagewerk}
 
 ```{targets tar.enhance.sammlungen}
