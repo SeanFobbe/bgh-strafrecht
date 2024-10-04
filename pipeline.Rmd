@@ -521,7 +521,9 @@ Das Limit legt fest bis zu wievielen Zeichen vom Anfang des Textes an gesucht we
 
 tar_target(var_date,
            f.var_date(x = dt.ocr$text,
-                      limit = 2000))
+                      limit = 2000,
+					  date.min = "1950-10-1",
+                      date.max = "2000-01-01"))
 
 ```
 
