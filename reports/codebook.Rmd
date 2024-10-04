@@ -212,7 +212,7 @@ kable(lingstats.summary,
 
 
 ```{r, BGH-Strafrecht-20Jhd_Density_Zeichen, fig.height = 6, fig.width = 9}
-ggplot(data = dt.bgh.meta)+
+ggplot(data = dt.meta)+
     geom_density(aes(x = zeichen),
                  fill = "#7e0731")+
     scale_x_log10(breaks = trans_breaks("log10", function(x) 10^x),
@@ -241,7 +241,7 @@ ggplot(data = dt.bgh.meta)+
 ## Verteilung Tokens
 
 ```{r,  BGH-Strafrecht-20Jhd_Density_Tokens, fig.height = 6, fig.width = 9}
-ggplot(data = dt.bgh.meta)+
+ggplot(data = dt.meta)+
     geom_density(aes(x = tokens),
                  fill = "#7e0731")+
     scale_x_log10(breaks = trans_breaks("log10", function(x) 10^x),
@@ -269,7 +269,7 @@ ggplot(data = dt.bgh.meta)+
 ## Verteilung Typen
 
 ```{r, BGH-Strafrecht-20Jhd_Density_Typen, fig.height = 6, fig.width = 9}
-ggplot(data = dt.bgh.meta)+
+ggplot(data = dt.meta)+
     geom_density(aes(x = typen),
                  fill = "#7e0731")+
     scale_x_log10(breaks = trans_breaks("log10", function(x) 10^x),
@@ -298,7 +298,7 @@ ggplot(data = dt.bgh.meta)+
 ## Verteilung Sätze
 
 ```{r, BGH-Strafrecht-20Jhd_Density_Saetze, fig.height = 6, fig.width = 9}
-ggplot(data = dt.bgh.meta)+
+ggplot(data = dt.meta)+
     geom_density(aes(x = saetze),
                  fill = "#7e0731")+
     scale_x_log10(breaks = trans_breaks("log10", function(x) 10^x),
