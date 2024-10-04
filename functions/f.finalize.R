@@ -110,7 +110,7 @@ f.finalize <- function(x,
 
     test_that("Registerzeichen contain only expected values", {
         expect_in(dt.final$registerzeichen,
-                        c("StR", "ARS"))                                                  
+                        c("StR", "ARs"))                                                  
     })
 
 
