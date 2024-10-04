@@ -84,6 +84,8 @@ f.var_date <- function(x,
 
 ## DEBUGGING CODE
 
+## x <- tar_read(dt.ocr)$text
+
 ## date <- f.var_date(x, limit = 5000)
 
 ## length(na.omit(date))
