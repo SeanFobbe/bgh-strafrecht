@@ -30,6 +30,16 @@ knitr::opts_chunk$set(fig.path = file.path("..", "analysis/"),
 ```
 
 
+```{r, echo = FALSE}
+tar_load(latexdefs)
+tar_load(dt.meta)
+tar_load(pdf.cleaned.noprob)
+tar_load(txt_best)
+tar_load(datamodel)
+tar_load(lingstats.summary)
+tar_load(az.brd)
+```
+
 
 
 
