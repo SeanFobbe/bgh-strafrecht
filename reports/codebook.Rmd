@@ -718,7 +718,7 @@ kable(freqtable.praesi,
 \newpage
 ## Nach Vize-Präsident:in
 
-Hinweis: das Amt Vizepräsident:in wurde am BGH erst 1968 eingerichtet, daher die deutlich höhere Zahl an "NA" im Vergleich zum Präsident:innenamt.
+Hinweis: das Amt Vizepräsident:in wurde am BGH erst 1968 eingerichtet, daher die deutlich höhere Zahl an \enquote{NA} im Vergleich zum Präsident:innenamt.
 
 ```{r}
 
