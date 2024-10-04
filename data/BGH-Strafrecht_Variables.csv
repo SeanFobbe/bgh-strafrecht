@@ -7,7 +7,7 @@ datum,Date,"Datum der Entscheidung im Format YYYY-MM-DD (ISO-8601). Wurde aus de
 entscheidungsjahr,Integer,(Nur CSV) Jahr der Entscheidung im Format YYYY (ISO-8601). Berechnet aus der Variable \enquote{datum}.
 spruchkoerper\_db,String,Der Name des Senats im Format \enquote{Strafsenat-1} usw. Enthalten zur Kompatibilität mit dem CE-BGH. Berechnet aus der Variable \enquote{spruchkoerper\_az}.
 spruchkoerper\_az,String,"Der im Aktenzeichen angegebene Spruchkörper. Arabische Ziffern stehen für die Strafsenate, römische Ziffern für die Zivilsenate. Die Spezialsenate und großen Senate sind in dieser Variable nicht codiert (weil über die Registerzeichen eindeutig identifiziert) und weisen daher immer den Wert \enquote{NA} auf. Nutzen Sie für Analysen aller Senate bitte die Variablen \enquote{spruchkoerper\_db} oder \enquote{registerzeichen}."
-registerzeichen,String,Das amtliche Registerzeichen. In diesem Datensatz finden sich nur \enquote{StR} (Revision in Strafsachen) und \enquote{ARS} (Allgemeines Register Strafrecht).
+registerzeichen,String,Das amtliche Registerzeichen. In diesem Datensatz finden sich nur \enquote{StR} (Revision in Strafsachen) und \enquote{ARs} (Allgemeines Register und Gerichtsstandbestimmungen in Strafsachen).
 verfahrensart,String,"Die Verfahrensart, auf die das Registerzeichen hinweist. Siehe auch Abschnitt \ref{register}."
 eingangsnummer,Integer,Eingangsnummer. Verfahren des gleichen Eingangsjahres erhalten vom Gericht eine fortlaufene Nummer (Ordinalzahl) in der Reihenfolge ihres Eingangs.
 eingangsjahr\_az,Integer,Eingangsjahr laut Aktenzeichen. Das Jahr in dem das Verfahren beim Gericht anhängig wurde. Das Format ist eine zweistellige Jahreszahl (YY).
