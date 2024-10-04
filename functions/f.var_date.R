@@ -16,6 +16,7 @@ f.var_date <- function(x,
                        date.min = "1950-10-1",
                        date.max = "2000-01-01"){
 
+    ## Preprocessing
     reduced <- substr(x, 1, limit)
 
     months.german <- c("Januar", "Februar", "März", "April", "Mai", "Juni",
@@ -31,6 +32,7 @@ f.var_date <- function(x,
     ##                                                           ")\\s*",
     ##                                                           "[0-9]{4}"))
 
+    ## Extract date strings
     date.string <- stringi::stri_extract_first(str = reduced,
                                                regex = paste0("(am|vom)\\s*",
                                                               "[0-9]{1,2}\\.\\s*",
@@ -40,7 +42,8 @@ f.var_date <- function(x,
                                                               ")\\s*",
                                                               "[0-9]{4}"))
 
-    
+
+    ## Clean Whitespace
     date.string <- stringi::stri_replace_all(str = date.string,
                                              regex = "\\s+",
                                              replacement = " ")
@@ -48,11 +51,12 @@ f.var_date <- function(x,
     date.string <- trimws(date.string)
 
 
-
+    ## Clean Hook
     date.string <- stringi::stri_replace_all(str = date.string,
                                              regex = "(am|vom) ",
                                              replacement = "")
 
+    ## Transform to ISO
     date.string <- stringi::stri_replace_all(str = date.string,
                                              regex = paste0(" *", months.german, " *"),
                                              replacement = paste0(formatC(1:12,
