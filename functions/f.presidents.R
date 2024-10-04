@@ -48,9 +48,15 @@ f.presidents <- function(datum,
 
     
     ## Unit Test
-    testthat::test_that("(Vize-)Präsident:innen-Vektor entspricht Erwartungen.", {
+    testthat::test_that("Type of vector is correct.", {
         expect_type(names, "character")
-        expect_length(setdiff(na.omit(names), pvp.fcg[court == gericht]$name_last),  0)
+    })
+
+    testthat::test_that("Only expected names and NA are contained in output.", {
+        expect_in(na.omit(names), pvp.fcg[court == gericht]$name_last)
+    })
+
+    testthat::test_that("Lenght of output names vector matches length of input date vector.", {
         expect_length(names, length(datum))
     })
     
