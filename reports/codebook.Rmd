@@ -534,6 +534,7 @@ freqtable.entscheidungsjahr <- f.fast.freqtable(dt.meta,
                                  align = c("p{5cm}"))[[1]][,exactpercent:=NULL]
 
 freqtable.entscheidungsjahr.nosum <- freqtable.entscheidungsjahr[-.N]
+freqtable.entscheidungsjahr.nosum <- freqtable.entscheidungsjahr.nosum[!is.na(entscheidungsjahr)]
 
 ```
 
@@ -563,6 +564,9 @@ ggplot(data = freqtable.entscheidungsjahr.nosum) +
         legend.position = "none",
         plot.margin = margin(10, 20, 10, 10)
     )
+
+#ggsave("test.pdf", device = "pdf", width = 9, height = 6)
+
 ```
 
 \vspace{0.5cm}
