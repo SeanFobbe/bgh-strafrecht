@@ -515,12 +515,6 @@ kable(dt.stats.docvars,
 
 ```
 
-\vspace{0.5cm}
-
-
-
-\newpage
-
 
 ## Nach Spruchkörper (Aktenzeichen)
 
