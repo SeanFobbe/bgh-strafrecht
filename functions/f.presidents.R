@@ -41,11 +41,16 @@ f.presidents <- function(datum,
         
     }
 
+    ## Unmatched as NA
+    unmatched <- setdiff(names, pvp.fcg[court == gericht]$name_last)
+    unmatched.true <- names %in% unmatched
+    names[unmatched.true] <- NA
 
+    
     ## Unit Test
     testthat::test_that("(Vize-)Präsident:innen-Vektor entspricht Erwartungen.", {
         expect_type(names, "character")
-        expect_length(setdiff(names, pvp.fcg[court == gericht]$name_last),  0)
+        expect_length(setdiff(na.omit(names), pvp.fcg[court == gericht]$name_last),  0)
         expect_length(names, length(datum))
     })
     
