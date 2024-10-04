@@ -4,16 +4,17 @@
 #'
 #' @param x String. A vector of texts.
 #' @param limit Integer. The number of characters from 1 to limit to be checked for a date.
+#' @param date.min Character. The minimum date constraint of the output. All dates earlier than the specified date will be returned as "NA". 1 October 1950 is founding of the Bundesgerichtshof.
+#' @param date.max Character. The maximum date constraint of the output. All dates later than the specified date will be returned as "NA". 1 January 2000 is limit of dataset.
 #'
 #' @return Date. A vector of dates in ISO format (e.g. 2024-01-03).
 
 
 
-
-
-
 f.var_date <- function(x,
-                       limit = 2000){
+                       limit = 2000,
+                       date.min = "1950-10-1",
+                       date.max = "2000-01-01"){
 
     reduced <- substr(x, 1, limit)
 
@@ -66,7 +67,14 @@ f.var_date <- function(x,
                                              replacement = "0$1\\.")
 
     date <- as.Date(date.string, format =  c("%d.%m.%Y"))
-        
+
+
+    ## Remove implausible dates
+    index <- date < date.min
+    date[index] <- NA
+
+    index <- date > date.max
+    date[index] <- NA
    
     
     return(date)
