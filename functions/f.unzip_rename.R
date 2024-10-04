@@ -62,7 +62,7 @@ f.unzip_rename  <- function(dir.in,
     filenames.new <- gsub("[_]{1,4}", "_", filenames.new)
 
     filenames.new  <- gsub("\\(S\\)_NA", "S", filenames.new)
-
+    filenames.new  <- gsub("_ARS_", "_ARs_", filenames.new)
     
     ## Test auf Einzigartigkeit
 
@@ -80,7 +80,7 @@ f.unzip_rename  <- function(dir.in,
 
     regex.fail <- grep(paste0("[0-5]", # Senatsnummer
                               "_",
-                              "((StR)|(ARS))", # Registerzeichen
+                              "((StR)|(ARs))", # Registerzeichen
                               "_",
                               "[0-9]{1,4}", # Eingangsnummer
                               "_",
