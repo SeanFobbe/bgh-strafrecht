@@ -16,7 +16,7 @@ f.presidents <- function(datum,
     
     ## Auf relevantes Gericht reduzieren
     
-    setDT(pvp.fcg)
+    data.table::setDT(pvp.fcg)
     
     dt <- pvp.fcg[court == gericht, .(court,
                                       name_last,
@@ -43,7 +43,7 @@ f.presidents <- function(datum,
 
 
     ## Unit Test
-    test_that("(Vize-)Präsident:innen-Vektor entspricht Erwartungen.", {
+    testthat::test_that("(Vize-)Präsident:innen-Vektor entspricht Erwartungen.", {
         expect_type(names, "character")
         expect_length(setdiff(names, pvp.fcg[court == gericht]$name_last),  0)
         expect_length(names, length(datum))
