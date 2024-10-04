@@ -38,6 +38,8 @@ tar_load(txt_best)
 tar_load(datamodel)
 tar_load(lingstats.summary)
 tar_load(az.brd)
+tar_load(presidents)
+tar_load(vpresidents)
 ```
 
 
@@ -137,6 +139,144 @@ kable(datamodel,
 ```
 
 
+
+
+
+\newpage
+
+
+
+# Präsident:innen
+
+
+## Hinweise
+
+- Die Personendaten stammen aus folgendem Datensatz: \enquote{Seán Fobbe and Tilko Swalve (2021). Presidents and Vice-Presidents of the Federal Courts of Germany (PVP-FCG). Version 2021-04-08. Zenodo. DOI: 10.5281/zenodo.4568682}.
+- Das Datum bezieht sich jeweils auf das Amt als Präsident:in, nicht auf die Amtszeit als Richter:in.
+
+  
+
+
+## Lebensdaten
+
+```{r}
+
+table.praesi.daten <- presidents[court == "BGH",
+                                 .(name_last,
+                                   name_first,
+                                   term_begin_date,
+                                   term_end_date,
+                                   birth_date,
+                                   death_date)]
+
+
+kable(table.praesi.daten,
+      format = "latex",
+      align = "l",
+      booktabs = TRUE,
+      longtable = TRUE,
+      col.names = c("Nachname",
+                    "Vorname",
+                    "Amtsantritt",
+                    "Amtsende",
+                    "Geboren",
+                    "Gestorben"))
+```
+
+
+
+## Dienstalter und Lebensalter
+
+
+```{r}
+table.praesi.alter <- presidents[court == "BGH",
+                                 .(name_last,
+                                   name_first,
+                                   term_begin_age,
+                                   term_end_age,
+                                   death_age)]
+
+
+kable(table.praesi.alter[grep("VACANCY",
+                              table.praesi.daten$name_last,
+                              invert = TRUE)],
+      format = "latex",
+      align = c("l", "l", "c", "c", "c"),
+      booktabs = TRUE,
+      longtable = TRUE,
+      col.names = c("Nachname",
+                    "Vorname",
+                    "Alter (Amtsantritt)",
+                    "Alter (Amtsende)",
+                    "Alter (Tod)"))
+```
+
+
+\newpage
+
+# Vize-Präsident:innen
+
+
+## Hinweise
+
+- Die Personendaten stammen aus folgendem Datensatz: \enquote{Seán Fobbe and Tilko Swalve (2021). Presidents and Vice-Presidents of the Federal Courts of Germany (PVP-FCG). Version 2021-04-08. Zenodo. DOI: 10.5281/zenodo.4568682}.
+- Das Datum bezieht sich jeweils auf das Amt als Vize-Präsident:in, nicht auf die Amtszeit als Richter:in.
+
+
+
+
+## Lebensdaten
+
+```{r}
+table.vpraesi.daten <- vpresidents[court == "BGH",
+                                 .(name_last,
+                                   name_first,
+                                   term_begin_date,
+                                   term_end_date,
+                                   birth_date,
+                                   death_date)]
+
+
+
+kable(table.vpraesi.daten,
+      format = "latex",
+      align = "l",
+      booktabs=TRUE,
+      longtable=TRUE,
+      col.names = c("Nachname",
+                    "Vorname",
+                    "Amtsantritt",
+                    "Amtsende",
+                    "Geboren",
+                    "Gestorben"))
+```
+
+\newpage
+
+##  Dienstalter und Lebensalter
+
+
+```{r}
+table.vpraesi.alter <- vpresidents[court == "BGH",
+                                 .(name_last,
+                                   name_first,
+                                   term_begin_age,
+                                   term_end_age,
+                                   death_age)]
+
+kable(table.vpraesi.alter[grep("VACANCY",
+                               table.vpraesi.daten$name_last,
+                               invert = TRUE)],
+      format = "latex",
+      align = c("l", "l", "c", "c", "c"),
+      booktabs=TRUE,
+      longtable=TRUE,
+      col.names = c("Nachname",
+                    "Vorname",
+                    "Alter (Amtsantritt)",
+                    "Alter (Amtsende)",
+                    "Alter (Tod)"))
+```
 
 
 
