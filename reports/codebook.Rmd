@@ -109,6 +109,129 @@ df.bgh <- readtext("./*.txt",
 
 
 
+# Konstruktion
+
+
+
+## Beschreibung des Datensatzes
+
+Dieser Datensatz ist eine digitale Zusammenstellung strafrechtlicher Entscheidungen des deutschen Bundesgerichtshofs (BGH) aus dem 20. Jahrhundert.
+
+Zusätzlich zu den aufbereiteten maschinenlesbaren Formaten (TXT und CSV) sind die PDF-Rohdaten enthalten, damit Analyst:innen gegebenenfalls ihre eigene Konvertierung vornehmen können. Die PDF-Rohdaten wurden inhaltlich nicht verändert und nur die Dateinamen angepasst, um die Lesbarkeit für Mensch und Maschine zu verbessern.
+
+
+
+## Datenquellen
+
+\begin{centering}
+\begin{longtable}{P{5cm}p{9cm}}
+
+\toprule
+
+ Datenquelle & Fundstelle \\
+
+\midrule
+
+ Primäre Datenquelle & Bundesgerichtshof\\
+ Source Code & \url{\softwareversionurldoi}\\
+ Personendaten & \url{\personendatenurldoi}\\
+ Registerzeichen & \url{\aktenzeichenurldoi}\\
+
+\bottomrule
+
+\end{longtable}
+\end{centering}
+
+
+Die begründeten Entscheidungen der Strafsenate des Bundesgerichtshofs wurden Dr. Tilko Swalve auf Anfrage vom BGH auf digitalen Medien übergeben und von den Autoren aufbereitet.
+
+Die Personendaten stammen aus folgendem Datensatz: \enquote{Seán Fobbe and Tilko Swalve (2021). Presidents and Vice-Presidents of the Federal Courts of Germany (PVP-FCG). Version 2021-04-08. Zenodo. DOI: 10.5281/zenodo.4568682}. 
+
+Die Tabelle der Registerzeichen und der ihnen zugeordneten Verfahrensarten stammt aus dem folgenden Datensatz: "Seán Fobbe (2021). Aktenzeichen der Bundesrepublik Deutschland (AZ-BRD). Version 1.0.1. Zenodo. DOI: 10.5281/zenodo.4569564."
+
+
+## Source Code und Compilation Report
+
+Der gesamte Source Code --- sowohl für die Erstellung des Datensatzes, als auch für dieses Codebook --- ist öffentlich einsehbar und dauerhaft erreichbar im wissenschaftlichen Archiv des CERN unter dieser Addresse hinterlegt: \softwareversionurldoi
+
+Mit jeder Kompilierung des vollständigen Datensatzes wird auch ein umfangreicher **Compilation Report** in einem attraktiv designten PDF-Format erstellt (ähnlich diesem Codebook). Der Compilation Report enthält den kommentierten Source Code für die Daten-Pipeline, dokumentiert relevante Rechenergebnisse, gibt sekundengenaue Zeitstempel an und ist mit einem klickbaren Inhaltsverzeichnis versehen. Er ist zusammen mit dem Source Code hinterlegt. Wenn Sie sich für Details der Herstellung interessieren, lesen Sie diesen bitte zuerst.
+
+
+
+
+```{r, BGH-Strafrecht-20Jhd_Pipeline_Graph, fig.width = 12, fig.height = 18, fig.pos = "p", fig.cap = "Der vollständige Prozess der Datensatz-Kompilierung."}
+
+edgelist <- tar_network(targets_only = TRUE)$edges
+setDT(edgelist)
+
+g  <- igraph::graph_from_data_frame(edgelist,
+                                    directed = TRUE)
+
+
+ggraph(g,
+       'sugiyama') + 
+    geom_edge_diagonal(colour = "grey")+
+    geom_node_point()+
+    geom_node_text(aes(label = name),
+                   size = 2,
+                   repel = TRUE)+
+    theme_void()+
+    labs(
+        title = paste(prefix.figuretitle,
+                      "| Vollständiger Prozess der Datensatz-Kompilierung"),
+        caption = caption
+    )+
+    theme(
+        plot.title = element_text(size = 14,
+                                  face = "bold"),
+        plot.margin = margin(10, 20, 10, 10)
+    )
+
+```
+
+
+
+## Grenzen des Datensatzes
+
+Nutzer:innen sollten folgende wichtige Grenzen beachten:
+ 
+
+- Der Datensatz enthält nur begründete Entscheidungen (\emph{publication bias}). Unbegründete Entscheidungen machen den Löwenanteil der Praxis des BGH aus und sind nicht enthalten.
+- Erst ab dem 1. Januar 2000 sind begründete Entscheidungen des Bundesgerichtshofs einigermaßen vollständig veröffentlicht (\emph{temporal bias}). Die hier veröffentlichten Entscheidungen sind alles, was der BGH an Dr. Tilko Swalve übergeben hat, aber wir hatten darüber hinaus keine Möglichkeit die Vollständigkeit zu prüfen.
+- Die Digitalisierung mit optischer Zeichenerkennung (OCR) via Tesseract funktioniert sehr gut wenn die Scans gut sind, aber schlecht wenn die Scans schlecht sind (\emph{OCR bias}). Die Qualität der digitalen Texte kann daher in Teilen von ungenau bis unbrauchbar reichen. Behalten Sie diesen Punkt unbedingt im Hinterkopf bei NLP-Anwendungen, insbesondere bei extrahierten Variablen wie dem im Datensatz enthaltenen Entscheidungsdatum und darauf aufbauenden Variablen (Präsident:innen, usw.).
+
+
+## Urheberrechtsfreiheit von Rohdaten und Datensatz 
+
+An den Entscheidungstexten und amtlichen Leitsätzen besteht gem. § 5 Abs. 1 UrhG kein Urheberrecht, da sie amtliche Werke sind. § 5 UrhG ist auf amtliche Datenbanken analog anzuwenden (BGH, Beschluss vom 28.09.2006, I ZR 261/03, \enquote{Sächsischer Ausschreibungsdienst}).
+
+Alle eigenen Beiträge (z.B. durch Zusammenstellung und Anpassung der Metadaten) und damit den gesamten Datensatz stelle ich gemäß einer \emph{CC0 1.0 Universal Public Domain Lizenz} vollständig urheberrechtsfrei.
+
+
+
+
+## Metadaten
+
+
+### Allgemein
+
+Die Metadaten wurden nur zu kleinen Teilen vom BGH bereitgestellt. Bereitgestellt wurden Aktenzeichen und Kollisionsbuchstaben für alle Entscheidungen. Diese wurden von den Autoren noch einmal geprüft und überarbeitet falls Fehler erkennbar waren.
+
+
+
+Hinzugefügt wurden durch die Autoren des Datensatzes eine Reihe weitere Variablen, sowie in den Dateinamen der PDF/TXT-Dateien Unter- und Trennstriche, um die Maschinenlesbarkeit zu erleichtern. Der volle Satz an Metadaten ist nur in den CSV-Dateien enthalten. Alle hinzugefügten Metadaten sind vollständig maschinenlesbar dokumentiert. Sie sind entweder im Source Code enthalten, mit dem Source Code zusammen dokumentiert oder über dauerhaft stabile Identifikatoren (z.B. DOI) zitiert.
+ 
+Die Dateinamen der PDF- und TXT-Dateien enthalten Gerichtsname, Spruchkörperangabe aus der Datenbank, die Angabe ob es sich um eine Leitsatzentscheidung handelt, Datum, das offizielle Aktenzeichen, einen Zusatz zum Aktenzeichen, ggf. einen besonderen Namen und eine durch den Autor des Datensatzes generierte Kollisions-ID. 
+
+Die Dateinamen der PDF- und TXT-Dateien, aber auch alle anderen Metadaten der CSV-Dateien sind kompatibel mit denen des Corpus der Entscheidungen des Bundesgerichtshofs (CE-BGH).\footnote{Fobbe, S. (2024). Corpus der Entscheidungen des Bundesgerichtshofs (CE-BGH) (2024-09-25) [Data set]. Zenodo. \url{https://doi.org/10.5281/zenodo.12814022}}
+
+
+
+
+
+
+
+
 # Variablen
 \label{variablen}
 
