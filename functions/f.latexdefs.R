@@ -48,7 +48,7 @@ f.latexdefs <- function(x,
                    f.latexcommand("datatitle", x$project$fullname),
                    f.latexcommand("datashort", x$project$shortname),
                    f.latexcommand("softwaretitle",
-                                  paste0("Source Code for the \\enquote{", x$project$fullname, "}")),
+                                  paste0("Source Code des \\enquote{", x$project$fullname, "}")),
                    f.latexcommand("softwareshort", paste0(x$project$shortname, "-Source")),
                    
                    "\n%-----Data DOIs-----",
@@ -65,7 +65,14 @@ f.latexdefs <- function(x,
                    f.latexcommand("softwareconcepturldoi",
                                   paste0("https://doi.org/", x$doi$software$concept)),
                    f.latexcommand("softwareversionurldoi",
-                                  paste0("https://doi.org/", x$doi$software$version)))
+                                  paste0("https://doi.org/", x$doi$software$version)),
+                   
+                   "\n%-----Additional DOIs-----",
+                   f.latexcommand("aktenzeichenurldoi",
+                                  paste0("https://doi.org/", x$doi$aktenzeichen)),
+                   f.latexcommand("personendatenurldoi",
+                                  paste0("https://doi.org/", x$doi$personendaten))
+                   )
                    
 
 
