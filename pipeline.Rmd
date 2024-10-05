@@ -319,7 +319,6 @@ list(
 ```
 
 
-
 ### Presidents and Vice-Presidents of the Federal Courts of Germany (PVP-FCG)
 
  Die Personendaten stammen aus folgendem Datensatz: \enquote{Seán Fobbe and Tilko Swalve (2021). Presidents and Vice-Presidents of the Federal Courts of Germany (PVP-FCG). Version 2021-04-08. Zenodo. DOI: 10.5281/zenodo.4568682}.
