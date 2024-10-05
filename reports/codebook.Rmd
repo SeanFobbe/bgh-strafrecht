@@ -289,7 +289,7 @@ Empfohlen für quantitative Forschung und Legal Tech-Anwendungen.
 
 Die PDF-Dokumente wie sie den Autoren durch BGH zur Verfügung gestellt werden, jedoch verbessert durch semantisch hochwertige Dateinamen, die der leichteren Auffindbarkeit von Entscheidungen dienen. Die PDF-Dateien wurden nach Senaten in mehrere ZIP-Archive aufgeteilt um kleinere Downloads zu ermöglichen.
 
-Die Dateinamen sind so konzipiert, dass sie auch für die traditionelle qualitative juristische Arbeit einen erheblichen Mehrwert bieten. Im Vergleich zu den CSV-Dateien enthalten die Dateinamen nur einen reduzierten Umfang an Metadaten, um Kompatibilitätsprobleme zu vermeiden und die Lesbarkeit zu verbessern. 
+Die Dateinamen sind so konzipiert, dass sie auch für die traditionelle qualitative juristische Arbeit einen erheblichen Mehrwert bieten. Im Vergleich zu den CSV-Dateien enthalten die Dateinamen nur einen reduzierten Umfang an Metadaten, um Kompatibilitätsprobleme zu vermeiden und die Lesbarkeit zu verbessern.
 
  
 ## TXT
