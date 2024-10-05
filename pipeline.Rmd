@@ -512,7 +512,7 @@ tar_target(var_text,
 
 ### Variable erstellen: \enquote{datum}
 
-Dieser Schritt versucht das Datum der Entscheidung aus dem Text zu extrahieren. Erkannt werden Daten im Format "Beschluss|Beschluß|Urteil|Sitzung vom 13. September 1966". 
+Dieser Schritt versucht das Datum der Entscheidung aus dem Text zu extrahieren. Erkannt werden Daten ähnlich folgendem Beispiel "am/vom 13. September 1966". Die längeren Zeichenfolgen "Beschluss/Urteil/Sitzung vom" ergeben zuviele falsch-negative Ergebnisse, da beim Auslesen von PDFs oft das Aktenzeichen zwischen "Beschluss" und dem Datum landet.
 
 Das Limit legt fest bis zu wievielen Zeichen vom Anfang des Textes an gesucht werden soll. Eine vernünftige Einstellung beugt falsch-positiven Ergebnissen vor und beschleunigt die Extraktion
 
