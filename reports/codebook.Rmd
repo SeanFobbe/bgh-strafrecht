@@ -227,6 +227,33 @@ Die Dateinamen der PDF- und TXT-Dateien, aber auch alle anderen Metadaten der CS
 
 
 
+### Schema für die Dateinamen
+
+\begin{verbatim}
+ [gericht]_[spruchkoerper_db]_[leitsatz]_[datum]_[spruchkoerper_az]_
+ [registerzeichen]_[eingangsnummer]_[eingangsjahr_az]_[zusatz_az]_
+ [name]_[kollision]
+\end{verbatim}
+
+
+### Beispiel eines Dateinamens
+
+\begin{verbatim}
+ BGH_Strafsenat-5_NA_NA_5_StR_824_52_NA_NA_NA.txt
+\end{verbatim}
+
+
+
+## Qualitätsprüfung
+
+Die Qualität der Variablen wurde mit  automatisierten und halb-automatisierten Tests  strikt validiert. Die möglichen Werte der jeweiligen Variablen wurden zudem durch Frequenztabellen und Visualisierungen auf ihre Plausibilität geprüft. Insgesamt werden zusammen mit jeder Kompilierung Dutzende Tests zur Qualitätsprüfung durchgeführt. Alle Ergebnisse der Qualitätsprüfungen sind aggregiert im Compilation Report, dem Codebook, dem Quality Assurance Report und einzeln im Archiv \enquote{ANALYSE} zusammen mit dem Datensatz veröffentlicht.
+
+
+
+## Grafische Darstellung
+
+Die Robenfarbe der Richter:innen des Bundesgerichtshofs ist \enquote{karmesinrot}. Der Hex-Wert hierfür ist vermutlich \#7e0731. Das ist besonders bei der Erstellung thematisch passender Diagrammen hilfreich. Alle im Compilation Report und diesem Codebook präsentierten Diagramme sind in diesem karmesinrot gehalten.
+
 
 
 
