@@ -927,6 +927,7 @@ tar_target(zip.pdf.problem,
 ```{targets tar.hashes.all}
 tar_target(zip.all,
            c(zip.pdf,
+		     zip.pdf.problem,
              zip.txt,
              zip.csv.final,
              zip.csv.meta,
