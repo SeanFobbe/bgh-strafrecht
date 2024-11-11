@@ -47,3 +47,16 @@ f.rotate <- function(x,
     
 
 }
+
+
+## DEBUGGING CODE
+
+tar_load(dt.landscape)
+x <- dt.landscape$x[dt.landscape$landscape]
+files.opposite = c("2_StR_481_84_NA_NA_NA.pdf",
+                   "4_StR_131_60_NA_NA_NA.pdf",
+                   "4_StR_190_70_NA_NA_NA.pdf",
+                   "4_StR_512_89_NA_NA_NA.pdf")
+angle = -90
+dir.output = "files/pdf_rotated"
+clean = TRUE
