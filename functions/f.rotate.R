@@ -26,12 +26,12 @@ f.rotate <- function(x,
     }
 
     if(is.null(files.opposite) == TRUE){
-        angle <- angle
+        angle.detail <- angle
     }else{
 
-        angle <- rep(angle, length(x))
+        angle.detail <- rep(angle, length(x))
         index <- basename(x) %in% basename(files.opposite)
-        angle[index] <- -angle
+        angle.detail[index] <- rep(-angle, length(files.opposite))
         
     }
 
@@ -39,7 +39,7 @@ f.rotate <- function(x,
     out <- mapply(qpdf::pdf_rotate_pages,
                   input = x,
                   output = file.path(dir.output, basename(x)),
-                  angle = angle,
+                  angle = angle.detail,
                   relative = TRUE,
                   USE.NAMES = FALSE)
 
