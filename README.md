@@ -18,11 +18,11 @@ Aktuellster, funktionaler und zitierfähiger Release des Datensatzes: <https://d
 - Bereinigung der Dateinamen
 - Korrektur falscher Rotationen und Standardisierung im Hochformat
 - Optische Zeichenerkennung (OCR)
-- Bereinigung von OCR-Fehlern
-- Extraktion weiterer Variablen
+- Automatisierte Bereinigung von OCR-Fehlern mit Ersetzungstabelle
+- Extraktion zusätzlicher Variablen
 - Erstellung nutzungsfertiger ZIP-Archive
 - Umfangreiche Dokumentation
-- Detaillierte automatisierte Unit Tests und statistisches Reporting
+- Automatisierte Unit Tests und statistisches Reporting
 - Kryptographische Signaturen
 
 
