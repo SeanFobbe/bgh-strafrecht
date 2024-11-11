@@ -672,7 +672,7 @@ Hier wird die Text-Variable entfernt, um eine deutlich platzsparendere Variante 
 
 ```{targets tar.enhance.meta}
 tar_target(dt.meta,
-           dt.final[, !"text"])
+           dt.final[, !c("text", "text_raw")])
 
 ```
 
