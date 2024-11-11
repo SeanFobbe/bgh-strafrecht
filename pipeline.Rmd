@@ -505,7 +505,8 @@ list(tar_target(txt.extracted,
 ```{targets tar.enhance.cleantext}
 
 tar_target(var_text,
-           f.clean_text(dt.ocr$text))
+           f.clean_text(x = dt.ocr$text,
+                        replacements = replacements))
 
 ```
 
