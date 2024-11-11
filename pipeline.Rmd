@@ -86,7 +86,7 @@ dir.analysis <- paste0(getwd(),
 
 ## Aufräumen
 
-Löscht Dateien im Output-Ordner, die nicht vom heutigen Tag sind.
+Löscht nicht mehr aktuelle Dateien im Output-Ordner.
 
 
 ```{r}
