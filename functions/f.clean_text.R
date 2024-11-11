@@ -10,7 +10,8 @@
 
 
 
-f.clean_text <- function(x){
+f.clean_text <- function(x,
+                         replacements){
 
     revised <- stringi::stri_replace_all(x,
                                          regex = "\\$\\$\\s*([0-9]+)",
@@ -20,9 +21,16 @@ f.clean_text <- function(x){
                                          regex = "\\$\\s*([0-9]+)",
                                          replacement = "§ $1")
 
+    revised <- stringi::stri_replace_all(revised,
+                                         regex = replacements$pattern,
+                                         replacement = replacements$replacement)
+    
 
     return(revised)
     
 }
 
 
+## DEBUGGING CODE
+
+## tar_load(replacements)
