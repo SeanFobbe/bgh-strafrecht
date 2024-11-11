@@ -23,7 +23,8 @@ f.clean_text <- function(x,
 
     revised <- stringi::stri_replace_all(revised,
                                          regex = replacements$pattern,
-                                         replacement = replacements$replacement)
+                                         replacement = replacements$replacement,
+                                         vectorize_all = FALSE)
     
 
     return(revised)
@@ -33,4 +34,5 @@ f.clean_text <- function(x,
 
 ## DEBUGGING CODE
 
+## x <- tar_read(dt.ocr)$text
 ## tar_load(replacements)
