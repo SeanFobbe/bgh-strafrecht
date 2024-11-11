@@ -885,13 +885,27 @@ tar_target(zip.txt,
 
 ### ZIPs erstellen: PDF-Dateien
 
-```{targets tar.zip.pdf}
+```{targets tar.zip.pdf.regular}
 tar_target(zip.pdf,
            f.tar_zip_bgh_custompacker(pdf = pdf.cleaned.noprob,
                                       dt.final = dt.final,
                                       dir = "output",
                                       prefix.files = prefix.files,
 									  skip = config$debug$skipzip),
+           format = "file")
+```
+
+
+### ZIPs erstellen: Problematische PDF-Dateien
+
+```{targets tar.zip.pdf.problem}
+tar_target(zip.pdf.problem,
+           f.tar_zip(x = pdf.cleaned[basename(pdf.cleaned) %notin% basename(pdf.ocrprob)],
+                     filename = paste(prefix.files,
+                                      "DE_PDF_Ohne-OCR.zip",
+                                      sep = "_"),
+                     dir = "output",
+                     mode = "cherry-pick"),
            format = "file")
 ```
 
