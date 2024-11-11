@@ -900,7 +900,7 @@ tar_target(zip.pdf,
 
 ```{targets tar.zip.pdf.problem}
 tar_target(zip.pdf.problem,
-           f.tar_zip(x = pdf.cleaned[basename(pdf.cleaned) %notin% basename(pdf.ocrprob)],
+           f.tar_zip(x = pdf.cleaned[basename(pdf.cleaned) %in% basename(pdf.ocrprob)],
                      filename = paste(prefix.files,
                                       "DE_PDF_Ohne-OCR.zip",
                                       sep = "_"),
