@@ -35,6 +35,25 @@ f.tar_pdf_ocr <- function(x,
     dir.create(dir.out.txt, showWarnings = FALSE, recursive = TRUE)
 
 
+    ## Sort files (necessary for resume if previous run crashed)
+    if (grepl("txt", output) == TRUE){
+        
+        files.txt <- list.files("temp_tesseract", pattern = "\\.txt", full.names = TRUE)
+
+        if(length(files.txt) > 0){
+            invisible(file.rename(files.txt, file.path(dir.out.txt, basename(files.txt))))
+        }
+    }
+    
+    if (grepl("pdf", output) == TRUE){
+        
+        files.pdf <- list.files("temp_tesseract", pattern = "\\.pdf", full.names = TRUE)
+        
+        if(length(files.pdf) > 0){
+            invisible(file.rename(files.pdf, file.path(dir.out.pdf, basename(files.pdf))))
+        }
+    }
+    
 
     ## Define Workload
 
@@ -116,14 +135,23 @@ f.tar_pdf_ocr <- function(x,
     ## Sort files
 
     if (grepl("txt", output) == TRUE){
+        
         files.txt <- list.files("temp_tesseract", pattern = "\\.txt", full.names = TRUE)
-        invisible(file.rename(files.txt, file.path(dir.out.txt, basename(files.txt))))
+
+        if(length(files.txt) > 0){
+            invisible(file.rename(files.txt, file.path(dir.out.txt, basename(files.txt))))
+        }
     }
     
     if (grepl("pdf", output) == TRUE){
+        
         files.pdf <- list.files("temp_tesseract", pattern = "\\.pdf", full.names = TRUE)
-        invisible(file.rename(files.pdf, file.path(dir.out.pdf, basename(files.pdf))))
+        
+        if(length(files.pdf) > 0){
+            invisible(file.rename(files.pdf, file.path(dir.out.pdf, basename(files.pdf))))
+        }
     }
+    
 
     
     ## Delete temp dir
