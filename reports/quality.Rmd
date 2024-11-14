@@ -1,5 +1,5 @@
 ---
-title: "Quality Control Report | Entscheidungen des Bundesgerichtshofs für Strafsachen des 20. Jahrhunderts (BGH-Strafrecht-20Jhd)"
+title: "Quality Control Report | Entscheidungen des Bundesgerichtshofs für Strafsachen des 20. Jahrhunderts (BGH-Strafsachen-20Jhd)"
 author: Seán Fobbe
 geometry: margin=3cm
 papersize: a4
@@ -52,7 +52,7 @@ tar_load(dt.final)
 
 
 
-```{r, BGH-Strafrecht-20Jhd_Pipeline_Graph_karmesinrot, fig.width = 12, fig.height = 14, fig.pos = "p", fig.cap = "Der vollständige Prozess der Datensatz-Kompilierung."}
+```{r, BGH-Strafsachen-20Jhd_Pipeline_Graph_karmesinrot, fig.width = 12, fig.height = 14, fig.pos = "p", fig.cap = "Der vollständige Prozess der Datensatz-Kompilierung."}
 
 
 edgelist <- tar_network(targets_only = TRUE)$edges
