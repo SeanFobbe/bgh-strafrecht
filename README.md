@@ -1,4 +1,4 @@
-# Entscheidungen des Bundesgerichtshofs für Strafsachen aus dem 20. Jahrhundert (BGH-Strafrecht-20Jhd)
+# Entscheidungen des Bundesgerichtshofs für Strafsachen des 20. Jahrhunderts (BGH-Strafsachen-20Jhd)
 
 
 ## Überblick
