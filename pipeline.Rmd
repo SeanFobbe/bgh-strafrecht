@@ -1219,7 +1219,7 @@ sum(pdf.MB)
 
 ```{r}
 tar_load(txt_best)
-txt.MB <- file.size(pdf.cleaned.noprob) / 10^6
+txt.MB <- file.size(txt_best) / 10^6
 sum(txt.MB)
 ```
 
