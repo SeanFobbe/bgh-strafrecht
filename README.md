@@ -3,9 +3,9 @@
 
 ## Überblick
 
-Der Datensatz **Entscheidungen des Bundesgerichtshofs für Strafsachen aus dem 20. Jahrhundert** ist eine möglichst vollständige Sammlung der vom Bundesgerichtshof in Strafsachen getroffenen Entscheidungen vom 1. Oktober 1950 (Gründung des BGH) bis zum 1. Januar 2000, dem Zeitpunkt ab dem der BGH regulär digitale Entscheidungen anbietet. 
+Der Datensatz **Entscheidungen des Bundesgerichtshofs für Strafsachen des 20. Jahrhunderts** (BGH-Strafsachen-20Jhd)** ist eine möglichst vollständige Sammlung der durch den Bundesgerichtshof in Strafsachen getroffenen Entscheidungen vom 1. Oktober 1950 (Gründung des BGH) bis zum 1. Januar 2000, dem Zeitpunkt ab dem der BGH digitale Entscheidungen regulär veröffentlicht. 
 
-Der Datensatz nutzt als seine Datenquelle eine vom Bundesgerichtshof und den Autoren übergebene digitale Sammlung dieser Entscheidungen und bereitet diese auf.
+Der Datensatz nutzt als seine Datenquelle eine vom Bundesgerichtshof den Autoren übergebene digitale Sammlung dieser Entscheidungen und bereitet diese wissenschaftlich auf.
 
 Alle mit diesem Skript erstellten Datensätze werden dauerhaft kostenlos und urheberrechtsfrei auf Zenodo, dem wissenschaftlichen Archiv des CERN, veröffentlicht. Alle Versionen sind mit einem separaten und langzeit-stabilen (persistenten) Digital Object Identifier (DOI) versehen.
 
@@ -16,7 +16,7 @@ Aktuellster, funktionaler und zitierfähiger Release des Datensatzes: <https://d
 ## Features
 
 - Bereinigung der Dateinamen
-- Korrektur falscher Rotationen und Standardisierung im Hochformat
+- Korrektur falscher Rotationen, Standardisierung im Hochformat
 - Optische Zeichenerkennung (OCR)
 - Automatisierte Bereinigung von OCR-Fehlern mit Ersetzungstabelle
 - Extraktion zusätzlicher Variablen
@@ -162,18 +162,12 @@ Die folgende Struktur erläutert die wichtigsten Bestandteile des Projekts. Wäh
 
 ``` 
 
-
-
  
-## Weitere Open Access Veröffentlichungen (Fobbe)
+## Persönliche Webseiten der Autor:innen
 
-Website — https://www.seanfobbe.de
+Seán Fobbe — https://www.seanfobbe.de
 
-Open Data  —  https://zenodo.org/communities/sean-fobbe-data/
-
-Source Code  —  https://zenodo.org/communities/sean-fobbe-code/
-
-Volltexte regulärer Publikationen  —  https://zenodo.org/communities/sean-fobbe-publications/
+Tilko Swalve — https://tilkoswalve.netlify.app/
 
 
 
