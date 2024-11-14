@@ -1,5 +1,5 @@
 ---
-title: "Codebook | Entscheidungen des Bundesgerichtshofs für Strafsachen des 20. Jahrhunderts (BGH-Strafrecht-20Jhd)"
+title: "Codebook | Entscheidungen des Bundesgerichtshofs für Strafsachen des 20. Jahrhunderts (BGH-Strafsachen-20Jhd)"
 author: Seán Fobbe
 geometry: margin=3cm
 papersize: a4
@@ -159,7 +159,7 @@ Mit jeder Kompilierung des vollständigen Datensatzes wird auch ein umfangreiche
 
 
 
-```{r, BGH-Strafrecht-20Jhd_Pipeline_Graph, fig.width = 12, fig.height = 18, fig.pos = "p", fig.cap = "Der vollständige Prozess der Datensatz-Kompilierung."}
+```{r, BGH-Strafsachen-20Jhd_Pipeline_Graph, fig.width = 12, fig.height = 18, fig.pos = "p", fig.cap = "Der vollständige Prozess der Datensatz-Kompilierung."}
 
 edgelist <- tar_network(targets_only = TRUE)$edges
 setDT(edgelist)
@@ -553,7 +553,7 @@ kable(lingstats.summary,
 ## Verteilung Zeichen
 
 
-```{r, BGH-Strafrecht-20Jhd_Density_Zeichen, fig.height = 6, fig.width = 9}
+```{r, BGH-Strafsachen-20Jhd_Density_Zeichen, fig.height = 6, fig.width = 9}
 ggplot(data = dt.meta)+
     geom_density(aes(x = zeichen),
                  fill = "#7e0731")+
@@ -582,7 +582,7 @@ ggplot(data = dt.meta)+
 
 ## Verteilung Tokens
 
-```{r,  BGH-Strafrecht-20Jhd_Density_Tokens, fig.height = 6, fig.width = 9}
+```{r,  BGH-Strafsachen-20Jhd_Density_Tokens, fig.height = 6, fig.width = 9}
 ggplot(data = dt.meta)+
     geom_density(aes(x = tokens),
                  fill = "#7e0731")+
@@ -610,7 +610,7 @@ ggplot(data = dt.meta)+
 
 ## Verteilung Typen
 
-```{r, BGH-Strafrecht-20Jhd_Density_Typen, fig.height = 6, fig.width = 9}
+```{r, BGH-Strafsachen-20Jhd_Density_Typen, fig.height = 6, fig.width = 9}
 ggplot(data = dt.meta)+
     geom_density(aes(x = typen),
                  fill = "#7e0731")+
@@ -639,7 +639,7 @@ ggplot(data = dt.meta)+
 
 ## Verteilung Sätze
 
-```{r, BGH-Strafrecht-20Jhd_Density_Saetze, fig.height = 6, fig.width = 9}
+```{r, BGH-Strafsachen-20Jhd_Density_Saetze, fig.height = 6, fig.width = 9}
 ggplot(data = dt.meta)+
     geom_density(aes(x = saetze),
                  fill = "#7e0731")+
@@ -738,7 +738,7 @@ freqtable.az.nosum <- freqtable.az[-.N]
 
 
 
-```{r, BGH-Strafrecht-20Jhd_Barplot_Spruchkoerper_AZ, fig.height = 6, fig.width = 9}
+```{r, BGH-Strafsachen-20Jhd_Barplot_Spruchkoerper_AZ, fig.height = 6, fig.width = 9}
 ggplot(data = freqtable.az.nosum) +
     geom_bar(aes(x = reorder(spruchkoerper_az,
                              -N),
@@ -806,7 +806,7 @@ freqtable.db.nosum <- freqtable.db[-.N]
 
 
 
-```{r, BGH-Strafrecht-20Jhd_Barplot_Spruchkoerper_DB, fig.height = 12, fig.width = 8}
+```{r, BGH-Strafsachen-20Jhd_Barplot_Spruchkoerper_DB, fig.height = 12, fig.width = 8}
 ggplot(data = freqtable.db.nosum) +
     geom_bar(aes(x = reorder(spruchkoerper_db,
                              N),
@@ -874,7 +874,7 @@ freqtable.praesi.nosum <- freqtable.praesi[-.N]
 
 
 
-```{r, BGH-Strafrecht-20Jhd_Barplot_PraesidentIn, fig.height = 6, fig.width = 9}
+```{r, BGH-Strafsachen-20Jhd_Barplot_PraesidentIn, fig.height = 6, fig.width = 9}
 ggplot(data = freqtable.praesi.nosum) +
     geom_bar(aes(x = reorder(praesi,
                              N),
@@ -940,7 +940,7 @@ freqtable.vpraesi.nosum <- freqtable.vpraesi[-.N]
 
 
 
-```{r, BGH-Strafrecht-20Jhd_Barplot_VizePraesidentIn, fig.height = 6, fig.width = 9}
+```{r, BGH-Strafsachen-20Jhd_Barplot_VizePraesidentIn, fig.height = 6, fig.width = 9}
 ggplot(data = freqtable.vpraesi.nosum) +
     geom_bar(aes(x = reorder(v_praesi,
                              N),
@@ -1013,7 +1013,7 @@ freqtable.entscheidungsjahr.nosum <- freqtable.entscheidungsjahr.nosum[!is.na(en
 
 
 
-```{r, BGH-Strafrecht-20Jhd_Barplot_Entscheidungsjahr, fig.height = 6, fig.width = 9}
+```{r, BGH-Strafsachen-20Jhd_Barplot_Entscheidungsjahr, fig.height = 6, fig.width = 9}
 ggplot(data = freqtable.entscheidungsjahr.nosum) +
     geom_bar(aes(x = entscheidungsjahr,
                  y = N),
@@ -1075,7 +1075,7 @@ freqtable.eingangsjahr.nosum <- freqtable.eingangsjahr[-.N]
 
 
 
-```{r, BGH-Strafrecht-20Jhd_Barplot_EingangsjahrISO, fig.height = 6, fig.width = 9}
+```{r, BGH-Strafsachen-20Jhd_Barplot_EingangsjahrISO, fig.height = 6, fig.width = 9}
 ggplot(data = freqtable.eingangsjahr.nosum) +
     geom_bar(aes(x = eingangsjahr_iso,
                  y = N),
@@ -1121,7 +1121,7 @@ kable(freqtable.eingangsjahr,
 # Dateigrößen
 
 
-```{r, BGH-Strafrecht-20Jhd_Density_Dateigroessen_PDF, fig.height = 6, fig.width = 9}
+```{r, BGH-Strafsachen-20Jhd_Density_Dateigroessen_PDF, fig.height = 6, fig.width = 9}
 
 
 pdf.MB <- file.size(pdf.cleaned.noprob) / 10^6
@@ -1157,7 +1157,7 @@ ggplot(data = dt.plot,
 
 
 
-```{r, BGH-Strafrecht-20Jhd_Density_Dateigroessen_TXT, fig.height = 6, fig.width = 9}
+```{r, BGH-Strafsachen-20Jhd_Density_Dateigroessen_TXT, fig.height = 6, fig.width = 9}
 
 txt.MB <- file.size(txt_best) / 10^6
 
