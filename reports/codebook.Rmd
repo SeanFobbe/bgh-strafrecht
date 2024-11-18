@@ -115,7 +115,7 @@ df.bgh <- readtext("./*.txt",
 
 ## Beschreibung des Datensatzes
 
-Dieser Datensatz ist eine digitale Zusammenstellung möglichst aller verfügbaren strafrechtlichen Entscheidungen des deutschen Bundesgerichtshofs (BGH) aus dem 20. Jahrhundert. Enthalten sind Entscheidungen aller 6 Strafsenate aus den Jahren 1950 bis 1999.
+Dieser Datensatz ist eine digitale Zusammenstellung möglichst aller verfügbaren strafrechtlichen Entscheidungen des deutschen Bundesgerichtshofs (BGH) aus dem 20. Jahrhundert. Enthalten sind Entscheidungen von fünf Strafsenaten aus den Jahren 1950 bis 1999. Für den von 1954 bis 1956 bestehenden 6. Strafsenat liegen keine Daten vor.
 
 Der Datensatz wird in maschinenlesbaren Formaten (TXT und CSV) angeboten, enthält aber auch die PDF-Rohdaten. Wir möchten damit Transparenz in der Herstellung schaffen, aber auch traditionell arbeitenden Rechtswissenschaftler:innen ein für sie technisch vertrautes Angebot machen. Die PDF-Rohdaten wurden inhaltlich nicht verändert und nur die Dateinamen angepasst, um die Lesbarkeit für Mensch und Maschine zu verbessern.
 
