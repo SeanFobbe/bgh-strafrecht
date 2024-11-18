@@ -75,6 +75,24 @@ sum(stringi::stri_count(regex = "expect_", code))
 
 
 
+# Variablen
+
+## Anzahl Variablen
+
+```{r}
+length(dt.final)
+```
+
+
+## Alle Namen der Variablen
+
+```{r}
+names(dt.final)
+```
+
+
+
+
 
 
 # Pipeline visualisieren
@@ -114,24 +132,6 @@ ggraph(g,
         plot.margin = margin(10, 20, 10, 10)
     )
 
-```
-
-
-
-
-# Variablen
-
-## Anzahl Variablen
-
-```{r}
-length(dt.final)
-```
-
-
-## Alle Namen der Variablen
-
-```{r}
-names(dt.final)
 ```
 
 
