@@ -1,27 +1,29 @@
 pattern,replacement
-StFO,StPO
-STFO,StPO
-"1, Ferienstrafsenat 1. Ferienstrafsenat ",
-InNamen,Im Namen
 !lotwendigkeit,Notwendigkeit
-Iandgericht,Landgericht
-Öberstaatsanwalt,Oberstaatsanwalt
-sant,samt
-verrtoßen,verstoßen
-Verne'mung,Vernehmung
-Zcugen,Zeugen
-üie,die
-Iintschädigung,Entschädigung
+"1, Ferienstrafsenat 1. Ferienstrafsenat ",
 Angekiagte,Angeklagte
-Strafiscnat,Strafsenat
-heisitzende,beisitzende
-Urtcil,Urteil
-Hauntverhandlung,Hauptverhandlung
-Yröffnungsbeschluss,Eröffnungsbeschluss
-Vnachtsankeit,Unachtsamkeit
+Angeklaate,Angeklagte
 Aufhcbung,Aufhebung
+Hauntverhandlung,Hauptverhandlung
+heisitzende,beisitzende
+Iandgericht,Landgericht
+Iintschädigung,Entschädigung
+InNamen,Im Namen
+Öberstaatsanwalt,Oberstaatsanwalt
 oränungsgceräße,ordnungsgemäße
-StEO,StPO
 RCSt,RGSt
 Sachrügsc,Sachrüge
-Angeklaate,Angeklagte
+sant,samt
+StEO,StPO
+StFO,StPO
+STFO,StPO
+Strafiscnat,Strafsenat
+üie,die
+Urtcil,Urteil
+Verne'mung,Vernehmung
+verrtoßen,verstoßen
+Vnachtsankeit,Unachtsamkeit
+Yröffnungsbeschluss,Eröffnungsbeschluss
+Zcugen,Zeugen
+Zusamnentreffen,Zusammentreffen
+PFreiheitsberaubung,Freiheitsberaubung
