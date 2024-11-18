@@ -22,6 +22,14 @@ f.clean_text <- function(x,
                                          replacement = "§ $1")
 
     revised <- stringi::stri_replace_all(revised,
+                                         regex = "88\\s*([0-9]+)\\s*(StGB|StPO)",
+                                         replacement = "$§ $1 $2")
+    
+    revised <- stringi::stri_replace_all(revised,
+                                         regex = "8\\s*([0-9]+)\\s*(StGB|StPO)",
+                                         replacement = "§ $1 $2")
+    
+    revised <- stringi::stri_replace_all(revised,
                                          regex = replacements$pattern,
                                          replacement = replacements$replacement,
                                          vectorize_all = FALSE)
