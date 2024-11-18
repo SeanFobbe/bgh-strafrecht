@@ -149,6 +149,20 @@ missingvalues <- f.missingvalues(x = dt.final,
 
 ```
 
+# Dokumente mit geringen Zeichenzahlen
+
+Dokuemente mit geringen Zeichenzahlen können aus verschiedenen Gründen auftreten:
+
+- Leere PDF-Datei
+- Sehr schlechte Qualität des Scans
+- Fehler bei der optischen Zeichenerkennung
+- Fehler bei der Weiterverarbeitung
+
+
+```{r}
+dt.final[nchar(dt.final$text) < 200, .(doc_id, text)]
+
+```
 
 
 
