@@ -240,7 +240,7 @@ Die Dateinamen der PDF- und TXT-Dateien, aber auch alle anderen Metadaten der CS
 ### Beispiel eines Dateinamens
 
 \begin{verbatim}
- BGH_Strafsenat-5_NA_NA_5_StR_824_52_NA_NA_NA.txt
+BGH_Strafsenat-5_NA_1999-06-15_5_StR_614_98_NA_NA_NA.txt
 \end{verbatim}
 
 
