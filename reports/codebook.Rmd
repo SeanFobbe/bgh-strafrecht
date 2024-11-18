@@ -320,7 +320,6 @@ Empfohlen für Nutzer:innen die einzelne Inhalte aus dem Codebook für andere Zw
 
 
 - **Doppelte Codierung der Spruchkörper** --- Für viele Entscheidungen sind die Spruchkörper doppelt enthalten, einmal in menschenlesbarer Form (Variable \enquote{spruchkoerper\_db}) für Kompatibilität mit dem CE-BGH, einmal durch das Aktenzeichen (Variable \enquote{spruchkoerper\_az}). 
-- **Abweichende Codierung der Registerzeichen** --- Die Registerzeichen wurden gekürzt und Sonderzeichen entfernt um die Arbeit mit ihnen zu vereinfachen. Beachten Sie bitte die Gegenüberstellungstabelle unter Punkt \ref{register}.
 - **Fehlende Werte** sind immer mit \enquote{NA} codiert.
 - **Strings** können grundsätzlich alle in UTF-8 definierten Zeichen (insbesondere Buchstaben, Zahlen und Sonderzeichen) enthalten.
 
@@ -358,7 +357,7 @@ kable(datamodel,
 - Das Datum bezieht sich jeweils auf das Amt als Präsident:in, nicht auf die Amtszeit als Richter:in.
 
   
-
+\ra{1.2}
 
 ## Lebensdaten
 
