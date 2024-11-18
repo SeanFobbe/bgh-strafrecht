@@ -44,6 +44,35 @@ tar_load(dt.final)
 ```
 
 
+## Automatisierte Tests zählen
+
+
+```{r}
+
+Rfiles <- list.files("functions", pattern = "\\.R$", full.names = TRUE)
+code <- unlist(lapply(Rfiles, readLines))
+
+
+```
+
+
+### Tests
+
+
+```{r}
+
+sum(stringi::stri_count(regex = "test_that\\(", code))
+
+```
+
+### Einzelne Erwartungen
+
+```{r}
+
+sum(stringi::stri_count(regex = "expect_", code))
+
+```
+
 
 
 
