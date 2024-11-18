@@ -247,7 +247,7 @@ BGH_Strafsenat-5_NA_1999-06-15_5_StR_614_98_NA_NA_NA.txt
 
 ## Qualitätsprüfung
 
-Die Qualität der Variablen wurde mit  automatisierten und halb-automatisierten Tests  strikt validiert. Die möglichen Werte der jeweiligen Variablen wurden zudem durch Frequenztabellen und Visualisierungen auf ihre Plausibilität geprüft. Insgesamt werden zusammen mit jeder Kompilierung Dutzende Tests zur Qualitätsprüfung durchgeführt. Alle Ergebnisse der Qualitätsprüfungen sind aggregiert im Compilation Report, dem Codebook, dem Quality Assurance Report und einzeln im Archiv \enquote{ANALYSE} zusammen mit dem Datensatz veröffentlicht.
+Die Qualität der Variablen wurde mit  automatisierten und halb-automatisierten Tests strikt validiert. Die möglichen Werte der jeweiligen Variablen wurden zudem durch Frequenztabellen und Visualisierungen auf ihre Plausibilität geprüft. Insgesamt werden zusammen mit jeder Kompilierung Dutzende Tests zur Qualitätsprüfung durchgeführt. Alle Ergebnisse der Qualitätsprüfungen sind aggregiert im Compilation Report, dem Codebook, dem Quality Assurance Report und einzeln im Archiv \enquote{ANALYSE} zusammen mit dem Datensatz veröffentlicht.
 
 
 
