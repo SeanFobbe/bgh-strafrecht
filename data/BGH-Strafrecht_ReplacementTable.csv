@@ -4,6 +4,8 @@ pattern,replacement
 Angekiagte,Angeklagte
 Angeklaate,Angeklagte
 Aufhcbung,Aufhebung
+fostenfolge,Kostenfolge
+Gestaltuug,Gestaltung
 Hauntverhandlung,Hauptverhandlung
 heisitzende,beisitzende
 Iandgericht,Landgericht
@@ -11,13 +13,17 @@ Iintschädigung,Entschädigung
 InNamen,Im Namen
 Öberstaatsanwalt,Oberstaatsanwalt
 oränungsgceräße,ordnungsgemäße
+PFreiheitsberaubung,Freiheitsberaubung
 RCSt,RGSt
+Reichsjusiizminister,Reichsjustizminister
 Sachrügsc,Sachrüge
 sant,samt
+StaB,StGB
 StEO,StPO
 StFO,StPO
 STFO,StPO
 Strafiscnat,Strafsenat
+Straftilg6,StraftilgG
 üie,die
 Urtcil,Urteil
 Verne'mung,Vernehmung
@@ -26,9 +32,3 @@ Vnachtsankeit,Unachtsamkeit
 Yröffnungsbeschluss,Eröffnungsbeschluss
 Zcugen,Zeugen
 Zusamnentreffen,Zusammentreffen
-PFreiheitsberaubung,Freiheitsberaubung
-StaB,StGB
-Reichsjusiizminister,Reichsjustizminister
-Straftilg6,StraftilgG
-fostenfolge,Kostenfolge
-Gestaltuug,Gestaltung
