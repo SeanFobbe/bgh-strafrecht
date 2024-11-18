@@ -63,7 +63,9 @@ In einem funktionierenden Rechtsstaat muss die Rechtsprechung öffentlich, trans
 
 # Nutzung
 
-Die Daten sind in offenen, interoperablen und weit verbreiteten Formaten (CSV, TXT, PDF) veröffentlicht. Sie lassen sich grundsätzlich mit allen modernen Programmiersprachen (z.B. Python oder R), sowie mit grafischen Programmen nutzen. Das Datenmodell dieses Datensatzes ist kompatibel mit dem des Corpus der Entscheidungen des Bundesgerichtshofs (CE-BGH)!
+Die Daten sind in offenen, interoperablen und weit verbreiteten Formaten (CSV, TXT, PDF) veröffentlicht. Sie lassen sich grundsätzlich mit allen modernen Programmiersprachen (z.B. Python oder R), sowie mit grafischen Programmen nutzen. 
+
+Das Datenmodell dieses Datensatzes ist kompatibel mit dem des Corpus der Entscheidungen des Bundesgerichtshofs (CE-BGH).
 
  **Wichtig:** Nicht vorhandene Werte sind sowohl in den Dateinamen als auch in der CSV-Datei mit "NA" codiert.
 
@@ -142,7 +144,7 @@ Der Datensatz wird in maschinenlesbaren Formaten (TXT und CSV) angeboten, enthä
 \end{centering}
 
 
-Die begründeten Entscheidungen der Strafsenate des Bundesgerichtshofs wurden Dr. Tilko Swalve auf Anfrage vom BGH auf digitalen Medien übergeben und von den Autoren aufbereitet.
+Alle in diesem Datensatz enthaltenen Entscheidungen wurden dem Ko-Autor Dr. Tilko Swalve auf Antrag hin vom BGH als Scans auf digitalen Medien übergeben und von den Autoren aufbereitet. Die originalen PDF-Dateien des BGH enthielten den anonymisierten Volltext der Entscheidungen und das Aktenzeichen im Dateinamen. Dem BGH zufolge waren dies alle zum Zeitpunkt der Übergabe am Gericht verfügbare strafrechtliche Entscheidungen aus dem Zeitraum vor 2000.
 
 Die Personendaten stammen aus folgendem Datensatz: \enquote{Seán Fobbe and Tilko Swalve (2021). Presidents and Vice-Presidents of the Federal Courts of Germany (PVP-FCG). Version 2021-04-08. Zenodo. DOI: 10.5281/zenodo.4568682}. 
 
