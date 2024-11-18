@@ -198,15 +198,15 @@ Nutzer:innen sollten folgende wichtige Grenzen beachten:
  
 
 - Der Datensatz enthält nur begründete Entscheidungen (\emph{publication bias}). Unbegründete Entscheidungen machen den Löwenanteil der Praxis des BGH aus und sind nicht enthalten.
-- Erst ab dem 1. Januar 2000 sind begründete Entscheidungen des Bundesgerichtshofs einigermaßen vollständig veröffentlicht (\emph{temporal bias}). Die hier veröffentlichten Entscheidungen sind alles, was der BGH an Dr. Tilko Swalve übergeben hat, aber wir hatten darüber hinaus keine Möglichkeit die Vollständigkeit zu prüfen.
-- Die Digitalisierung mit optischer Zeichenerkennung (OCR) via Tesseract funktioniert sehr gut wenn die Scans gut sind, aber schlecht wenn die Scans schlecht sind (\emph{OCR bias}). Die Qualität der digitalen Texte kann daher in Teilen von ungenau bis unbrauchbar reichen. Behalten Sie diesen Punkt unbedingt im Hinterkopf bei NLP-Anwendungen, insbesondere bei extrahierten Variablen wie dem im Datensatz enthaltenen Entscheidungsdatum und darauf aufbauenden Variablen (Präsident:innen, usw.).
+- Erst ab dem 1. Januar 2000 sind begründete Entscheidungen des Bundesgerichtshofs einigermaßen vollständig veröffentlicht (\emph{temporal bias}). Die hier veröffentlichten Entscheidungen sind alles, was der BGH an Dr. Tilko Swalve übergeben wollte bzw. konnte. Wir hatten darüber hinaus keine Möglichkeit die Vollständigkeit zu prüfen.
+- Die Digitalisierung mit optischer Zeichenerkennung (OCR) via Tesseract funktioniert sehr gut wenn die Scans gut sind, aber schlecht wenn die Scans schlecht sind (\emph{OCR bias}). Die Qualität der digitalen Texte ist daher für viele Entscheidungen ungenau bis unbrauchbar. Behalten Sie diesen Punkt unbedingt im Hinterkopf bei NLP-Anwendungen, insbesondere bei extrahierten Variablen wie dem im Datensatz enthaltenen Entscheidungsdatum und darauf aufbauenden Variablen (Präsident:innen, usw.).
 
 
 ## Urheberrechtsfreiheit von Rohdaten und Datensatz 
 
 An den Entscheidungstexten und amtlichen Leitsätzen besteht gem. § 5 Abs. 1 UrhG kein Urheberrecht, da sie amtliche Werke sind. § 5 UrhG ist auf amtliche Datenbanken analog anzuwenden (BGH, Beschluss vom 28.09.2006, I ZR 261/03, \enquote{Sächsischer Ausschreibungsdienst}).
 
-Alle eigenen Beiträge (z.B. durch Zusammenstellung und Anpassung der Metadaten) und damit den gesamten Datensatz stelle ich gemäß einer \emph{CC0 1.0 Universal Public Domain Lizenz} vollständig urheberrechtsfrei.
+Alle eigenen Beiträge (z.B. durch Zusammenstellung und Anpassung der Metadaten) und damit den gesamten Datensatz stellen die Autor:innen gemäß einer \emph{CC0 1.0 Universal Public Domain Lizenz} vollständig urheberrechtsfrei.
 
 
 
