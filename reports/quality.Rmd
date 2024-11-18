@@ -160,7 +160,7 @@ Dokuemente mit geringen Zeichenzahlen können aus verschiedenen Gründen auftret
 
 
 ```{r}
-dt.final[nchar(dt.final$text) < 200, .(doc_id, text)]
+print(dt.final[nchar(dt.final$text) < 200, .(doc_id, text)], nrows = 150)
 
 ```
 
