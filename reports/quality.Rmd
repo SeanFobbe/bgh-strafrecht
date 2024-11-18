@@ -136,7 +136,18 @@ ggraph(g,
 
 
 
+# Fehlende Werte
 
+
+```{r, results = "asis"}
+
+missingvalues <- f.missingvalues(x = dt.final,
+                                 kable = TRUE,
+                                 dir.out = dir.analysis,
+                                 prefix.files = "BGH-Strafsachen-20Jhd_")
+
+
+```
 
 
 
