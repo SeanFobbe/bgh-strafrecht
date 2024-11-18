@@ -1,5 +1,5 @@
 ---
-title: "Quality Control Report | Entscheidungen des Bundesgerichtshofs für Strafsachen des 20. Jahrhunderts (BGH-Strafsachen-20Jhd)"
+title: "Quality Control Report | Entscheidungen des Bundesgerichtshofs in Strafsachen aus dem 20. Jahrhundert (BGH-Strafsachen-20Jhd)"
 author: Seán Fobbe
 geometry: margin=3cm
 papersize: a4
