@@ -14,11 +14,11 @@ f.clean_text <- function(x,
                          replacements){
 
     revised <- stringi::stri_replace_all(x,
-                                         regex = "\\$\\$\\s*([0-9]+)",
+                                         regex = "[\\$\\&]{2}\\s*([0-9]+)",
                                          replacement = "§§ $1")
 
     revised <- stringi::stri_replace_all(revised,
-                                         regex = "\\$\\s*([0-9]+)",
+                                         regex = "[\\$\\&]\\s*([0-9]+)",
                                          replacement = "§ $1")
 
     revised <- stringi::stri_replace_all(revised,
