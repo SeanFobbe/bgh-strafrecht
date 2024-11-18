@@ -265,9 +265,9 @@ Die Robenfarbe der Richter:innen des Bundesgerichtshofs ist \enquote{karmesinrot
 
 ## Überblick
 
-Dieser Datensatz ist in verschiedenen Varianten verfügbar, die sich an unterschiedliche Zielgruppen richten. Zielgruppe sind zusätzlich zu quantitativ forschenden Rechtswissenschaftler:innen, auch traditionell arbeitende Jurist:innen. Idealerweise müssen quantitative Methoden ohnehin immer durch qualitative Interpretation, Theoriebildung und kritische Auseinandersetzung verstärkt werden (\emph{mixed methods approach}).
+Dieser Datensatz ist in verschiedenen Varianten verfügbar, die sich an unterschiedliche Zielgruppen richten. Zielgruppe sind sowohl quantitativ forschende Rechtswissenschaftler:innen, als auch traditionell arbeitende Jurist:innen. Idealerweise müssen quantitative Methoden ohnehin immer durch qualitative Interpretation, Theoriebildung und kritische Auseinandersetzung verstärkt werden (\emph{mixed methods approach}).
 
-Lehrende werden von den vorbereiteten Tabellen und Diagrammen besonders profitieren, die bei der Erläuterung der Charakteristika der Daten hilfreich sein können und Zeit im universitären Alltag sparen. Alle Tabellen und Diagramme liegen auch als separate Dateien vor um sie einfach z.B. in Präsentations-Folien oder Handreichungen zu integrieren.
+Lehrende werden von den vorbereiteten Tabellen und Diagrammen besonders profitieren, die bei der Erläuterung der Charakteristika der Daten hilfreich sein können und Zeit im universitären Alltag sparen. Alle Tabellen und Diagramme liegen auch als separate Dateien vor um sie einfach z.B. in Präsentationsfolien oder Handreichungen zu integrieren.
 
 
 ## CSV\_Datensatz
@@ -288,14 +288,14 @@ Empfohlen für quantitative Forschung und Legal Tech-Anwendungen.
  
 ## PDF
 
-Die PDF-Dokumente wie sie den Autoren durch BGH zur Verfügung gestellt werden, jedoch verbessert durch semantisch hochwertige Dateinamen, die der leichteren Auffindbarkeit von Entscheidungen dienen. Die PDF-Dateien wurden nach Senaten in mehrere ZIP-Archive aufgeteilt um kleinere Downloads zu ermöglichen.
+Die PDF-Dokumente wie sie den Autoren durch den BGH zur Verfügung gestellt wurden, jedoch verbessert durch semantisch hochwertige Dateinamen, die der leichteren Auffindbarkeit von Entscheidungen dienen. Die PDF-Dateien wurden nach Senaten in mehrere ZIP-Archive aufgeteilt, um kleinere Downloads zu ermöglichen.
 
 Die Dateinamen sind so konzipiert, dass sie auch für die traditionelle qualitative juristische Arbeit einen erheblichen Mehrwert bieten. Im Vergleich zu den CSV-Dateien enthalten die Dateinamen nur einen reduzierten Umfang an Metadaten, um Kompatibilitätsprobleme zu vermeiden und die Lesbarkeit zu verbessern.
 
  
 ## TXT
 
-Diese Variante enthält die vollständigen aus den PDF-Dateien mittel optischer Zeichenerkennung extrahierten Entscheidungstexte, aber nur einen reduzierten Umfang an Metadaten, der dem der PDF-Dateien entspricht. Die TXT-Dateien sind optisch an das Layout der PDF-Dateien angelehnt. 
+Diese Variante enthält die vollständigen, aus den PDF-Dateien mittel optischer Zeichenerkennung (OCR) extrahierten Entscheidungstexte, aber nur einen reduzierten Umfang an Metadaten, der dem der PDF-Dateien entspricht. Die TXT-Dateien sind optisch an das Layout der PDF-Dateien angelehnt. Der Inhalt ist identisch mit der "text"-Variable der CSV-Datei.
 
 Geeignet für qualitativ arbeitende Forscher:innen, die nur wenig Speicherplatz oder eine langsame Internetverbindung zur Verfügung haben. Sie sind zudem eine Alternative für quantitativ arbeitende Forscher:innen, die beim Einlesen der CSV-Dateien Probleme haben.
 
