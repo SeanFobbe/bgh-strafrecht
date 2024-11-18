@@ -357,7 +357,7 @@ kable(datamodel,
 - Das Datum bezieht sich jeweils auf das Amt als Präsident:in, nicht auf die Amtszeit als Richter:in.
 
   
-\ra{1.2}
+\ra{1.3}
 
 ## Lebensdaten
 
