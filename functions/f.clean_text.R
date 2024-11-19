@@ -13,6 +13,10 @@
 f.clean_text <- function(x,
                          replacements){
 
+    ## Entry tests
+    stopifnot(is.character(x))
+    stopifnot(is.data.table(replacements))
+
     revised <- stringi::stri_replace_all(x,
                                          regex = "[\\$\\&]{2}\\s*([0-9]+)",
                                          replacement = "§§ $1")
