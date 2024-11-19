@@ -17,6 +17,7 @@ f.clean_text <- function(x,
     stopifnot(is.character(x))
     stopifnot(is.data.table(replacements))
 
+    ## Fix incorrect special symbols
     revised <- stringi::stri_replace_all(x,
                                          regex = "[\\$\\&]{2}\\s*([0-9]+)",
                                          replacement = "§§ $1")
@@ -25,9 +26,10 @@ f.clean_text <- function(x,
                                          regex = "[\\$\\&]\\s*([0-9]+)",
                                          replacement = "§ $1")
 
+    ## Fix incorrect 8s (stricter REGEX because 8s are more common)
     revised <- stringi::stri_replace_all(revised,
                                          regex = "88\\s*([0-9]+)\\s*(StGB|StPO)",
-                                         replacement = "$§ $1 $2")
+                                         replacement = "§§ $1 $2")
     
     revised <- stringi::stri_replace_all(revised,
                                          regex = "8\\s*([0-9]+)\\s*(StGB|StPO)",
