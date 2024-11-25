@@ -725,7 +725,8 @@ tar_target(txt_best,
            f.tar_write_txt(text = dt.final$text,
                            doc_id = dt.final$doc_id,
                            dir = "files/txt_best",
-                           cleandir = TRUE))
+                           cleandir = TRUE),
+           format = "file")
 
 ```
 
