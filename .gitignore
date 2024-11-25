@@ -11,6 +11,7 @@ _targets/
 temp/
 output/
 analyse/
+analysis/
 files/
 temp_tesseract/
 test/
