@@ -502,6 +502,11 @@ list(tar_target(txt.extracted,
 
 ### OCR-Fehler im Text bereinigen
 
+Dieser Schritt bereinigt einige häufige OCR-Fehler. Der Fokus liegt hierbei auf juristischen Fachbegriffen und nicht auf dem allgemeinen Wortschatz. Die Liste erhebt keinen Anspruch auf Vollständigkeit, sollteaber künftige NLP-Anwendungen etwas verbessern, insbesondere Netzwerkanalysen, die auf die Erkennung von Gesetzesbezeichnungen abstellen.
+
+Die Auswahl der Korrekturen erfolgte durch das genaue Lesen einzelner mit `ls | shuf -n 1` zufällig ausgewählter Entscheidungen und der Notierung entsprechender Korrekturen in einer CSV-Tabelle im Source Code.
+
+
 ```{targets tar.enhance.cleantext}
 
 tar_target(var_text,
