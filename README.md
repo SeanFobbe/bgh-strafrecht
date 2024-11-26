@@ -3,7 +3,7 @@
 
 ## Überblick
 
-Der Datensatz **Entscheidungen des Bundesgerichtshofs in Strafsachen aus dem 20. Jahrhundert** (BGH-Strafsachen-20Jhd)** ist eine möglichst vollständige Sammlung der durch den Bundesgerichtshof in Strafsachen getroffenen Entscheidungen vom 1. Oktober 1950 (Gründung des BGH) bis zum 1. Januar 2000, dem Zeitpunkt ab dem der BGH digitale Entscheidungen regulär veröffentlicht. 
+Der Datensatz **Entscheidungen des Bundesgerichtshofs in Strafsachen aus dem 20. Jahrhundert (BGH-Strafsachen-20Jhd)** ist eine möglichst vollständige Sammlung der durch den Bundesgerichtshof in Strafsachen getroffenen Entscheidungen vom 1. Oktober 1950 (Gründung des BGH) bis zum 1. Januar 2000, dem Zeitpunkt ab dem der BGH digitale Entscheidungen regulär veröffentlicht. 
 
 Der Datensatz nutzt als seine Datenquelle eine vom Bundesgerichtshof den Autoren übergebene digitale Sammlung dieser Entscheidungen und bereitet diese wissenschaftlich auf.
 
